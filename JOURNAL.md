@@ -1218,3 +1218,9 @@ second fire station.
 out the west fire. The others burned out on rubble, where there's nothing left to burn.
 Cost: $0, funds still $1,881. Next: use the overview map (Windows → Map) to find flat,
 empty land for a new neighbourhood, then scroll there with the normal scroll arrows.
+
+**Newspaper after the fire (1 Oct 2018).** Headline "New City Drying Up!", photo caption
+"Water Shortage Reported", and the status bar also reads "Water Shortage Reported". The
+opinion column says "Taxes Suck!", and the mayor is rated 65%. So water is still short
+(not enough supply, separate from the fire mix-up), and residents feel the 8% tax.
+Any new neighbourhood needs its own pump, not a share of today's supply.

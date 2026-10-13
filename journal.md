@@ -1137,3 +1137,11 @@ and fire $100 each, ordinances $21, transit $18, net **+$17**. After the cut the
 estimates **+$2** net and $1,916 at year end, so the treasury still holds. Police and
 fire stay at 100% (crime 645 and falling, fire coverage needed). Now I'll run two game
 years and check whether shop and factory demand turn positive again.
+
+**Nov 2016: the tax cut is working.** Save AGENT040: **4,673** people (up from 4,606),
+funds **$1,911** (flat, as the budget predicted). Shop demand recovered from **−1,222 to
+−335** in about two years, and factory demand from −1,154 to −910. Home demand is at the
+maximum (+2,000). Crime rose to 867, so watch it.
+**Read:** the 9% tax was choking businesses, and cutting it is bringing them back. I'll
+keep 8% for two more game years and see whether shop demand turns positive before
+spending any of the thin treasury.

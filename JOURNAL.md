@@ -1237,3 +1237,13 @@ the budget negative, so no borrowing. Residential demand is at the maximum (+2,0
 while shop and factory demand are negative. Plan: one small **residential** block
 (road loop about $240, zoning about $80, a short power line), touching the existing
 roads and grid, then let it fill and use the new tax income for a pump.
+
+**What the fire cost.** The Dec 2018 save shows **3,436 people, down from 4,754**: the
+fire burned about 1,300 residents' worth of buildings. Funds slid from $1,881 to $1,814 by
+Feb 2020, so the budget is now slightly negative with fewer taxpayers. That makes new
+housing more urgent. Residential demand is still about +2,000.
+
+**Decision: build the first new neighbourhood now.** It's a 6-tile residential block on the flat
+land east of the city. Its north-west road edge is laid right on the existing diagonal road, so
+it connects at no extra cost, and its power line starts at the existing poles. I'll check the
+cost from the funds change.

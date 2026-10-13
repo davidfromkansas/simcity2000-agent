@@ -951,3 +951,10 @@ and many dark, emptied lots where the blackout drove people out. The Population
 window shows a 56% work force. Funds are flat at $2,512 (tax income arrives in
 January). I'm letting it run into 2004 and reading the next save before deciding
 anything. Spending now would push funds toward the $1,500 safety floor.
+
+**Oct 2004 save (AGENT032): population 344, funds $2,397.** The decline continued even
+after the plant reconnected. Demand is now high for everything (R +1811, C +2000,
+I +1565): people want to come, but the city isn't giving them working zones. The plant
+running at only ~5% suggests the reconnection reaches just a small part of the old
+grid, and most neighbourhoods are still dark. Checking the power layer again to find
+which feeder lines are cut.

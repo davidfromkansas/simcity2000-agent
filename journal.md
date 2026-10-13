@@ -1318,3 +1318,27 @@ has fallen to 173 (from 832 before the fire) and the fires are out, so I set pol
 70% (confirmed on the budget screen). The 2024 estimate only moved to −$50, because most of the
 year's spending has already happened. The full-year saving (about $40) should show in 2025.
 Risk: fire coverage is weaker. If another fire starts, I'll raise fire funding first.
+
+**Trim result (Aug 2026).** Money went $1,429 (Oct 2024) → $1,369 (Aug 2026): −$60 over ~22
+months, or about −$33 a year, down from −$57. The cut helped but didn't stop the drain. Looking
+at the budget again before deciding on the next lever.
+
+**2026 budget nearly balanced; invest in factory jobs.** Estimate is now −$10/yr: property tax
+$158 against police $70, fire $70, ordinances $15 and transit $15. Money is $1,369, below my
+self-imposed $1,500 floor, but at −$10/yr bankruptcy is more than a century away, so a small
+growth investment is safe. Factory demand is maxed (+2,000) and homes nearly so (+1,991). The
+south-centre rubble is old shop zoning that won't rebuild while shop demand is negative.
+Re-zoning a small patch of it as light industrial, beside the end of the diagonal road and
+away from the homes, adds jobs, which should pull in residents. It should cost about $30–50.
+
+**Factory patch placed: $50 (Aug 2026).** Money $1,369 → $1,319, so 10 tiles at $5. On screen,
+yellow industrial dots now cover the empty tiles between the south-centre rubble, next to the
+end of the diagonal road. Letting it run to see whether factories build there, and whether
+the new jobs move population.
+
+**Factory patch stayed empty (Jun 2028).** After ~2 game years the new industrial patch is
+still bare yellow dots, even though factory demand is maxed (+2,000). Money is $1,290
+($1,319 → $1,290, about −$16/yr, so the budget fix is holding). Population 3,237 in the Aug
+2026 save, flat. My guess is that the patch has no power: zones pass electricity to the zones
+beside them, but rubble doesn't, so a patch surrounded by rubble may be cut off from the grid.
+Querying a tile to check.

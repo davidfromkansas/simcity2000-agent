@@ -1510,3 +1510,14 @@ to the city's southern pipe grid: $30 ($1,368 → $1,338). The new pipe is alrea
 nearest part of the previously grey southern grid turned blue too. Total for the new water
 supply: $148 (pump $100, power $18, pipe $30). Now I'll run the game a couple of years and
 check the Water map and population.
+
+**Jun 2038 save: water added, population still flat.** Population 4,075 (4,009 in Mar 2036),
+money $1,406 (+$68 in two years), crime 934, pollution 2,279. Demand: homes +2,000, shops
+−1,634 (the rebuilt centre has oversupplied shops, so no more commercial), factories −847.
+
+Diagnosis: demand for homes has been at +2,000 since 1934 and the city still won't grow. The
+new pump and the re-powered districts filled the homes that existed, but nearly all home zones
+are *light* residential, which caps each lot at small houses. A mayor would allow taller
+housing where infrastructure already exists. Next experiment: re-zone one existing light
+home block as dense residential ($/tile, roads, power and water already in place), then
+compare its population after a couple of years before rolling it out.

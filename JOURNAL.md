@@ -805,3 +805,8 @@ ran on from Jun 2000 to Jan 2001. The plant is now at the very end of its life.
 Approval 68%, and "Pollution Blows!" is back in Fred's Opinion. Replacing the plant is
 now the top priority, ahead of water. I'm also checking why Speed → Pause keeps
 failing, since every drift has cost the city years.
+
+Jun 2001: the game is still running and the oil plant is still alive ($9,339).
+Speed → Pause has now failed three times in a row, so I'm opening the Speed menu to
+look at it directly, rather than assuming the fixed menu coordinates still hit
+"Pause".

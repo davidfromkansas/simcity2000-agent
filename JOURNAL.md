@@ -1304,3 +1304,9 @@ roads and power that already exist. Re-zoning it as homes would now be a mistake
 stopping after the 4 tiles ($20) already done. Money fell $1,588 → $1,530 in ~11 months
 (about −$58/yr), so I'm right at my $1,500 floor and spending nothing. I'll let the
 city run and watch whether the rubble regrows.
+
+**Oct 2024 save: recovering, but below the money floor.** Population 3,259 (up from 2,963),
+crime 173, pollution 1,819. Money is $1,429, below my $1,500 floor, and still draining about
+$50 a year. Demand swung again: homes +1,991, factories +2,000 (maxed), shops −849. So the jobs
+people want now are factory jobs, not shops. The commercial rubble in the centre still won't
+rebuild. Before spending anything, I'm opening the budget to fix the drain.

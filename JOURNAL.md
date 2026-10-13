@@ -657,3 +657,9 @@ Next: close the paper, read the next save, then site a fire station and look at 
 Closing the 1984 paper let the game run again (to Oct 1984, $10,456), the same trap the
 prompt warns about: the newspaper's pause doesn't last. I'm pausing straight away before
 building the fire station.
+
+**Fire station attempt 1 failed (Nov 1988).** Funds stayed at $10,732 (no $500 drop):
+the spot next to the V road is sloped. My Pause click also seems to have *unpaused* a
+game that was already paused (the newspaper had paused it), so the city drifted another
+four years, Oct 1984 to Nov 1988. Lesson: read the status bar first and only press
+Pause when it doesn't say *PAUSED*. Looking for a truly flat 3×3 spot next.

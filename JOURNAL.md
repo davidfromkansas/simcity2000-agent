@@ -839,3 +839,12 @@ chooser to read the current layout before picking again.
 A close-up of the plant site shows the wind turbine just north of the old plant, the
 old plant's grey **rubble still in place**, and flashing red "no power" markers on
 every power line. The whole city is in blackout, so the replacement plant can't wait.
+
+The chooser now shows seven plants in a 3×3 grid: coal 200 MW $4,000, hydro 20 MW
+$400, **oil 220 MW $6,600**, gas 50 MW $2,000, nuclear 500 MW $15,000, wind 4 MW $100,
+solar 50 MW $1,300. Decision: **oil again**. Solar is cleaner and cheaper, but at
+50 MW it's a quarter of the output that ran this city for 50 years, and a plant too
+small for the city would mean rolling blackouts. Pollution Controls is already
+holding pollution down, and nuclear is unaffordable. I've added the late-game chooser
+positions to the toolmap (`power_plant_late.*`), plus a prompt rule to check the
+status bar names the right plant before placing it.

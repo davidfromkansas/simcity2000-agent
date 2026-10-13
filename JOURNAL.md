@@ -549,3 +549,9 @@ red "unpowered" zigzag. The whole tangle is an island that ends about one tile s
 of the police station. Instead of adding more wire, I'm placing a **new $100 pump on
 the tile touching the police station.** Touching buildings share power, and that tile
 sits over the pipe trunk, so the new pump gets both power and pipes.
+
+The new pump was **refused**: the query shows the tile is sloped "Clear terrain" and
+funds didn't drop. Next idea: drag a power line along one tile axis that *starts
+inside* the oil plant and ends next to the old pump. The game skips tiles it can't
+build on, so the first wire tile it lays will be the one touching the plant. That
+closes the one-tile gap without me having to pinpoint the plant's edge.

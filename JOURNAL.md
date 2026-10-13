@@ -162,3 +162,10 @@ up, C slightly down.
 Retry worked: funds dropped $14,387 -> $13,891 (~$500 for ring + zone + line) and the
 yellow industrial ring is visible west of the pond block, chained to its power line.
 Running ~3 game years before the next move.
+
+**Oct 1930 (screen: $14,083).** Another newspaper (approval up to 59%, closed). The
+second industrial block filled with factories in ~2 years. RCI now: **R high, I
+medium, C below the line**, so the next block is residential again, south-west of the
+new factories (their power line chains into it). Newspapers keep interrupting the
+runs; I close them first and check funds after each block, because a missed block
+costs a whole run of ~3 game years.

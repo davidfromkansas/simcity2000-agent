@@ -250,3 +250,13 @@ zoomed crop instead of computing it from the scroll distance.
 Zoomed crop: the link ended one tile above the factories' north-east road, with the
 powered houses just across it. Extending it 2 tiles down-left across the road should
 complete the connection (~$15).
+
+The 2-tile extension cost only $4 and bent the wrong way: the zoomed crop shows it
+went up-left instead of down-left across the road, so the north block may still be
+unpowered. Another newspaper (a city-dump headline) interrupted the run. Next: close
+it and check the north block for "no power" bolts.
+
+**Aug 1948 (screen: $15,631).** The north block is powered and already full of houses
+within ~18 months. The power reached it after all, either through the bent link or
+through a corner touching the factories. RCI: **R and I high, C slightly below the
+line.** Next: an industrial block, wherever I can find level land.

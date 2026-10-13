@@ -1090,3 +1090,10 @@ Funds $1,875. Lesson: judge water from the **Water Supply map** (red = dry), not
 the underground view's blue shading, and look for cyan end-caps to find breaks. Next:
 let it run a couple of years so water spreads through the zones and homes can grow
 denser, then read the saves.
+
+**Jun 2012: first growth from water.** Save AGENT038: **pop 4,884**, a new high (from
+4,734 in Feb 2011), funds **$1,889** (steady at the 9% tax), R +1880, C −852, I −1271.
+The Water Supply map shows the centre watered, but the western neighbourhoods are still
+red, so the western pipes must have more breaks like the first one. Next: scan the
+western pipe network at 2x zoom for cyan end-caps and bridge each with single $3 tiles.
+That's the cheapest growth available while money is near the floor.

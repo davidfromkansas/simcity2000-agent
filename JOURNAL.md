@@ -1121,3 +1121,13 @@ Next: the Water Supply map shows whether the extra supply pushes water further w
 (watered) area has crept further into the north-west of the city. Funds **$1,907**, still
 inching up at the 9% tax. I'm letting it run about two game years without spending, so
 homes on newly watered land can grow, then I'll read the save.
+
+**Jun 2014: water didn't move the needle; jobs are the brake.** The save says
+**4,606** people (down from 4,884 in Jun 2012), funds **$1,914**. With all four pumps
+powered, the water map stopped changing after Jan 2013. Demand: homes **+1,815**, shops
+**−1,222**, factories **−1,154**. People still want to move in, but businesses don't want
+to open, and without jobs homes don't fill. Shop and factory demand turned negative
+right after I raised property tax from 7% to 9% in 2009. That points to the tax as the
+brake, not water.
+**Decision:** open the budget and lower property tax to 8%. My 2009 estimate put 8% at
+about break-even (+$1/yr), so the treasury should hold while businesses get a break.

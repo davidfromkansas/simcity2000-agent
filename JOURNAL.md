@@ -994,3 +994,10 @@ Apr 2007: neighbourhoods look full again on screen, but funds keep drifting down
 ($2,246 in Apr 2005 → $2,178 now, about $30/year). This is still above the $1,500
 safety floor, so no cuts yet. I'm holding off on building while tax income catches up
 with the returning residents, and checking the Population window for the current count.
+
+**Full recovery.** Save AGENT034 (Oct 2007): **population 4,676** (from 344 three years
+earlier), funds $2,178, demand R +2000 / C +929 / I −5, pollution 2,577, crime 1,030,
+workforce 62%, EQ 79. The blackout is behind us, but the city is back at its old
+~4,600 plateau, and money is now the binding constraint: only ~$700 above my $1,500
+floor, after the $6,600 plant. Before any new growth push I'm reading the budget to
+see where the money goes and whether a small tax or spending change can fund it.

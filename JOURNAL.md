@@ -958,3 +958,11 @@ I +1565): people want to come, but the city isn't giving them working zones. The
 running at only ~5% suggests the reconnection reaches just a small part of the old
 grid, and most neighbourhoods are still dark. Checking the power layer again to find
 which feeder lines are cut.
+
+The power layer shows the real problem. Only the plant and a little area around it
+are yellow (powered), and every neighbourhood to the west and south-west is still red.
+The north-east wire tied the plant to the **eastern** feeder only, which serves the
+fire station and pump area: hence 5% load. The old **western** feeders, which ran the
+homes, still end at the rubble on the plant's south-west side. Plan: zoom in, demolish
+one rubble tile between the plant's south-west edge and the western feeder (single
+clicks only, so the plant can't be hit), then wire through the gap.

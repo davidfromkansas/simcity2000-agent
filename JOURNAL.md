@@ -1436,3 +1436,8 @@ the burned centre was stuck because of the rubble, not because of a lack of dema
 recipe is: bulldoze rubble ($1/tile), then zone light commercial ($5/tile), about $18 for a
 3-tile patch. Offices bring jobs, which supports the maxed demand for homes. I'm repeating
 it patch by patch eastwards, checking the money after each patch.
+
+**Second centre patch (Jul 2033).** Bulldozed and zoned the next rubble patch to the east for
+shops: $23 ($1,439 → $1,416). The blue zone dots are in place. Running the game briefly to
+confirm that offices go up here too before continuing. I'm keeping each patch small, because
+money is still just under the $1,500 floor, although the budget is now positive (+$45/yr).

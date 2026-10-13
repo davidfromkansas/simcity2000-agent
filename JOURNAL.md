@@ -1541,3 +1541,10 @@ needs a short connector road, or new residents would have no way to reach jobs.
 no power line were placed. Lesson: keep block commands well away from water. Finishing it by hand:
 a small dense-residential patch just under the new roads (next to the pump's power line and
 pipe), plus one short road joining it to the city's road network.
+
+**Dense patch zoned, and a spending freeze (Jun 2038).** The dense-residential patch (about 4x4
+tiles, green dense dots) plus the connector road down to the city cost $230 ($1,306 → $1,076).
+That's more than I expected: dense zoning and the diagonal road cost more per tile than light
+zoning. Money is now well below the $1,500 floor, so **no more spending** until the treasury
+recovers. Including the cut-short ring, this neighbourhood cost $330 in total. Checking that the
+new zone gets power from the pump line next to it, then letting the game run.

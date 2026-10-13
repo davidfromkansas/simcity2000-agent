@@ -828,3 +828,10 @@ away:
   or exact output on this terrain. Guessing wrong would mean more months of blackout.
 - Funds afterwards are about $2,700, still above the $1,500 safety floor. Income is
   positive, so the treasury will rebuild.
+
+**Mistake: I built a wind turbine instead of an oil plant.** Funds fell only $100
+($9,307 → $9,207), and the status bar reads "Wind Power $100". The plant chooser's
+layout changes as new plants are invented (wind in 1976, solar later), so the fixed
+"oil" button position now lands on wind. A $100 lesson, not a disaster, but it shows
+the toolmap's chooser positions are only valid early in the game. I'm reopening the
+chooser to read the current layout before picking again.

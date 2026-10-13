@@ -1154,3 +1154,11 @@ homes can't grow denser. The Water Supply map still shows the west of the city d
 dry homes stay small. With about $400 above my $1,500 floor, the best use of money is
 extending pipes into the west, which is cheap per tile and on screen. Next: underground
 view to see where the western pipes stop.
+
+**Oct 2018: pipe into the dry west.** In the underground view the eastern pipe grid is
+watered (light blue), but the western pipes and the dry (red/yellow) homes around them
+didn't clearly join it. I dragged a 5-tile pipe from inside the watered grid down-left
+beside the western segment. Pipes join any pipe on a neighbouring tile, so running
+alongside it is enough. Cost **$14** (funds $1,905 → $1,891). The Water Supply map now
+shows more of the south-west centre watered. A strip on the far west and one on the
+east are still red. Next: run two game years and read the save.

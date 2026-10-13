@@ -76,3 +76,13 @@ nothing of value is lost, and restarting the container also loads the fixed `blo
 code (pauses between ring drags). New rule for myself: before building, look for one
 big level area (uniform diamond lattice, no brown cliff bands) and test-place the
 plant there first; build blocks only after the plant's $4,000 shows up in the funds.
+
+**Re-rolled map:** gentler, with one level patch in the north-east of the starting
+view. Test-placed the coal plant there first: funds $20,000 -> $16,000, so it is
+really built. The first residential block goes just south-west of it, with one short
+power line from the plant's bottom edge across the ring road into the zone (zones
+pass power to each other, so one connection powers the whole block).
+Plan for the next blocks: residential first because homes are where the population
+number comes from, then one industrial block (jobs; the 1919 newspaper in run 2
+complained about unemployment), then commercial once there are enough people for
+shops - aiming at roughly 2 R : 1 C : 1 I.

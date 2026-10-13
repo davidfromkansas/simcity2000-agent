@@ -1660,3 +1660,9 @@ gain since the post-fire recovery). Money $1,308, crime 1,100, pollution 2,436, 
 Demand: homes +2,000, shops −176 (was −1,010), factories **+169** (was −872). The new residents
 are using up the spare jobs, so shop and factory demand is climbing back towards positive.
 That's the healthy loop: homes → workers → demand for jobs → businesses → more homes.
+
+**Second patch built (Jun 2049, $1,370).** Within about two years the $60 patch was built with
+condo blocks and pools, because it had power along its edge and road access from the start.
+Money keeps rising (+$112 since zoning it). Next is the same recipe again, north of the ring road:
+a small dense patch on the flat land beyond the road, with a power line from the built pond
+patch across the road into it.

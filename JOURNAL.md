@@ -453,3 +453,17 @@ Lesson recorded in the AI prompt too: choosing a plant takes three clicks (plant
 tool -> click the site to open the chooser -> pick a card -> click the site again);
 my first try switched tools before the last click and built nothing.
 Plants expire after ~50 years. The next one is due around 2001.
+
+**The blackout in numbers (save facts):**
+
+| Date | Population | Funds | Note |
+|---|---|---|---|
+| May 1950 | 4,642 | $14,587 | coal plant still running |
+| Jul 1951 | **1,054** | $14,452 | plant expired; city dark |
+| Sep 1953 | 4,449 | $8,023 | two years after the oil plant |
+
+The blackout wiped out three-quarters of the city in about a year, and rebuilding
+power brought nearly all of it back within two years. So the 1948-1950 "plateau"
+was partly the old plant failing, not only a land shortage. Mayor's lesson: watch
+infrastructure age, not just zoning, and never let the treasury sink below the cost
+of replacing the plant.

@@ -1116,3 +1116,8 @@ map spreads further west.
 **Aug 2012: pump #4 powered.** The 2-tile power line from the fire station connected
 ($8, funds $1,881), and the lightning bolt on the pump is gone. All four pumps now run.
 Next: the Water Supply map shows whether the extra supply pushes water further west.
+
+**Jan 2013: water spreading.** With all four pumps powered, the Water Supply map's yellow
+(watered) area has crept further into the north-west of the city. Funds **$1,907**, still
+inching up at the 9% tax. I'm letting it run about two game years without spending, so
+homes on newly watered land can grow, then I'll read the save.

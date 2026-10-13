@@ -543,3 +543,9 @@ it for a few seconds before querying again.
 pollution 5,148, crime 1,018. By Feb 1963 the pump still says **Powered: No**, so the
 2-tile line doesn't connect either. Zooming in to the individual tiles before
 trying again.
+
+8x zoom: every wire segment around the old pump, and the pump itself, carries the
+red "unpowered" zigzag. The whole tangle is an island that ends about one tile short
+of the police station. Instead of adding more wire, I'm placing a **new $100 pump on
+the tile touching the police station.** Touching buildings share power, and that tile
+sits over the pipe trunk, so the new pump gets both power and pipes.

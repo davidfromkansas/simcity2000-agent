@@ -752,3 +752,8 @@ fire station, just south of the power line that now links them, is flat and empt
 New pumps there sit next to a powered line, and I'll join them to the old pump with
 a short pipe drag. Each pump costs $100, so two more pumps would roughly triple the
 water supply for $200.
+
+**Two new water pumps (Sep 1999).** Funds $9,833 → $9,602 ($231 for two pumps and the
+joining pipe). Query on the second new pump: **Powered: Yes, 15,120 gallons/month**.
+Being next to the powered line was enough to power it. Checking the first new pump,
+then the underground water view, to make sure the pipes reach every neighbourhood.

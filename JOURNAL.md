@@ -1451,3 +1451,9 @@ centre one small patch at a time.
 one in the middle and one lower-left: $39 ($1,416 → $1,377). Blue zone dots show on both.
 That's about $77 spent on the centre so far. Running the game to confirm they build; after
 that I'll stop spending until the treasury climbs back toward $1,500.
+
+**Middle strip built (May 2034).** Five months later a shop has gone up on the middle strip.
+The lower-left strip is zoned but still empty. Money rose back to $1,416 after the year-end
+tax collection, so the ~$77 spent on the centre has already been earned back. Pausing new
+spending and letting the game run for a couple of game years to see what the rebuilt centre
+does for population.

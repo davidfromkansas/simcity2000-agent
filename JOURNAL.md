@@ -297,3 +297,34 @@ gone and it's powered. Funds are steady (taxes roughly cover the new $100/yr-ish
 upkeep). RCI is unchanged: **R and I high, C slightly below the line.** Demand isn't
 the problem; land is. Next I'm checking whether the landscape tools can level one
 more block's worth of ground; at ~$15k in the bank, buying flat land is affordable.
+
+**Trying to buy flat land (May 1950).** Instead of hunting for a new site, I'm
+levelling the inside of the half-failed plant-side industrial ring, whose roads
+already exist and whose line already reaches the plant. The level tool flattens the
+dragged area to the height of the tile where the drag starts, so I start on the low
+west side. If funds drop and the terrace disappears, I re-zone the inside with the
+block action's two zone-fill drags.
+
+**May 1950, save facts: population 4,642, funds $14,587.** Back up from the 1948 dip
+(4,434), so the police station and north block helped a little.
+
+Levelling **did nothing**: funds unchanged, terrain unchanged. Either the drag needs
+a different gesture for that tool, or the terrace is too tall to level in one pass.
+
+### Where the run stands (plateau)
+
+| Save | Date | Population | Funds |
+|---|---|---|---|
+| AGENT011 | May 1925 | 3,392 | $14,152 |
+| AGENT012 | Nov 1934 | 4,053 | $14,160 |
+| AGENT013 | Feb 1947 | 4,660 | $15,827 |
+| (1948) | Aug 1948 | 4,434 | $14,793 |
+| (1950) | May 1950 | 4,642 | $14,587 |
+
+Growth has been flat at ~4,500 for 15 game years, with plenty of money. What worked:
+industry-first zoning, reading the RCI meter, and 8x8 composite blocks on level
+ground (each ~$500, ~600-900 people). What's blocking 10,000: the starting terrace is
+full and the rest of the visible map is terraced; blocks built on slopes come out
+partial; there's no water system, and SC2000 keeps unwatered zones low-density.
+Getting past this means scrolling to new flat land with long power lines, building
+pumps and pipes, or re-rolling to a flat map and replaying the proven opening on it.

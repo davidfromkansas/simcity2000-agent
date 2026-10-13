@@ -863,3 +863,9 @@ plant went in on the old site, and funds fell $9,207 → **$2,605** (−$6,602),
 proves the build. That leaves the city above the $1,500 floor with positive yearly
 income. Running briefly at llama speed to let power spread, then checking that the
 zones are powered again.
+
+Feb 2002, paused after a short run. I queried one of the lots re-zoned as commercial
+in the south-west. It's still trees, with **$256,000/acre** land value, no crime and no
+pollution. That's prime land, so what holds it back isn't desirability; it's weak
+commercial demand (it swung between −356 and +604 across the last saves). Next I'm
+querying a developed block to confirm the new plant's power is reaching homes.

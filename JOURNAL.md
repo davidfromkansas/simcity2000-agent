@@ -1213,3 +1213,8 @@ ageing are all on hold until the fire is out. After about a minute the centre an
 south-centre fires burned out by themselves. The west fire (where the crew is) and a
 small south fire are still burning. I'm letting it run rather than spending on a
 second fire station.
+
+**Fires out.** After about 2.5 minutes of play, no flames are left on screen. The crew put
+out the west fire. The others burned out on rubble, where there's nothing left to burn.
+Cost: $0, funds still $1,881. Next: use the overview map (Windows → Map) to find flat,
+empty land for a new neighbourhood, then scroll there with the normal scroll arrows.

@@ -913,3 +913,9 @@ tiles ($4), because at this zoom the tile grid is too small to drag wires precis
 I'm doing what a human player would: zoom in one step on the plant (it sits near the
 centre of the view, so nothing moves off-screen), lay the connection tile by tile, then
 zoom back out.
+
+Zoomed in, the layout is clear. Rubble rings only the plant's two south-facing edges,
+which is why every wire coming from the south-west and south-east stops short. The
+north-east edge is clean ground. The fix: a wire straight out of the north-east edge
+along the tile grid, then down onto the east feeder line. That gives an edge-to-edge
+connection with no rubble in the way.

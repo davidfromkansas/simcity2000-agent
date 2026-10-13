@@ -151,7 +151,9 @@ def build(pages: Path, history_every: int) -> None:
     for s in snaps:
         s["stats"] = stats_at(saves, s["t"])
     feed = sorted(feed_items(actions) + journal_entries(), key=lambda e: e["t"] or 0)
-    timeline = {"generated": now, "goal": 10000, "run": run.name, "snapshots": snaps,
+    maps = [{"t": m.stat().st_mtime, "shot": save_jpg(m, pages)}
+            for m in sorted((CONTROL / "maps").glob("*.png"))]
+    timeline = {"generated": now, "goal": 10000, "run": run.name, "snapshots": snaps, "maps": maps,
                 "saves": saves, "feed": feed[-1500:],
                 "last_action": {k: actions[-1].get(k) for k in ("step", "time", "summary")}
                 if actions else None}

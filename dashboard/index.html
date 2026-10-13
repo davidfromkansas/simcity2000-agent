@@ -90,6 +90,11 @@
         </div>
       </div>
     </div>
+    <div class="panel" id="mappanel" hidden>
+      <h2>Whole map (game's overview map)</h2>
+      <img id="mapshot" class="shot" alt="Whole-map overview">
+      <span class="when" id="mapwhen"></span>
+    </div>
     <div class="panel">
       <h2>Over time (from the game's save files)</h2>
       <div class="charts">
@@ -143,6 +148,10 @@ function render() {
   $('updated').textContent = 'published ' + ago(TL.generated);
   $('updated').className = 'badge' + (Date.now()/1000 - TL.generated < 900 ? ' live' : '');
   $('shot').src = snap.shot;
+  const maps = (TL.maps || []).filter(m => m.t <= snap.t + 60);
+  const mp = maps.length ? maps[maps.length - 1] : (TL.maps || [])[0];
+  $('mappanel').hidden = !mp;
+  if (mp) { $('mapshot').src = mp.shot; $('mapwhen').textContent = 'map captured ' + clock(mp.t); }
   $('when').textContent = `${clock(snap.t)} · step ${snap.step} · game date ${st.date || '–'}` + (snap.kind === 'live' ? ' · published snapshot' : '');
   $('live').className = follow ? 'on' : '';
   const pop = st.population || 0;

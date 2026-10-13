@@ -1247,3 +1247,29 @@ housing more urgent. Residential demand is still about +2,000.
 land east of the city. Its north-west road edge is laid right on the existing diagonal road, so
 it connects at no extra cost, and its power line starts at the existing poles. I'll check the
 cost from the funds change.
+
+**First eastern block built (Feb 2020).** The block cost $152 ($1,814 → $1,662). A query
+inside the loop says "Zoned: Residential low-density", land value $1,000/acre, crime none,
+pollution low. Its road connects to the existing diagonal road and its power line to the
+existing poles. Lesson: the view is zoomed in, so "size 6" made a loop only about 3 real
+tiles across. Next time use a bigger size or zoom out first. Money is now about $160 above
+my floor, so I'll let this block fill and watch the budget before building more.
+
+**Eastern block filled (Dec 2021).** Within about 2 game years, the new loop is full of houses.
+This is the first fresh growth in decades, which shows that new land, not demand, was the limit.
+Money is still drifting down, though: $1,662 → $1,608 (about −$27/yr). Before spending more,
+I'm opening the budget to see what's draining it.
+
+**2021 budget, read as mayor.** Property tax income $173 (it was about $255 before the fire
+destroyed the centre). Spending: police $100, fire $100, ordinances $16, transit $15. Net
+**−$57/yr**, and the treasury is forecast at $1,551 by the end of 2022. The fire shrank the tax base,
+and the budget hasn't adjusted.
+
+Decisions:
+1. **Trim police funding.** Crime nearly halved (832 → 389) along with the population, so
+   full funding is more than this smaller city needs. Fire stays at 100%; we just had a fire.
+2. **Keep property tax at 8%.** Residents already complain ("Taxes Suck!"), and 9% stalled
+   business demand last time.
+3. **Rebuild the burned centre before buying new land.** The rubble sits on land that already
+   has roads, power and pipes. Clearing it costs $1/tile, and rezoning it as homes (where demand
+   is at the maximum) brings taxpayers back far more cheaply than new blocks.

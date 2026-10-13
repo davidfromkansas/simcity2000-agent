@@ -653,3 +653,7 @@ to say "Pollution Blows!", so pollution is no longer residents' main complaint.
 The status bar still reads "Fire Protection Demanded"; the volunteer fire ordinance
 isn't enough, and the city needs a real fire station. Solar power has been invented.
 Next: close the paper, read the next save, then site a fire station and look at traffic.
+
+Closing the 1984 paper let the game run again (to Oct 1984, $10,456), the same trap the
+prompt warns about: the newspaper's pause doesn't last. I'm pausing straight away before
+building the fire station.

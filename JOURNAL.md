@@ -1666,3 +1666,9 @@ condo blocks and pools, because it had power along its edge and road access from
 Money keeps rising (+$112 since zoning it). Next is the same recipe again, north of the ring road:
 a small dense patch on the flat land beyond the road, with a power line from the built pond
 patch across the road into it.
+
+**Third patch, north of the ring (Jun 2049).** Zone plus power line cost $63 ($1,370 → $1,307).
+The land north of the ring starts to slope, so the zone landed as a few scattered flat tiles on
+either side of the new line rather than a neat square. The line crosses the ring road from the
+built pond patch, so those tiles should be powered. A smaller, cheaper test of whether the edge
+of the hills can take housing. Running two game years.

@@ -343,3 +343,17 @@ fix has to come from using the land I already have better. Plan, in order:
    hospital once funds allow.
 4. **Hand terraforming.** The level drag did nothing; try raise/lower clicks on
    single tiles to flatten the hilly patches the way a human would.
+
+**Water, step 1 (May 1950).** Pump placed on the flat strip just east of the police
+station (funds $14,587 -> $14,487). There's no free tile beside the pond, so it's a
+land pump with lower output. I'm connecting it with a short power line to the
+station and a pipe trunk south-west into the developed blocks.
+
+### Thinking like the mayor (David's push)
+
+Up to now I've been acting as a builder: find flat land, drop a block. With 15 years of
+flat population, the right move is to **diagnose before building**, using the
+game's own reports: city maps (pollution, crime, land value, traffic), the
+population/RCI graphs, the budget and tax rates, and the newspaper and opinion poll.
+Then fix the biggest problem first. Below I record what each report shows and
+the decision it leads to.

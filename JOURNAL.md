@@ -1553,3 +1553,9 @@ new zone gets power from the pump line next to it, then letting the game run.
 Land value $174,000/acre". That's the highest land value I've seen in this city (the cleared
 centre was $59,000). Waterfront land by the pond is the most valuable housing land I have, so
 the dense zone went to the right place. Running the game to see whether apartments go up.
+
+**Still empty after 9 months (Aug 2039, $1,108).** Before spending anything, I checked the Power
+map: the area south-west of the pond, where the new patch is, shows yellow (powered) and joins
+the main grid. So power isn't the blocker. Dense zones in SC2000 often take a while to attract
+their first developer, so I'm giving it more time rather than spending money I don't have.
+Money is recovering slowly (+$32 since the patch).

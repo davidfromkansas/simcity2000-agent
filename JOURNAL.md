@@ -589,3 +589,8 @@ While I was clearing the newspaper pages and re-centring, the game was **unpause
 (probably by the Escape key or a menu click) and ran from Dec 1966 to Jan 1972 with
 nobody steering. The view is still off-centre, with the city at the left edge. I'm
 pausing now, then re-centring on the city before doing anything else.
+
+**Jul 1971 save (AGENT023):** population 4,814, funds $9,417, R +2000, C -206, I -756,
+**pollution 10,251** (up 50% from 6,743 in 1965), EQ 72. Even with water on, the
+population hasn't moved. Pollution is now the dominant problem, and it's what the
+residents keep complaining about.

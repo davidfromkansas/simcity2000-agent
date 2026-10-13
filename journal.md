@@ -1436,3 +1436,24 @@ the burned centre was stuck because of the rubble, not because of a lack of dema
 recipe is: bulldoze rubble ($1/tile), then zone light commercial ($5/tile), about $18 for a
 3-tile patch. Offices bring jobs, which supports the maxed demand for homes. I'm repeating
 it patch by patch eastwards, checking the money after each patch.
+
+**Second centre patch (Jul 2033).** Bulldozed and zoned the next rubble patch to the east for
+shops: $23 ($1,439 → $1,416). The blue zone dots are in place. Running the game briefly to
+confirm that offices go up here too before continuing. I'm keeping each patch small, because
+money is still just under the $1,500 floor, although the budget is now positive (+$45/yr).
+
+**Second patch is building too (Dec 2033).** Five months after zoning, a shop has gone up on
+the west part of the second patch and construction scaffolding covers the rest. Money is
+steady at $1,416 over those months. The recipe works every time, so I'll keep clearing the
+centre one small patch at a time.
+
+**Two more centre strips (Dec 2033).** Bulldozed and zoned two more rubble strips for shops,
+one in the middle and one lower-left: $39 ($1,416 → $1,377). Blue zone dots show on both.
+That's about $77 spent on the centre so far. Running the game to confirm they build; after
+that I'll stop spending until the treasury climbs back toward $1,500.
+
+**Middle strip built (May 2034).** Five months later a shop has gone up on the middle strip.
+The lower-left strip is zoned but still empty. Money rose back to $1,416 after the year-end
+tax collection, so the ~$77 spent on the centre has already been earned back. Pausing new
+spending and letting the game run for a couple of game years to see what the rebuilt centre
+does for population.

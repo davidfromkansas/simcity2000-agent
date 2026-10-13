@@ -472,3 +472,9 @@ of replacing the plant.
 pollution 5,099 (down from 6,333 with coal; the oil plant is cleaner, as hoped).
 The water map is **still red across the whole city**: the single land pump plus one
 pipe trunk isn't watering anything. Inspecting the underground view next.
+
+Underground check: the pipe exists, but the short power line feeding the pump shows
+the yellow "unpowered" marks. The pump and police station were linked to the *old*
+coal plant's outgoing line, which died with the plant. An unpowered pump pumps
+nothing, so the whole city stayed dry. Fix: a direct line from the oil plant's east
+edge to the pump.

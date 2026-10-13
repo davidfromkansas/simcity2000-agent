@@ -1393,3 +1393,8 @@ because police funding is at 70%, so I'll raise it now that money is rising. Dem
 +2,000, shops +2,000 (they were negative before), factories +948. With shop demand maxed,
 the burned centre, which is still zoned commercial, should rebuild on its own once power
 reaches it. Next: check the Power map for any other dark areas.
+
+**Power map is all yellow (Apr 2031).** After the three bridges, the overview map's Power layer
+shows the whole city powered, with no red left. The brown patches inside the cluster are
+plain rubble with no buildings, not unpowered zones. Next: raise police funding back toward
+85% to bring crime down (1,041), since money is rising again.

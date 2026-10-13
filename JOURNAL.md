@@ -715,3 +715,9 @@ Re-zoning, step 1: the dotted strips sit on stepped terraces. Only the strip rig
 beside the north neighbourhood is within the 3-tile road reach that zones need, so I'm
 re-zoning that one first (light residential over the empty industrial tiles). The
 higher strips would also need a road before they could grow.
+
+Re-zone step 1 **worked**: the empty industrial strip turned green (light residential)
+for $95 (funds $10,226 → $10,131), with no bulldozing needed. SimCity lets you zone
+straight over *empty* zoned tiles; developed buildings are left untouched. Step 2:
+the next strip up the terrace becomes residential too, and the empty strip beside the
+V road becomes light **commercial**, because commercial demand is now +604.

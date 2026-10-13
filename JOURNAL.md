@@ -663,3 +663,8 @@ the spot next to the V road is sloped. My Pause click also seems to have *unpaus
 game that was already paused (the newspaper had paused it), so the city drifted another
 four years, Oct 1984 to Nov 1988. Lesson: read the status bar first and only press
 Pause when it doesn't say *PAUSED*. Looking for a truly flat 3×3 spot next.
+
+**Fire station attempt 2 failed too.** I tried the flat plateau just east of the water
+pump (455,292), but funds stayed at $10,732. The terrain there looks flat, so the
+problem may be the input (a quick click not counting as a build), not the land.
+Trying a press-and-move on the same spot to tell the two apart.

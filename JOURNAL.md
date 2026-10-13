@@ -880,3 +880,8 @@ Close-up: the new plant sits on the old site, but a one-tile ring of rubble sepa
 it from the three existing wires (east, north-west, south-west). I'm bridging all three
 with short power-line drags that start inside the plant, so the first wire lands on
 its edge. Three routes in also keep one broken line from blacking out the city again.
+
+The three bridge wires cost $10 (funds $2,595). After a month the north-west chemical
+storage still read Powered: No, so I let the sim run to Jun 2002 and queried again
+near the plant. That hit the police station (25 officers, $100/yr), whose query box
+doesn't show power. Next I'm querying the plant itself for its output and load.

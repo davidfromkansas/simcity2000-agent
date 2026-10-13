@@ -1424,3 +1424,8 @@ there is high ($59,000/acre). So clearing burned land is a two-step job: bulldoz
 then re-zone. I'm re-zoning the cleared patch as light commercial, because shop demand is
 at maximum. After 15 years as rubble, and 2 of them with shop demand maxed, the old zoned
 rubble clearly wasn't rebuilding on its own.
+
+**Shop patch zoned (Mar 2033).** Re-zoning the cleared patch as light commercial cost $15
+(3 tiles at $5; $1,454 → $1,439), and the blue shop-zone dots are now visible. So the full cost
+to bring a burned tile back is about $6 ($1 to bulldoze + $5 to zone). Running the game briefly
+to see whether a shop builds there before I clear more of the centre.

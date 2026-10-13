@@ -328,3 +328,18 @@ full and the rest of the visible map is terraced; blocks built on slopes come ou
 partial; there's no water system, and SC2000 keeps unwatered zones low-density.
 Getting past this means scrolling to new flat land with long power lines, building
 pumps and pipes, or re-rolling to a flat map and replaying the proven opening on it.
+
+## Phase 3: restarting growth without leaving the screen (from May 1950)
+
+David's rule: **no scrolling off to new land; play fairly like a human.** So the
+fix has to come from using the land I already have better. Plan, in order:
+
+1. **Water.** SC2000 caps zones without water at small buildings. Pumps (need power;
+   better next to fresh water) by the pond, plus pipes laid under the developed
+   blocks in the underground view.
+2. **Redevelop instead of expanding.** Rezoning built-up light zones was refused, so
+   bulldoze the weakest small-house tiles first, then zone them dense.
+3. **Land value.** Parks as buffers between homes and factories/plant; school and
+   hospital once funds allow.
+4. **Hand terraforming.** The level drag did nothing; try raise/lower clicks on
+   single tiles to flatten the hilly patches the way a human would.

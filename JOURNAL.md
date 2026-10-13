@@ -1603,3 +1603,8 @@ small corner (about 2x2) of the empty dense patch as *light* housing (about $20)
 appear on the light corner and nothing on the dense part, dense housing itself is what this city
 can't support yet (likely the upper-income, low-crime, water conditions apartments need). Then
 the plan becomes light zoning plus fixing those conditions, rather than more dense zoning.
+
+**A/B corner zoned (Dec 2042 → Mar 2043).** Re-zoning the western corner of the patch as light
+housing cost $30 ($1,188 → $1,158). It shows as a paler green patch next to the dense dots.
+Three months later neither part has buildings yet, which is too soon to judge. Taxes brought
+money back to $1,193. I'll give the test about two game years before deciding.

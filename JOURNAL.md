@@ -1,0 +1,1698 @@
+# Play journal
+
+A running log of how the city is played, why each decision was made, and what the
+game actually did. Newest entries at the bottom. Numbers marked "save facts" come
+from parsing the native `.SC2` save (`agent/sc2.py`), not from reading the screen -
+the screen is easy to misread and the agent has hallucinated progress before.
+
+## The goal
+
+Reach **10,000 population without going broke**, on an Easy start ($20,000), playing
+in `LLM_PROVIDER=external` mode: Devin looks at each screenshot and sends the move,
+the agent executes it with xdotool. Everything is recorded (`runs/screen-*.mp4`) and
+visible live over noVNC.
+
+## Strategy, and why
+
+1. **Trust the save file, not the screen.** Borrowed from Claude/Gemini Plays Pokemon,
+   which feed the model facts read out of game memory because screen reading is
+   unreliable. After every periodic save the parsed date / funds / population is
+   appended to the history, and the prompt says to trust it over the screen.
+2. **Pause while deciding.** From VideoGameBench: real-time play while the model thinks
+   wrecks performance. Each turn the game sits paused; the city is un-paused in
+   deliberate `speed.cheetah` + `wait` bursts to let years pass.
+3. **Bigger moves instead of pixel guessing.** From the "vibe gaming SimCity" write-up
+   (which gave up on pixels and moved to a Micropolis HTTP API with a "build a block"
+   command) and from Cradle/Voyager's reusable skills. Hence the composite `block`
+   action: one move lays a road ring, fills it with a zone, and runs a power line
+   through the middle that sticks out one tile each side so the next block chains onto
+   it. This collapses what used to be ~8 fiddly moves into 1.
+4. **Lessons the hard way, now encoded in the prompt.** A power line only carries power
+   if it touches an *edge* of the plant (a corner does nothing); roads do not conduct
+   power; a zone tile more than ~3 tiles from a road never develops; freshly zoned land
+   is nearly invisible on screen, so check the funds drop instead.
+
+## Log
+
+### Run 1 (1900-1935, `AGENT006.SC2`) - learning run
+Built a coal plant, roads, power lines and zones by hand. Nothing grew for ~20 years:
+the power line missed the plant edge and most zones were too far from a road. After
+fixing both (c. 1914 and 1920) factories and houses appeared. Ended ~750 people, no
+money trouble. Conclusion: hand-placing is too slow and too error-prone to reach
+10,000 - build bigger moves first.
+
+### Run 2 (1900-1919, `AGENT007.SC2`) - aborted
+Same manual approach with the new save-fact feedback. Reached only ~234 people by 1919
+at $13.4k; growth cost several look-and-click rounds per fix, and a periodic save fired
+in the middle of a batch and swallowed a tool selection (fixed in `01b6ad9`: saves now
+wait for a batch to finish). Newspaper reported unemployment, i.e. too few jobs.
+Stopped the run and built the `block` action instead.
+
+### Run 3 (1900-) - the 10,000 attempt
+Easy map, paused on the first turn, `options.auto_budget` on so the year-end budget
+window never blocks a move. Centred and zoomed one step in (16px tiles) onto the flat
+plateau south of the river, because `block` assumes 16px tiles and flat ground - the
+game silently refuses to build on slopes, which is what made the earlier AI run fail.
+First `block` test at (100,170) placed the zone and the power line correctly but left
+the road ring ragged, so a 0.4s pause was added between the four ring drags (DOSBox
+drops input when drags are issued back to back).
+
+Looking closer at the first block: 3 of the 4 ring roads were laid; the north-east
+edge was missing (the drag issued right after the previous one was dropped). The
+running container still has the old code, so I re-drew that edge by hand rather than
+restart the city. Funds went $20,000 -> $19,513 for the block, confirming it built.
+
+**Power plant choice:** coal ($4,000) rather than oil/gas/hydro - it is the cheapest
+plant with enough output (~200 MW) for the first several thousand people, and on Easy
+the pollution only matters near homes. Placed on the flat ground just south of block 1
+and wired to the block's power stub with a short line that ends on the plant's edge
+(not its corner - the lesson from run 1).
+
+Both plant placements failed: the tool showed "Coal Power $4,000" but funds did not
+drop, so the game refused the spot. This map is a maze of terraces and cliffs; a 4x4
+plant needs level ground and the 8x8 blocks need even more of it. Rather than pay to
+terraform, I **re-rolled the map**: still January 1900 with only ~$500 spent, so
+nothing of value is lost, and restarting the container also loads the fixed `block`
+code (pauses between ring drags). New rule for myself: before building, look for one
+big level area (uniform diamond lattice, no brown cliff bands) and test-place the
+plant there first; build blocks only after the plant's $4,000 shows up in the funds.
+
+**Re-rolled map:** gentler, with one level patch in the north-east of the starting
+view. Test-placed the coal plant there first: funds $20,000 -> $16,000, so it is
+really built. The first residential block goes just south-west of it, with one short
+power line from the plant's bottom edge across the ring road into the zone (zones
+pass power to each other, so one connection powers the whole block).
+Plan for the next blocks: residential first because homes are where the population
+number comes from, then one industrial block (jobs; the 1919 newspaper in run 2
+complained about unemployment), then commercial once there are enough people for
+shops - aiming at roughly 2 R : 1 C : 1 I.
+
+**Feb 1904, save facts: population 0, funds $15,380.** Four years passed with no
+houses at all. The block's middle power line still shows the lightning "no power"
+marks, so the short connector from the plant missed: it ended on the ring road rather
+than in the zone. This is the same failure as runs 1 and 2 - the plant-to-city link is
+the single most fragile step - so I redrew it as one straight line along a tile axis,
+starting on the tile beside the plant's side edge and ending on the block's middle
+line, so it can't stop short.
+
+**Apr 1907:** the lightning marks are gone from block 1's middle line, so the
+redrawn connector works and the whole block is powered. Letting the game run at full
+speed now; houses should start appearing within a year or two of game time.
+
+**Jul 1914 - the real reason nothing grows.** Still zero houses after 14 years on a
+powered, road-ringed block. A National Guard notice and an earthquake newspaper
+interrupted, and while closing them a stray click with the centring tool scrolled the
+view away. Then I looked at the **RCI demand meter** in the toolbar: the green (R) and
+blue (C) bars hang *below* the line (negative demand) and only yellow (I) points up.
+In SimCity 2000 people won't move into a town with no jobs, so an all-residential
+start stalls forever. Run 2's "unemployment" headline was the same signal.
+**New strategy:** read the RCI meter before every zoning decision and zone whatever
+bar is highest. Right now that means an **industrial block next to the residential
+one** (sharing the ring road and power line), then residential again once the green
+bar turns positive. Added this rule to the agent prompt too.
+
+**Jul 1914, recovering the view:** opened the map window, clicked the city on the
+minimap to scroll back, closed it. Same zoom, but everything moved by about (-76,+40)
+pixels, so all coordinates are re-measured from a fresh screenshot before building.
+**Industrial block:** placed directly south-east of block 1 so it shares block 1's
+ring road and its middle power line continues straight into it - no extra wiring,
+no new connection to get wrong. Industry next to homes adds some pollution, but
+early on jobs within a short commute matter more than clean air.
+
+**May 1916 - it works.** Two game years after the industrial block went in: factories
+on block 2 and houses on block 1, the first real growth of any run. All three RCI bars
+now point up. Funds $14,796. This confirms the jobs-first diagnosis.
+**Next: commercial block** chained south-east of the industrial block (shares its road
+and power line). Picked that spot because the other neighbours of the existing blocks
+are the power plant (north-east) or cliff bands (south-west), and `block` needs level
+ground. Commercial now because the blue C bar is up and shops also add jobs.
+
+**Jul 1922:** funds $14,418, money roughly flat - the city now pays its own way.
+Blocks 1 (homes) and 2 (factories) are nearly full. The commercial block only half
+built: its ring ran into a slope, so only the south-east end got zoned and some
+shops appeared there. RCI now says **R strongly up, C slightly down, I slightly
+down** - factories and shops are waiting for workers and customers, so the next
+blocks are residential.
+
+Checked the zoom: one `zoom_in` doubled everything (plant ~100px wide), so the blocks
+had been built at the intended 16px-tile scale. Zoomed back out. Every zoom or scroll
+nudges the view, so I re-measure ring corners on a 4x crop before each new block.
+
+**Where to put more homes:** south-west of the blocks is a strip only ~4 tiles deep
+before a terrace; north-east is a cliff. The only big level patch is north-west of
+block 1, and it has a small pond in it. Built the next residential block there
+anyway: losing a few water tiles is cheaper than terraforming, it shares block 1's
+north-west road, and its middle power line lands exactly on block 1's line, so it is
+powered with no extra wiring.
+
+**May 1925, save facts: population 3,392, funds $14,152.** A third of the way there,
+and money is steady. The pond block filled with houses within three years. The RCI
+meter has flipped again: **I strongly up, R and C down** - the new residents need
+jobs. So the next block is industrial, on the flat forest west of the pond block
+(chained power again). This R -> I -> R see-saw is the core loop: zone whatever
+the meter asks for, one 8x8 block at a time, and let ~3 game years pass between moves.
+
+**Feb 1928 (screen: $14,387).** The industrial block west of the pond block never
+appeared: funds did not drop and the forest is untouched. A newspaper popped up during
+the run (approval 51%, a "Pollution Blows!" headline) and most likely swallowed the
+drags. Lesson: check funds right after every block, *before* un-pausing, and redo it
+if nothing was spent. Retrying the same block now. RCI still says I high, R slightly
+up, C slightly down.
+
+Retry worked: funds dropped $14,387 -> $13,891 (~$500 for ring + zone + line) and the
+yellow industrial ring is visible west of the pond block, chained to its power line.
+Running ~3 game years before the next move.
+
+**Oct 1930 (screen: $14,083).** Another newspaper (approval up to 59%, closed). The
+second industrial block filled with factories in ~2 years. RCI now: **R high, I
+medium, C below the line**, so the next block is residential again, south-west of the
+new factories (their power line chains into it). Newspapers keep interrupting the
+runs; I close them first and check funds after each block, because a missed block
+costs a whole run of ~3 game years.
+
+Residential block south-west of the factories: funds dropped $14,083 -> $13,629, so it
+was built, but its west corner sits right at the edge of the map view and the
+south-west road came out incomplete. Yellow "no power" bolts are showing on the new
+zone. Running ~2 years to see whether power and growth arrive before I patch it.
+
+**Nov 1934, save facts: population 4,053, funds $14,160.** Up from 3,392 in 1925.
+The new south-west residential block is still unpowered after ~4 years (yellow bolts,
+no houses). Cause: I chained it in the wrong direction. A block's middle power line
+runs down-right on screen (from west corner toward south corner), so only blocks
+chained at `(x + 8*size, y + 4*size)` (down-right) share it. That is what the README
+says; I misremembered it. The pond -> factories chain was down-right by luck and
+worked. This one was down-*left*, so its line runs parallel to the factory line and
+never touches it. Fix: one short power line straight up-right across the shared road,
+from the middle of the new line to the middle of the factory line.
+
+**Jan 1941 (screen: $15,172).** The short power link worked: it cost $10, the bolts
+disappeared, and the south-west residential block is filling with houses. Funds are
+*rising* - taxes now cover upkeep. For the first time the RCI meter shows **R, C and I
+all high**, so the city can absorb every zone type. Commercial goes first, because the
+only shop block so far is the half-built one and the factories and homes need shops.
+New block: down-right of the south-west homes (the correct chaining direction this
+time), so its line starts on the homes' powered line.
+
+Commercial block built: funds $15,172 -> $14,875 ($297 - cheaper than earlier blocks
+because part of the ring runs down a slope and some road pieces were refused). The
+blue commercial dots cover the block, trees and all. Running ~3 years.
+
+**Feb 1947 (screen: $15,827).** Shops are going up in the new commercial block, and
+funds keep climbing (+$950 in 6 years). RCI: **R and I high, C now below the line**;
+the shops have caught up. Next moves are another residential block and another
+industrial block. The level land next to the current blocks is used up, so I'm
+looking further out (or scrolling the view) for flat patches.
+
+**Running out of level land (Feb 1947).** The city sits on a terrace: cliffs to the
+north-east, slopes to the south-west, and the plant blocks the north. Placing more
+8x8 blocks would mean scrolling to new land and running long power lines. Before
+that, a cheaper idea: **densify what already works.** I'm rezoning the pond block's
+interior from light to dense residential with the same two zone-fill drags the block
+action uses. If the game accepts it (funds drop), each existing residential block can
+hold several times more people on the same roads and power.
+
+Result: **refused.** Funds stayed at $15,827 and the pond block looks unchanged; the
+game won't rezone tiles that already have buildings on them. So densifying means
+bulldozing first (losing people for a while), which is a bad trade right now. Back to
+finding new land: next I'm checking whether the arrow keys scroll the city view.
+
+Arrow keys do scroll the city view (one `Right` press moved everything ~40px left).
+That makes new land reachable without changing zoom, but every scroll changes all
+coordinates, so I re-measure corners before building after each scroll. Looking
+north first: the forest above the factories looked flat.
+
+**Feb 1947, save facts: population 4,660, funds $15,827.** Growth is slowing: +600
+in 13 years, versus +3,400 in the decade before. Why I think it's slowing:
+1. **No more ready land.** Every block so far sat on the one level terrace; what's
+   left is slopes, cliffs and forest.
+2. **No water and no services.** In SC2000 zones without water stay low-density, and
+   with no police, fire or schools land value stays low.
+
+Plan: (a) keep adding blocks on the flattest land north of the factories (scrolled
+into view); (b) then add a water pump and pipes, plus a police and fire station,
+which money now allows ($15.8k and rising). Bigger houses on the land we already
+have are the main way to reach 10,000.
+
+**North block (Feb 1947).** After scrolling, the flat strip north of the factories is
+only ~6 tiles deep before the next terrace, so this one is a 6x6 residential block
+sharing the factories' north-east road. It is chained *up-right* (the only direction
+with room), so its middle power line doesn't land on a powered line. Fix in the same
+move: extend the line 2 tiles down-right, then 3 tiles down-left onto the pond
+block's north-east road, right next to its powered houses (a power line crossing a
+road conducts into the neighbouring zone).
+
+Result: built (funds $15,827 -> $15,477), but my scroll-offset estimate was one tile
+off. The new block sits one row of trees above the factories instead of sharing
+their road, so my link line probably stops short of anything powered. Zooming in on
+the link end to patch it. Lesson: after a scroll, measure an existing corner on a
+zoomed crop instead of computing it from the scroll distance.
+
+Zoomed crop: the link ended one tile above the factories' north-east road, with the
+powered houses just across it. Extending it 2 tiles down-left across the road should
+complete the connection (~$15).
+
+The 2-tile extension cost only $4 and bent the wrong way: the zoomed crop shows it
+went up-left instead of down-left across the road, so the north block may still be
+unpowered. Another newspaper (a city-dump headline) interrupted the run. Next: close
+it and check the north block for "no power" bolts.
+
+**Aug 1948 (screen: $15,631).** The north block is powered and already full of houses
+within ~18 months. The power reached it after all, either through the bent link or
+through a corner touching the factories. RCI: **R and I high, C slightly below the
+line.** Next: an industrial block, wherever I can find level land.
+
+**Next industrial block (Aug 1948).** The full view shows terraces almost everywhere.
+The one clean flat patch left is between the north block and the coal plant, so a 6x6
+industrial block goes there, with factories next to the plant and away from most
+homes. Its corner only touches the north block, so it can't borrow power. Instead I
+extend its middle line straight into the plant in the same move.
+
+Result: **partial failure, $838 spent** ($15,631 -> $14,793). The "flat" patch had
+a terrace at its north edge. The road ring climbed it in a wavy line, and most of
+the inside was refused for zoning; only a few yellow industrial patches stuck. The
+line into the plant did connect. Lesson: on the 2x full view, terraces under
+grassland are hard to see; the 4x crop shows them as darker brown bands. Check a 4x
+crop of the whole block footprint before building. Running ~2 years to see what the
+patches yield.
+
+**Aug 1948, save facts: population 4,434 (down from 4,660), funds $14,793.** The
+first drop, despite a new residential block filling in. Another newspaper since then:
+approval 69%, but the headlines are about pollution and dumping. My read: the city
+is all factories, a coal plant and homes packed side by side, with no services, so
+some residents are leaving. Adding more zones alone has stopped working. Next moves
+target *quality*, not quantity: a police and a fire station first, then water.
+
+**Services (May 1949, screen: $14,964).** First service building: a **police
+station** ($500) on the flat wooded patch just south-east of the coal plant. Why
+police first: crime rises with density and drags down land value and residential
+desirability, and this spot touches the plant and the blocks below it, so it is
+powered with no extra line. A fire station follows if this one is accepted.
+
+Police station accepted (funds $14,964 -> $14,464) but it shows the yellow "no power"
+bolt. It sits about one tile away from the end of the plant's outgoing line, not
+touching it. Bridging the gap with a 1-2 tile power line.
+
+**May 1950 (screen: $14,587).** The bridge line worked: the police station's bolt is
+gone and it's powered. Funds are steady (taxes roughly cover the new $100/yr-ish
+upkeep). RCI is unchanged: **R and I high, C slightly below the line.** Demand isn't
+the problem; land is. Next I'm checking whether the landscape tools can level one
+more block's worth of ground; at ~$15k in the bank, buying flat land is affordable.
+
+**Trying to buy flat land (May 1950).** Instead of hunting for a new site, I'm
+levelling the inside of the half-failed plant-side industrial ring, whose roads
+already exist and whose line already reaches the plant. The level tool flattens the
+dragged area to the height of the tile where the drag starts, so I start on the low
+west side. If funds drop and the terrace disappears, I re-zone the inside with the
+block action's two zone-fill drags.
+
+**May 1950, save facts: population 4,642, funds $14,587.** Back up from the 1948 dip
+(4,434), so the police station and north block helped a little.
+
+Levelling **did nothing**: funds unchanged, terrain unchanged. Either the drag needs
+a different gesture for that tool, or the terrace is too tall to level in one pass.
+
+### Where the run stands (plateau)
+
+| Save | Date | Population | Funds |
+|---|---|---|---|
+| AGENT011 | May 1925 | 3,392 | $14,152 |
+| AGENT012 | Nov 1934 | 4,053 | $14,160 |
+| AGENT013 | Feb 1947 | 4,660 | $15,827 |
+| (1948) | Aug 1948 | 4,434 | $14,793 |
+| (1950) | May 1950 | 4,642 | $14,587 |
+
+Growth has been flat at ~4,500 for 15 game years, with plenty of money. What worked:
+industry-first zoning, reading the RCI meter, and 8x8 composite blocks on level
+ground (each ~$500, ~600-900 people). What's blocking 10,000: the starting terrace is
+full and the rest of the visible map is terraced; blocks built on slopes come out
+partial; there's no water system, and SC2000 keeps unwatered zones low-density.
+Getting past this means scrolling to new flat land with long power lines, building
+pumps and pipes, or re-rolling to a flat map and replaying the proven opening on it.
+
+## Phase 3: restarting growth without leaving the screen (from May 1950)
+
+David's rule: **no scrolling off to new land; play fairly like a human.** So the
+fix has to come from using the land I already have better. Plan, in order:
+
+1. **Water.** SC2000 caps zones without water at small buildings. Pumps (need power;
+   better next to fresh water) by the pond, plus pipes laid under the developed
+   blocks in the underground view.
+2. **Redevelop instead of expanding.** Rezoning built-up light zones was refused, so
+   bulldoze the weakest small-house tiles first, then zone them dense.
+3. **Land value.** Parks as buffers between homes and factories/plant; school and
+   hospital once funds allow.
+4. **Hand terraforming.** The level drag did nothing; try raise/lower clicks on
+   single tiles to flatten the hilly patches the way a human would.
+
+**Water, step 1 (May 1950).** Pump placed on the flat strip just east of the police
+station (funds $14,587 -> $14,487). There's no free tile beside the pond, so it's a
+land pump with lower output. I'm connecting it with a short power line to the
+station and a pipe trunk south-west into the developed blocks.
+
+### Thinking like the mayor (David's push)
+
+Up to now I've been acting as a builder: find flat land, drop a block. With 15 years of
+flat population, the right move is to **diagnose before building**, using the
+game's own reports: city maps (pollution, crime, land value, traffic), the
+population/RCI graphs, the budget and tax rates, and the newspaper and opinion poll.
+Then fix the biggest problem first. Below I record what each report shows and
+the decision it leads to.
+
+Pump connected: power line plus a pipe trunk from the pump south-west to the
+developed blocks (funds $14,487 -> $14,359; underground view shows the blue pipe).
+
+**Diagnosis 1: the budget (May 1950).**
+
+| Line | 1950 year-end estimate |
+|---|---|
+| Property tax (7%) | +$216 |
+| Police | -$100 |
+| Transit (roads) | -$18 |
+| Fire, health, education, ordinances, bonds | $0 (none built or enacted) |
+| **Net for the year** | **+$99** |
+
+Mayor's read: the city earns almost nothing, but has **$14,359 sitting idle** in the
+bank. That money is doing nothing for growth. Fifty years of "don't go broke" made
+me hoard cash. A real mayor would turn the reserve into things that raise land
+value and lift growth caps (water, parks, a school, a fire station), and could cut the
+tax rate to pull in residents and businesses, since tax income is too small to matter
+next to the reserve.
+
+**Diagnosis 2: the save file's own city statistics.** These fields come from the
+OpenCity2k file spec (RCI demand is -2000..+2000):
+
+| Save | Date | Pop | R demand | C demand | I demand | Pollution | Crime | Work force % | EQ |
+|---|---|---|---|---|---|---|---|---|---|
+| AGENT011 | May 1925 | 3,392 | -974 | -1104 | +2000 | 4,474 | 853 | 68 | 83 |
+| AGENT012 | Nov 1934 | 4,053 | +2000 | -530 | -981 | 5,428 | 1,226 | 64 | 81 |
+| AGENT013 | Feb 1947 | 4,660 | +2000 | -1432 | +2000 | 5,927 | 1,481 | 60 | 74 |
+| AGENT014 | Aug 1948 | 4,434 | +1977 | -640 | +2000 | 5,843 | 1,601 | 60 | 74 |
+| AGENT015 | May 1950 | 4,642 | +2000 | -321 | +1961 | 6,333 | 1,278 | 59 | 74 |
+
+Mayor's read:
+- **Residential demand has been maxed at +2000 since 1934.** People want to live here;
+  the city isn't giving them homes. This is a supply problem, not a demand problem.
+  Each home tile stays small: no water, a cheap coal plant and factories next to homes
+  (pollution has risen every save), and no parks, so land value is low.
+- **Industrial demand is also maxed.** Jobs are wanted too; work force % is falling (68 -> 59).
+- **Commercial demand is negative** and there are **0 neighbour-connection tiles**, so
+  shops have no outside trade. That's acceptable for now since R and I lead.
+- **Education (EQ) is falling** (83 -> 74) with no school. Smarter residents bring cleaner
+  industry, which lets homes sit near jobs.
+- Crime dropped after the police station (1,601 -> 1,278): that intervention worked.
+
+Decision: increase housing supply and housing quality on land I already have:
+water everywhere, high-density homes on any free tile away from smoke, parks as
+pollution buffers, then a school.
+
+**Diagnosis 3: the city maps (Map window, May 1950).**
+- *Pollution:* a solid white cloud covers the whole developed area. The coal plant
+  sits in the middle of town with factories around it and homes right next to both.
+- *Water supply:* almost every developed tile shows red (no water). The new pump
+  was placed while paused, so I'm running the sim briefly and re-checking.
+- *Whole map:* the city fills only a small patch near the centre of a large map.
+  There's a river in the south and a lake to the north-east, both off-screen and
+  out of bounds under David's rule.
+
+This confirms the save-file read: homes are capped at small sizes by **no water** and
+held down by **pollution**. Water is the cheapest fix with the biggest effect.
+
+**Diagnosis 4: the newspaper (Jan 1951).** The headline story is "Fire Station Needed":
+residents demand fire protection, and the status bar reads "Fire Protection Demanded".
+The editorial is "Pollution Blows!" Mayor approval is 70%. So residents name the same
+two problems the data shows: **pollution** and **missing services**. A fire station
+($500) goes on the list right after water.
+
+### Crisis: the power plant is gone (Feb 1951)
+
+After closing the newspaper the status bar reads **"Power Plant Needed"**, and where the
+coal plant stood there's only rubble. SC2000 plants wear out after about 50 years;
+this one went up in 1901. **The whole city is now without power**, and the water pump
+needs power too. This is likely part of the 1948-1951 stall. Rebuilding now is the
+first priority.
+
+Mayor's choice: **oil instead of coal.** Pollution is the residents' top complaint
+("Pollution Blows!") and the plant sits in the middle of town. Oil costs more
+(~$6,600 vs ~$4,000) but makes more power with less smoke, and the city has
+$14,458 idle. Rebuilt on the old site, which is known to be level and already has
+the power lines attached.
+
+Mar 1951 paper: **"Williams Labs Creates Gas Power"**, so gas plants are now
+available, and **approval has dropped 70% -> 61%** in two months without power.
+Clearing the rubble (bulldozer) and opening the plant chooser on the old site; I'll
+pick from what the chooser actually offers.
+
+**Plant chooser (Jul 1951, $14,443):** Coal 200 MW/$4,000 · Hydro 20 MW/$400 (needs a
+waterfall) · Oil 220 MW/$6,600 · **Gas 50 MW/$2,000 (new)**. Gas is too small for
+~4,600 people plus growth. **Chose oil:** the most power, and less smoke than coal
+right next to homes. That leaves about $7,800 for water and services.
+
+**Oil plant built (Jul 1951): funds $14,443 -> $7,843.** It sits on the old coal
+site, so the existing lines and the police-station/pump link should pick it up.
+Lesson recorded in the AI prompt too: choosing a plant takes three clicks (plant
+tool -> click the site to open the chooser -> pick a card -> click the site again);
+my first try switched tools before the last click and built nothing.
+Plants expire after ~50 years. The next one is due around 2001.
+
+**The blackout in numbers (save facts):**
+
+| Date | Population | Funds | Note |
+|---|---|---|---|
+| May 1950 | 4,642 | $14,587 | coal plant still running |
+| Jul 1951 | **1,054** | $14,452 | plant expired; city dark |
+| Sep 1953 | 4,449 | $8,023 | two years after the oil plant |
+
+The blackout wiped out three-quarters of the city in about a year, and rebuilding
+power brought nearly all of it back within two years. So the 1948-1950 "plateau"
+was partly the old plant failing, not only a land shortage. Mayor's lesson: watch
+infrastructure age, not just zoning, and never let the treasury sink below the cost
+of replacing the plant.
+
+**Sep 1953 save:** population 4,449, funds $8,023, R demand +2000, C -28, I +693,
+pollution 5,099 (down from 6,333 with coal; the oil plant is cleaner, as hoped).
+The water map is **still red across the whole city**: the single land pump plus one
+pipe trunk isn't watering anything. Inspecting the underground view next.
+
+Underground check: the pipe exists, but the short power line feeding the pump shows
+the yellow "unpowered" marks. The pump and police station were linked to the *old*
+coal plant's outgoing line, which died with the plant. An unpowered pump pumps
+nothing, so the whole city stayed dry. Fix: a direct line from the oil plant's east
+edge to the pump.
+
+Jun 1955 ($8,166): my plant-to-pump line **missed**. It still shows unpowered marks
+because it doesn't touch the plant, and a zoomed view shows the pump is actually at
+about (406,295), south-east of the police station, not where I clicked. Re-drawing
+along one tile axis, from the tile against the plant's south-east edge to the pump.
+Lesson: zoom in on the building I'm wiring *before* drawing the line.
+
+Oct 1956 ($8,259): after the re-drawn line, the wires around the pump and police
+station no longer show any "unpowered" marks, so the pump should finally be running.
+
+**Oct 1956 save (AGENT019):** population **4,783 (new high)**, funds $8,259, R demand
++2000, C +188, I -332, pollution 5,293, crime 1,137. Residents still want homes. Jobs
+are now satisfied (I below the line), so the next zoning should be residential and
+commercial, not factories.
+
+Even with the pump powered, the Water Supply map stayed red. The underground view
+explains it: the only pipe is a short stub running from the pump to the edge of
+town. It never goes under the neighbourhoods. Pipes are cheap ($3 a tile), so I'm
+laying a trunk under the city's main diagonal plus three cross pipes through the
+residential blocks, then checking the map again.
+
+Underground zoom: the long pipe drag only laid about 8 tiles before stopping, so the
+three cross pipes were **islands** that didn't touch the pump's network. Water, like
+power, only flows through connected pipe. I'm re-laying the trunk in two shorter drags
+that end exactly where each cross pipe starts. Lesson: keep each pipe or line drag
+short (about 8 tiles or fewer) and check the joins in the underground view.
+
+Both re-lay drags were silently refused (nothing appeared, funds unchanged), the
+same spot where the first long trunk stopped, so something at that tile blocks
+pipes. New route: chain the cross pipes end-to-end along the other axis (the far
+end of the north pipe -> the end of the middle pipe -> the end of the south pipe).
+The south pipe already joins the pump's line.
+
+Apr 1960 ($8,374): the reroute worked partly. The middle cross pipe now joins the
+south pipe, which joins the pump, so two neighbourhoods are on the pump's network.
+The north-west pipe is still an island; I'll join it once I see water flowing.
+
+**Apr 1960 save (AGENT020):** population 4,791, funds $8,426, R demand +2000, C -350,
+I -679, pollution 5,243. Population is flat but money is steady. Residents still want
+homes, while shops and factories have enough. So the land for homes is the
+constraint, which is why water (to let houses grow taller) is still the priority.
+
+Jan 1962 ($8,566): with the middle and south pipes joined to the pump, the Water
+Supply map is still red. The pipes now look fine, so I'm checking the pump itself
+with the query tool (is it powered, how much is it pumping) before spending more.
+
+**Root cause found (Jan 1962):** the query tool on the water pump says
+**Powered: No, Watered: 0 gallons per month.** My earlier power-line fixes looked right
+on screen but never touched the pump. That's why no pipe network could ever carry
+water. Lesson: use the query tool on a building to check it's powered; don't infer it
+from line colours.
+
+Zoomed surface view: the wires around the pump form a tangle that stops one tile
+short of the oil plant. Buildings pass power to touching buildings, and the police
+station touches the plant, so I'm running a 2-tile line from the pump's south-west
+neighbour into the police station, then querying the pump again.
+
+The new 2-tile line cost $2, but the pump still said "Powered: No". The game was
+paused, though, and power is only recalculated while the simulation runs. Running
+it for a few seconds before querying again.
+
+**Jan 1962 save (AGENT021):** population 4,826, funds $8,564, R +2000, C -118, I -659,
+pollution 5,148, crime 1,018. By Feb 1963 the pump still says **Powered: No**, so the
+2-tile line doesn't connect either. Zooming in to the individual tiles before
+trying again.
+
+8x zoom: every wire segment around the old pump, and the pump itself, carries the
+red "unpowered" zigzag. The whole tangle is an island that ends about one tile short
+of the police station. Instead of adding more wire, I'm placing a **new $100 pump on
+the tile touching the police station.** Touching buildings share power, and that tile
+sits over the pipe trunk, so the new pump gets both power and pipes.
+
+The new pump was **refused**: the query shows the tile is sloped "Clear terrain" and
+funds didn't drop. Next idea: drag a power line along one tile axis that *starts
+inside* the oil plant and ends next to the old pump. The game skips tiles it can't
+build on, so the first wire tile it lays will be the one touching the plant. That
+closes the one-tile gap without me having to pinpoint the plant's edge.
+
+**Jun 1965 save (AGENT022):** population 4,891 (a slow new high), funds $8,842,
+R +2000, C +3, I -703, pollution **6,743, rising again**. Money is steady and growth
+is a trickle. Residents still want homes; the city can't house them.
+
+**Water is finally on (Jun 1965).** After the line that starts inside the oil plant,
+the pump query reads **Powered: Yes, Watered: 33,120 gallons per month**, and the red
+"unpowered" marks are gone from the wires. The trick that worked: drag the line from
+inside the source building, so the game itself lays the first tile against the
+plant's edge. Next: let water spread through the joined pipes and watch whether homes
+start growing taller.
+
+**Feb 1966 newspaper:** the opinion column says "Pollution Blows!" and **mayor
+approval is down to 47%** (61% in 1951). Pollution in the save rose from 5,148 (1962)
+to 6,743 (1965). Residents' biggest complaint is clearly pollution, so after water,
+the next priority is pollution relief: parks and trees between the factories and the
+homes, and moving to a cleaner power mix when the oil plant can be replaced.
+
+**Apr 1966 newspaper:** "Flood Squishes New City", plus a front-page story,
+**"Fire Station Wanted"**: hot, windy weather makes a big fire likely, and the city
+has no fire department. Approval is 58%. The status bar says "Fire Protection
+Demanded". A fire in a city with no fire station could undo decades of growth, the
+way the blackout did, so a fire station is now the top build after confirming water.
+
+**Accident (Dec 1966):** while I was dismissing the stacked newspaper pages, a click
+picked the Centering tool and scrolled the main view onto empty river land. I'm
+**not** building there. That's the off-screen expansion I've ruled out. I'm
+re-centring on the city right away, then re-checking the landmarks before any more
+building, since all my coordinates depend on the view.
+
+While I was clearing the newspaper pages and re-centring, the game was **unpaused**
+(probably by the Escape key or a menu click) and ran from Dec 1966 to Jan 1972 with
+nobody steering. The view is still off-centre, with the city at the left edge. I'm
+pausing now, then re-centring on the city before doing anything else.
+
+**Jul 1971 save (AGENT023):** population 4,814, funds $9,417, R +2000, C -206, I -756,
+**pollution 10,251** (up 50% from 6,743 in 1965), EQ 72. Even with water on, the
+population hasn't moved. Pollution is now the dominant problem, and it's what the
+residents keep complaining about.
+
+**Jan 1976 newspaper:** "Barton Labs Perfects The Wind Turbine" (wind power is now
+invented, a clean option for when the oil plant wears out), "Beautiful Smog", and
+"Pollution Blows!" again. Mayor approval is 51%. The game was still running when the
+paper appeared, because my pause click had landed while a paper was on screen.
+Rule: close every paper *first*, then pause, then check that the status bar says
+*PAUSED*.
+
+**Getting back to the city view (May 1976, paused):** the pump that used to be at
+screen (407,296) is now at about (135,225), so the view has moved by roughly
+(-272,-71) pixels. The Centering tool puts whatever point I click at the middle of the
+view, so two clicks at (184,220) should each shift it back about (+136,+35). Then I'll
+re-measure the pump to confirm the old coordinates hold. I also added a prompt rule:
+close every newspaper page before pausing, and never leave the Centering tool selected.
+
+View restored (May 1976): the city is fully back on screen. The Centering tool snaps
+to tiles, so the view now sits two tiles from the original: the pump is at (424,304)
+instead of (407,296), so every old coordinate is **+16, +8**. I'm keeping this view
+and using the new offsets rather than nudging it again.
+
+**Budget review (May 1976):** property tax 7%. The year-end estimate is only about
+$212 in tax income, $100 for police and $18 for transit. The city spends nothing on
+fire, health or education, and has **no city ordinances**. The treasury ($9,893) is
+mostly old savings, not ongoing profit, so anything with yearly upkeep has to be
+chosen carefully. Checking the ordinance list for pollution measures.
+
+Also noticed: the yellow-dotted terraces at the top-left of the view are land zoned
+decades ago that never developed. That's existing, on-screen land the city could
+grow into once whatever's blocking it is fixed (likely power, water or road access).
+
+**Mayor's policy package (May 1976): city ordinances instead of more construction.**
+Each one targets a problem the city's own reports flagged:
+
+| Ordinance | Why |
+|---|---|
+| Pollution Controls | Pollution is at 10,251, residents' top complaint ("Pollution Blows!"), approval at 51% |
+| Volunteer Fire Dept | "Fire Station Wanted" / "Fire Protection Demanded", with no fire department at all |
+| Pro-Reading Campaign | Education quotient has slid from 83 to 72 since 1925 |
+| City Beautification | Raises land value, which attracts denser and better housing |
+
+Ordinances act city-wide, need no land (the visible land is the constraint), and can
+be switched off. Checking the estimated annual cost against the ~$212 yearly tax
+income before confirming.
+
+All four ordinances are active, and they cost very little: Pollution Controls $12/yr,
+Volunteer Fire Dept $4/yr, City Beautification $3/yr, Pro-Reading $2/yr, **$21/yr in
+total** against about $212/yr of tax income. A city-wide policy fix for about a tenth
+of the budget. Running the city again to see whether pollution and approval respond.
+
+Jul 1979: funds have risen to $10,111 with the ordinances active, so they cost almost
+nothing. No fires visible. Letting the city run a few more years before reading the
+next save, to see whether pollution drops.
+
+**May 1984 newspaper: the ordinances are working.** Mayor approval is **64%**, up from
+about 51% in 1976. Fred's Opinion column now complains "Traffic Bites!" where it used
+to say "Pollution Blows!", so pollution is no longer residents' main complaint.
+The status bar still reads "Fire Protection Demanded"; the volunteer fire ordinance
+isn't enough, and the city needs a real fire station. Solar power has been invented.
+Next: close the paper, read the next save, then site a fire station and look at traffic.
+
+Closing the 1984 paper let the game run again (to Oct 1984, $10,456), the same trap the
+prompt warns about: the newspaper's pause doesn't last. I'm pausing straight away before
+building the fire station.
+
+**Fire station attempt 1 failed (Nov 1988).** Funds stayed at $10,732 (no $500 drop):
+the spot next to the V road is sloped. My Pause click also seems to have *unpaused* a
+game that was already paused (the newspaper had paused it), so the city drifted another
+four years, Oct 1984 to Nov 1988. Lesson: read the status bar first and only press
+Pause when it doesn't say *PAUSED*. Looking for a truly flat 3×3 spot next.
+
+**Fire station attempt 2 failed too.** I tried the flat plateau just east of the water
+pump (455,292), but funds stayed at $10,732. The terrain there looks flat, so the
+problem may be the input (a quick click not counting as a build), not the land.
+Trying a press-and-move on the same spot to tell the two apart.
+
+Attempt 3 (press-and-move) showed the fire station's 3×3 footprint outline on screen,
+so the input reaches the game. The station still wasn't built (funds unchanged): the
+footprint's west corner overlapped the slope edge, and the game needs all nine tiles
+flat. Moving the station two tiles east, onto the middle of the plateau.
+
+**Fire station built (Nov 1988).** On the 4th attempt it went in on the flat plateau
+east of the water pump, and funds fell $10,732 → $10,232, which proves the build.
+Lesson: civic buildings need all nine 3×3 tiles flat. Pressing and moving shows the
+footprint first, so you can see when one corner is on a slope. Next: wire it to the
+powered pump and confirm with the Query tool.
+
+Wiring the station from the pump cost $6 (funds $10,232 → $10,226). Query on the
+station: **31 firefighters, 4 fire engines, response time 0 minutes, annual cost $0.**
+The $0 is suspicious: the 1976 budget showed nothing spent on fire, so the fire
+department may be funded at 0%. Checking the Budget window.
+
+Budget, Nov 1988: the fire department is funded at 100% (the $0 was just the first
+partial year; the year-end estimate is −$8). Ordinances cost −$23/yr. The city still
+ends the year **+$61**, so services are affordable. Next question: why have the
+yellow-dotted zoned terraces at the top-left stayed empty for decades? Querying one.
+
+**Native save AGENT025 (Nov 1988): the ordinances worked.**
+
+| | May 1976 (AGENT024) | Nov 1988 (AGENT025) |
+|---|---:|---:|
+| Population | 4,794 | 4,578 |
+| Funds | $9,893 | $10,232 |
+| Pollution | 10,351 | **3,280** (−68%) |
+| Crime | 1,101 | 955 |
+| R / C / I demand | +2000 / −356 / −700 | +2000 / **+604** / −921 |
+
+Pollution Controls cut pollution by two-thirds for $12/yr, and commercial demand has
+turned positive. Population still hasn't moved, so pollution wasn't the only cap.
+
+**New diagnosis: zoned land doesn't match demand.** The yellow-dotted terraces at the
+top-left are *light industrial* zones on clear, flat land with $13,000/acre value and
+no pollution. They've sat empty for decades because industrial demand is negative
+(−921) and has been since the 1950s. Meanwhile residential demand is maxed. The fix a
+mayor would make: **re-zone that empty industrial land as residential** (plus some
+commercial, now that C demand is +604). It's on screen, already flat, and needs no
+demolition of buildings, only de-zoning empty tiles.
+
+Re-zoning, step 1: the dotted strips sit on stepped terraces. Only the strip right
+beside the north neighbourhood is within the 3-tile road reach that zones need, so I'm
+re-zoning that one first (light residential over the empty industrial tiles). The
+higher strips would also need a road before they could grow.
+
+Re-zone step 1 **worked**: the empty industrial strip turned green (light residential)
+for $95 (funds $10,226 → $10,131), with no bulldozing needed. SimCity lets you zone
+straight over *empty* zoned tiles; developed buildings are left untouched. Step 2:
+the next strip up the terrace becomes residential too, and the empty strip beside the
+V road becomes light **commercial**, because commercial demand is now +604.
+
+Re-zone step 2: funds $10,131 → $10,081 ($50). The second terrace strip is now
+residential (green), and the strip beside the V road is commercial (blue). The two
+highest strips stay industrial for now; they're too far from any road, so they need a
+road up the terrace before re-zoning would help. Running the city ~30 s to see if the
+new homes and shops fill in.
+
+**Jul 1992 check: re-zoning alone hasn't worked yet, and water is now the limit.**
+- Save AGENT026 (Jan 1992): population **4,413** (down from 4,578), funds $10,048,
+  pollution steady at 3,282, R/C/I demand +2000 / +188 / −804.
+- The status bar now reads **"Water Shortage Reported"**. The single pump (33,120
+  gallons/month) can't supply the whole city.
+- The re-zoned green and blue strips are still just dots after ~3.5 years. Meanwhile
+  part of the north factory block has turned into houses (red roofs), so the city is
+  shifting from factories to homes on its own.
+- Diagnosis: homes want to grow (R demand maxed), but without enough water they stay
+  small, and new zones are slow to fill. Next: add pumps. They make the most water
+  next to a lake or river, so I'm looking at the pond in the middle of the city.
+
+Another drift: the game was running (my last Pause press had toggled it back on), so
+it reached **Jan 1996** before a newspaper stopped it. Mayor approval 55%, and
+Fred's Opinion still says "Traffic Bites!". A closer look shows the blue "pond" in
+the middle of the city is the pool of a big park, not a lake, so a pump beside it
+would get no bonus. Plan: add more pumps on the flat plateau by the existing pump
+and fire station (both powered), then join them to the pipe network.
+
+Pump siting: the strip of flat tiles between the existing pump (424,304) and the
+fire station, just south of the power line that now links them, is flat and empty.
+New pumps there sit next to a powered line, and I'll join them to the old pump with
+a short pipe drag. Each pump costs $100, so two more pumps would roughly triple the
+water supply for $200.
+
+**Two new water pumps (Sep 1999).** Funds $9,833 → $9,602 ($231 for two pumps and the
+joining pipe). Query on the second new pump: **Powered: Yes, 15,120 gallons/month**.
+Being next to the powered line was enough to power it. Checking the first new pump,
+then the underground water view, to make sure the pipes reach every neighbourhood.
+
+The first new pump checks out too: **Powered: Yes, 15,120 gallons/month**. Total
+pumping capacity is now about **63,000 gallons/month** (33,120 + 2 × 15,120), nearly
+double what it was, for $231. Next: inspect the pipe layer for gaps, then run the
+city and watch for the "Water Shortage" message to clear.
+
+**Underground view (Sep 1999): the real water problem is pipe coverage, not pumps.**
+Blue pipes and watered (blue-shaded) tiles only cover the middle of the city: a loop
+round the oil plant, a patch by the park, and the pump plateau. The big western and
+southern neighbourhoods, where most of the houses are, have **no pipes under them at
+all**, apart from one line up to the north block. Those homes can never grow past
+small houses. Next: run short pipe drags (≤8 tiles each, since longer ones stop
+early) along the western streets, each starting on the end of an existing pipe so
+the network stays joined.
+
+Pipe plan: three trunks into the west, all starting on the existing main where it
+ends at (268,268) by the park. One runs up-left through the north-west blocks, one
+down-left through the southern blocks, and one through the middle. Each is a chain of
+drags of 7 tiles or fewer, each starting where the last one ended. Zones pass water
+on to neighbouring zone tiles (as they do power), so trunks a few blocks apart should
+cover everything. Expected cost about $5 per tile.
+
+The pipe trunks went in for $200 (funds $9,602 → $9,402). New blue lines now run into
+the north-west, middle and south-west blocks. Watered tiles only show their blue
+shading after the simulation recalculates, so I'm running the city about 20 seconds
+before judging whether the trunks joined the main.
+
+**Jan 2000 newspaper: "Plant Nearing Death".** The oil plant built in 1951 is near the
+end of its ~50-year life. In 1951 the old plant died with no replacement, and the
+population crashed from 4,642 to 1,054, so this time **I'll build a replacement
+before it dies**. Same paper: mayor approval is **72%**, the highest since the 1930s
+(up from 51% in 1976), Fred's Opinion says "Lazy Students!" (education is the next
+complaint), and there's a hurricane warning.
+
+Save AGENT027 (Sep 1999): population 4,763 (up from 4,413 in 1992), funds $9,402,
+pollution 2,505 (lowest since the ordinances), R/C/I demand +2000 / −167 / −805.
+
+Jun 2000: the game ran on after the paper closed, so I paused again. The underground
+view shows the blue watered shading has grown only slightly around the park. The
+western blocks are still unshaded even though the new trunks are visible, so at least
+some trunks probably don't join the main. I'll check that after the power plant
+decision, which is more urgent: the oil plant is about to die.
+
+**Jan 2001 newspaper: "Time Running Out".** The Pause press didn't stop the game; it
+ran on from Jun 2000 to Jan 2001. The plant is now at the very end of its life.
+Approval 68%, and "Pollution Blows!" is back in Fred's Opinion. Replacing the plant is
+now the top priority, ahead of water. I'm also checking why Speed → Pause keeps
+failing, since every drift has cost the city years.
+
+Jun 2001: the game is still running and the oil plant is still alive ($9,339).
+Speed → Pause has now failed three times in a row, so I'm opening the Speed menu to
+look at it directly, rather than assuming the fixed menu coordinates still hit
+"Pause".
+
+**Jan 2002 newspaper:** another "Time Running Out" front page. The plant is still alive
+but on borrowed time. Approval 72%, and Fred's Opinion has moved on to "Taxes Suck!",
+so tax cuts are worth considering once the plant is replaced. At cheetah speed a year
+passes in seconds, and a newspaper appears every January. Closing a paper resumes
+the game, so I now close the paper and pause in the same quick batch.
+
+**Jan 2002: the oil plant has died.** Closing the paper and pausing in one batch worked
+(*PAUSED* at Jan 2002, $9,307), but the plant site is already rubble. The 1951 lesson
+says every month without power costs thousands of residents, so I'm rebuilding right
+away:
+- **Choice: another oil plant on the same site** (~$6,600). The site is flat and
+  proven, and it already touches the city's power lines. Oil gave enough power for
+  50 years with less smoke than coal.
+- Gas or solar would be cheaper but much smaller, and I don't know their footprints
+  or exact output on this terrain. Guessing wrong would mean more months of blackout.
+- Funds afterwards are about $2,700, still above the $1,500 safety floor. Income is
+  positive, so the treasury will rebuild.
+
+**Mistake: I built a wind turbine instead of an oil plant.** Funds fell only $100
+($9,307 → $9,207), and the status bar reads "Wind Power $100". The plant chooser's
+layout changes as new plants are invented (wind in 1976, solar later), so the fixed
+"oil" button position now lands on wind. A $100 lesson, not a disaster, but it shows
+the toolmap's chooser positions are only valid early in the game. I'm reopening the
+chooser to read the current layout before picking again.
+
+A close-up of the plant site shows the wind turbine just north of the old plant, the
+old plant's grey **rubble still in place**, and flashing red "no power" markers on
+every power line. The whole city is in blackout, so the replacement plant can't wait.
+
+The chooser now shows seven plants in a 3×3 grid: coal 200 MW $4,000, hydro 20 MW
+$400, **oil 220 MW $6,600**, gas 50 MW $2,000, nuclear 500 MW $15,000, wind 4 MW $100,
+solar 50 MW $1,300. Decision: **oil again**. Solar is cleaner and cheaper, but at
+50 MW it's a quarter of the output that ran this city for 50 years, and a plant too
+small for the city would mean rolling blackouts. Pollution Controls is already
+holding pollution down, and nuclear is unaffordable. I've added the late-game chooser
+positions to the toolmap (`power_plant_late.*`), plus a prompt rule to check the
+status bar names the right plant before placing it.
+
+The first oil placement didn't take: "Oil Power $6,600" was selected but funds stayed
+at $9,207. The dead plant's rubble covers the site, and unlike 1951 the game won't
+build over it. Clearing the old 4×4 footprint with the bulldozer first, then placing
+the oil plant again.
+
+Save AGENT028 (Jan 2002, in blackout): population 4,586, funds $9,207. My clearing
+batch failed on a tool-name slip: "bulldozer" is the toolbar group, and the tool
+itself is `demolish` (the same trap as "roads" vs `road`). Retrying with `demolish`.
+
+**New oil plant built (Jan 2002).** After clearing the rubble with `demolish`, the
+plant went in on the old site, and funds fell $9,207 → **$2,605** (−$6,602), which
+proves the build. That leaves the city above the $1,500 floor with positive yearly
+income. Running briefly at llama speed to let power spread, then checking that the
+zones are powered again.
+
+Feb 2002, paused after a short run. I queried one of the lots re-zoned as commercial
+in the south-west. It's still trees, with **$256,000/acre** land value, no crime and no
+pollution. That's prime land, so what holds it back isn't desirability; it's weak
+commercial demand (it swung between −356 and +604 across the last saves). Next I'm
+querying a developed block to confirm the new plant's power is reaching homes.
+
+Querying a developed industrial building north-west of the plant shows **Powered: No**
+and Watered: No. The new oil plant is built but not tied into the grid: clearing the
+rubble likely also took out the wire tiles touching the old plant. Same fix as in 1951:
+redraw a short power line starting inside the new plant out to the nearest existing
+line, then re-query.
+
+Close-up: the new plant sits on the old site, but a one-tile ring of rubble separates
+it from the three existing wires (east, north-west, south-west). I'm bridging all three
+with short power-line drags that start inside the plant, so the first wire lands on
+its edge. Three routes in also keep one broken line from blacking out the city again.
+
+The three bridge wires cost $10 (funds $2,595). After a month the north-west chemical
+storage still read Powered: No, so I let the sim run to Jun 2002 and queried again
+near the plant. That hit the police station (25 officers, $100/yr), whose query box
+doesn't show power. Next I'm querying the plant itself for its output and load.
+
+The plant query is clear: **Oil Power, 220 MW max, running at 0% of capacity**, age
+0 of 50. It's built but feeds nothing, so the bridge wires didn't connect. The tiles
+between the wires and the plant are probably still rubble. Opening the city map's
+power layer to see exactly where the live grid stops before spending more.
+
+An 8× close-up explains the 0%: the new plant sits about a tile north-west of the old
+footprint. The old rubble still covers the strip on its south and east sides, and the
+three wires only reach the plant's corners diagonally. In SimCity 2000 a wire has to
+share a tile edge with the plant to connect. The city map's power layer will show
+which wires are live before I re-route.
+
+The power layer of the city map shows **every zone red, i.e. unpowered**. The whole
+city has been dark since the plant died in Jan 2002. Next test: one straight wire
+along the tile grid, from the plant's centre out through its south-east edge toward
+the east wire. If funds drop, the rubble accepts wires and the edge connection is real.
+
+The test wire cost only $2: just the far tile was built, so **rubble won't take power
+lines**. Rather than demolish rubble next to a new $6,600 plant (one misclick would
+destroy it), I'm routing around it: a wire out of the plant's clean north-west edge,
+then down the west side to the south-west feeder that runs into the neighbourhoods.
+After a short run I'll query the plant for its capacity.
+
+Aug 2002: the plant still runs at 0%. The route-around wires added only a couple of
+tiles ($4), because at this zoom the tile grid is too small to drag wires precisely.
+I'm doing what a human player would: zoom in one step on the plant (it sits near the
+centre of the view, so nothing moves off-screen), lay the connection tile by tile, then
+zoom back out.
+
+Zoomed in, the layout is clear. Rubble rings only the plant's two south-facing edges,
+which is why every wire coming from the south-west and south-east stops short. The
+north-east edge is clean ground. The fix: a wire straight out of the north-east edge
+along the tile grid, then down onto the east feeder line. That gives an edge-to-edge
+connection with no rubble in the way.
+
+The north-east wires were built ($10, funds $2,579 in Sep 2002), but the plant query
+still reads 0% of capacity. That figure may refresh only slowly, so I'm checking the
+city map's power layer instead, which shows directly whether zones get power.
+
+**Blackout is collapsing the city.** Native saves during the outage:
+
+| Save | Date | Population | Funds | C demand | Pollution |
+|---|---|---:|---:|---:|---:|
+| AGENT028 | Jan 2002 | 4,586 | $9,207 | −365 | 2,234 |
+| AGENT029 | Mar 2002 | 2,143 | $2,595 | −300 | 2,057 |
+| AGENT030 | Aug 2002 | 947 | $2,589 | +545 | 1,354 |
+| AGENT031 | Sep 2002 | 648 | $2,579 | +946 | 1,262 |
+
+Same pattern as 1951: without power, buildings empty out within months. The new plant
+is paid for, but until it's tied into the grid nothing else matters. Every other plan
+is on hold until the plant shows more than 0% load.
+
+**Power restored (Jan 2003).** After a few months of game time the plant query reads
+**Running at 5% of Capacity**, up from 0%, so the north-east wire joined it to the grid.
+The load is only 5% because about 85% of residents left during the 12-month outage.
+Funds are $2,512. Lessons: (1) a dead plant's rubble blocks new wires, so connect
+through a clean edge; (2) the plant's "% of capacity" is the quickest proof of a real
+connection, but it takes a few game months to update; (3) zooming in one step makes
+tile-accurate wiring possible without leaving the visible map. Next: let the city
+refill and watch population in the saves.
+
+Sep 2003, eight months after power returned: a close-up shows mostly small houses
+and many dark, emptied lots where the blackout drove people out. The Population
+window shows a 56% work force. Funds are flat at $2,512 (tax income arrives in
+January). I'm letting it run into 2004 and reading the next save before deciding
+anything. Spending now would push funds toward the $1,500 safety floor.
+
+**Oct 2004 save (AGENT032): population 344, funds $2,397.** The decline continued even
+after the plant reconnected. Demand is now high for everything (R +1811, C +2000,
+I +1565): people want to come, but the city isn't giving them working zones. The plant
+running at only ~5% suggests the reconnection reaches just a small part of the old
+grid, and most neighbourhoods are still dark. Checking the power layer again to find
+which feeder lines are cut.
+
+The power layer shows the real problem. Only the plant and a little area around it
+are yellow (powered), and every neighbourhood to the west and south-west is still red.
+The north-east wire tied the plant to the **eastern** feeder only, which serves the
+fire station and pump area: hence 5% load. The old **western** feeders, which ran the
+homes, still end at the rubble on the plant's south-west side. Plan: zoom in, demolish
+one rubble tile between the plant's south-west edge and the western feeder (single
+clicks only, so the plant can't be hit), then wire through the gap.
+
+The close-up shows a better route than demolishing anything. A wire stub already
+touches the plant's south-west edge, but it ends one tile short of the lower western
+feeder, and the gap is **clear ground, not rubble**. A short wire across that gap
+should join the plant to the western neighbourhoods. Afterwards I'll check the plant's
+load: it should jump well above 5% if the homes are back on the grid.
+
+Jan 2005: the plant runs at **2%**, lower than before, and funds are $2,254 (slowly
+falling, because tax income from ~300 residents no longer covers police and fire). The
+south-west bridge didn't reconnect the western neighbourhoods. Either the wire didn't
+land, or that lower feeder is itself cut further along. Inspecting the close-up next.
+
+Second try at the south-west bridge worked. Dragging pole-to-pole, from a pole on the
+stub to a pole on the western feeder, cost $8 (funds $2,254 → $2,246), and the
+close-up shows new poles linking the two lines. (The first try likely missed both
+lines, so nothing was built.) Letting a few months pass before checking the plant's load.
+
+**Recovery is underway.** Save AGENT033 (Apr 2005): **population 2,479** (from 344 in
+Oct 2004), funds $2,246, workforce 65%, EQ 79, demand R +2000 / C +1512 / I +1449.
+The western neighbourhoods are lit and full of buildings again. The $8 south-west
+bridge was the key connection: the first fix only reached the eastern feeder. The
+lesson for the playbook: after rebuilding a plant, check the power map **for each
+neighbourhood**, not just the plant's load. Zooming back out and letting the city refill.
+
+Apr 2007: neighbourhoods look full again on screen, but funds keep drifting down slowly
+($2,246 in Apr 2005 → $2,178 now, about $30/year). This is still above the $1,500
+safety floor, so no cuts yet. I'm holding off on building while tax income catches up
+with the returning residents, and checking the Population window for the current count.
+
+**Full recovery.** Save AGENT034 (Oct 2007): **population 4,676** (from 344 three years
+earlier), funds $2,178, demand R +2000 / C +929 / I −5, pollution 2,577, crime 1,030,
+workforce 62%, EQ 79. The blackout is behind us, but the city is back at its old
+~4,600 plateau, and money is now the binding constraint: only ~$700 above my $1,500
+floor, after the $6,600 plant. Before any new growth push I'm reading the budget to
+see where the money goes and whether a small tax or spending change can fund it.
+
+**Budget, Oct 2007** (Budget window): property tax 7% brings in about $221/year.
+Spending: police $100, fire $100, transit $18, ordinances $24. That's **about −$20/year**.
+The deficit is small (30+ years of runway at $2,178), so I'm *not* raising taxes: R
+demand is maxed, and higher taxes would only push residents away. I'm also not taking
+a bond, because the interest would exceed the city's whole tax income. Decision: spend
+the ~$700 above the floor only on cheap, high-value fixes. Water is the first suspect:
+before the blackout the western half was dry, which keeps houses small. Checking the
+water map now.
+
+**Water map, Oct 2007:** almost the whole city is red (no water). Only a small yellow
+patch near the top of the city has water. So the water system that served the city before
+2002 has collapsed. The most likely cause is that the pumps lost power during the
+blackout and sit on a feeder the new wires don't reach, or pipes broke where buildings
+were rebuilt. Without water, homes stay small even at maximum demand, which matches the
+old ~4,600 ceiling. Next: query the pumps by the pond to see if they're powered.
+
+**Underground view, Oct 2007.** Water reaches only the plant district: the blue-shaded,
+watered tiles stop at its west edge. The large western neighbourhoods, where most homes
+are, have almost no pipes under them, so they've never had water. That's the clearest
+cause of the ~4,600 ceiling: unwatered homes can't grow past small houses. Pipes cost
+$3 a tile, so this is the cheapest growth fix available while money is tight. Plan:
+three 8-tile trunks westward from the edge of the watered network (up-left, down-left,
+and from its south side), each starting on a watered pipe so it joins the network.
+Budget about $75.
+
+**Pump check, Sep 2008.** After seven game months, the three new pipe trunks (~$74)
+haven't spread the watered shading west at all. A query on a pump west of the fire
+station: **Powered: Yes, 22,320 gallons/month**. The pumps survived the 2002 blackout and
+are back on power, so the supply side is fine. The western pipes must not be joined to
+the pumps' network. Pipes only carry water as one connected system, and an island of
+pipes is as dry as no pipes. Next: in the underground view, trace the pipe run from the
+pump plateau westward, find the break, and bridge it with a short drag.
+
+**Feb 2009: cross-pipes laid, still dry; money is now the limit.** Two short cross-pipes
+now join the dry western pipes to the watered grid, but the watered area didn't grow
+after five game months. My best explanation is that the network is joined and **demand
+is bigger than supply**: about 4,800 residents plus industry, and the game waters the
+tiles nearest the pumps first. That points to more pumps. But funds are **$1,956**
+(Sep 2008 save: pop 4,779, R +2000, C +734, I −443), close to my $1,500 safety floor,
+and the budget runs about −$20/year. A mayor with an empty treasury raises revenue
+before building, so the next move is the budget window: a small property-tax rise
+(7%→8%) to fund a few $100 pumps over the next couple of years. Demand for homes is at
+maximum, so a 1-point rise shouldn't scare off residents.
+
+**Tax decision, Feb 2009.** Raised property tax from 7% to 8%. The budget's year-end
+estimate went from **−$24 to +$1**, with income up from $215 to $241/yr. That stops
+the slow slide toward the safety floor, but there's still no surplus for pumps. Demand
+for homes is still at maximum (R +2000), so people want in badly enough to take a
+little more tax. I'm trying one more notch (9%, about +$27/yr) and I'll watch whether
+residential demand drops. If it falls sharply, I'll go back to 8%. I'm keeping police
+and fire at 100%: crime is ~980, and both cost the same $100 whether the city grows or
+not.
+
+**Apr 2010: the tax rise worked.** After a full year at 9% the treasury rose from $1,956
+to **$1,978**, the first rise since the 2002 blackout. That's only ~$25/yr, but money
+has stopped draining. To test the "demand beats supply" water theory cheaply, I'm adding
+**one** $100 pump beside the existing powered pumps, which leaves ~$1,878, still above
+the floor. If the watered area grows after a few months, supply was the limit, and I'll
+add pumps as money allows. If it doesn't, the western pipes are still cut off somewhere
+and I'll go back to tracing.
+
+**Feb 2011: pump #4 joined, still dry; demand turning.** The 4th pump ($100) is now
+piped into the pump grid ($3), but the watered area hasn't grown west after another
+four months. So supply probably wasn't the only limit, and the western pipes still
+aren't getting water from the pumps. Save AGENT037 (Feb 2011): **pop 4,734, funds
+$1,881**, crime down to 746 (from 961), pollution 2,332, **R +1766, C −1016, I −1155**.
+Commercial and industrial demand have turned clearly negative since the tax went to
+9%. I'll take it back to 8% once there's a buffer. Next: open the Water Supply map,
+which shows actual watered tiles more clearly than the underground shading, and find
+exactly where water stops.
+
+**Water Supply map, Feb 2011: the real picture.** The whole city is **red (dry)**. Only a
+tiny yellow patch next to the pumps has water. So the blue shading I'd been reading in
+the underground view isn't "watered", and supply isn't the problem either: four
+powered pumps make water, but **none of the city's pipe network is joined to them**.
+Water stops right at the pump plateau. That explains why every pipe I added in the
+west did nothing. Next: zoom in on the join between the pump grid and the pipe that
+runs toward the oil plant, find the missing tile(s), and bridge it with a 1–2 tile pipe.
+
+**Jun 2011: the water break was one missing tile.** Zoomed in 2x underground, the city's
+trunk pipe ended in a **cyan end-cap** one tile short of the pump grid. A cyan cap marks
+a pipe end that isn't joined to anything. One $3 pipe tile bridged the gap, and within
+four game months the Water Supply map showed yellow (watered) tiles spreading from the
+pumps into the middle of the city, where before only a speck by the pumps was watered.
+Funds $1,875. Lesson: judge water from the **Water Supply map** (red = dry), not
+the underground view's blue shading, and look for cyan end-caps to find breaks. Next:
+let it run a couple of years so water spreads through the zones and homes can grow
+denser, then read the saves.
+
+**Jun 2012: first growth from water.** Save AGENT038: **pop 4,884**, a new high (from
+4,734 in Feb 2011), funds **$1,889** (steady at the 9% tax), R +1880, C −852, I −1271.
+The Water Supply map shows the centre watered, but the western neighbourhoods are still
+red, so the western pipes must have more breaks like the first one. Next: scan the
+western pipe network at 2x zoom for cyan end-caps and bridge each with single $3 tiles.
+That's the cheapest growth available while money is near the floor.
+
+**Correction, Jun 2012.** Looking closer at the western pipes, cyan dots appear at the end
+of *every* pipe branch, including ones that are properly joined. So a cyan dot just
+means an open end. It's only a break when it stops one tile short of another pipe, as
+the first one did. The western zone grids all touch the main trunk, so the network
+looks joined. The remaining dry west is now most likely **too little water**: four
+pumps for ~4,900 people. Next: look at the pump plateau above ground and add pumps
+beside the powered ones as money allows, keeping funds above $1,500.
+
+**Pump #4 was never powered.** Above ground at 2x zoom, the pump I added in 2010 has a
+yellow **lightning bolt** (the game's "no power" sign). It sits one tile below the
+powered pump row, and unlike the 1999 pumps it doesn't touch a powered building. So the
+"add supply" test never actually ran. Fix: a 2-tile power line (~$10) from inside the
+powered fire station onto the pump, then check the bolt is gone and the Water Supply
+map spreads further west.
+
+**Aug 2012: pump #4 powered.** The 2-tile power line from the fire station connected
+($8, funds $1,881), and the lightning bolt on the pump is gone. All four pumps now run.
+Next: the Water Supply map shows whether the extra supply pushes water further west.
+
+**Jan 2013: water spreading.** With all four pumps powered, the Water Supply map's yellow
+(watered) area has crept further into the north-west of the city. Funds **$1,907**, still
+inching up at the 9% tax. I'm letting it run about two game years without spending, so
+homes on newly watered land can grow, then I'll read the save.
+
+**Jun 2014: water didn't move the needle; jobs are the brake.** The save says
+**4,606** people (down from 4,884 in Jun 2012), funds **$1,914**. With all four pumps
+powered, the water map stopped changing after Jan 2013. Demand: homes **+1,815**, shops
+**−1,222**, factories **−1,154**. People still want to move in, but businesses don't want
+to open, and without jobs homes don't fill. Shop and factory demand turned negative
+right after I raised property tax from 7% to 9% in 2009. That points to the tax as the
+brake, not water.
+**Decision:** open the budget and lower property tax to 8%. My 2009 estimate put 8% at
+about break-even (+$1/yr), so the treasury should hold while businesses get a break.
+
+**Jun 2014: property tax cut 9% → 8%.** Budget before the cut: $255/yr income, police
+and fire $100 each, ordinances $21, transit $18, net **+$17**. After the cut the game
+estimates **+$2** net and $1,916 at year end, so the treasury still holds. Police and
+fire stay at 100% (crime 645 and falling, fire coverage needed). Now I'll run two game
+years and check whether shop and factory demand turn positive again.
+
+**Nov 2016: the tax cut is working.** Save AGENT040: **4,673** people (up from 4,606),
+funds **$1,911** (flat, as the budget predicted). Shop demand recovered from **−1,222 to
+−335** in about two years, and factory demand from −1,154 to −910. Home demand is at the
+maximum (+2,000). Crime rose to 867, so watch it.
+**Read:** the 9% tax was choking businesses, and cutting it is bringing them back. I'll
+keep 8% for two more game years and see whether shop demand turns positive before
+spending any of the thin treasury.
+
+**Oct 2018: slow climb.** Save AGENT041: **4,754** people (+81 in two years), funds
+**$1,905** (flat). Home demand is still at the maximum (+2,000). Shop demand slipped back
+to −613 and factory demand improved to −777.
+**Read:** people want to live here, so the limit is not desirability; it's that existing
+homes can't grow denser. The Water Supply map still shows the west of the city dry, and
+dry homes stay small. With about $400 above my $1,500 floor, the best use of money is
+extending pipes into the west, which is cheap per tile and on screen. Next: underground
+view to see where the western pipes stop.
+
+**Oct 2018: pipe into the dry west.** In the underground view the eastern pipe grid is
+watered (light blue), but the western pipes and the dry (red/yellow) homes around them
+didn't clearly join it. I dragged a 5-tile pipe from inside the watered grid down-left
+beside the western segment. Pipes join any pipe on a neighbouring tile, so running
+alongside it is enough. Cost **$14** (funds $1,905 → $1,891). The Water Supply map now
+shows more of the south-west centre watered. A strip on the far west and one on the
+east are still red. Next: run two game years and read the save.
+
+**Oct 2018: west pipe joined the network.** The underground view now shows almost the
+entire pipe grid light blue (carrying water). The red/yellow "dry" markings that covered
+the west-centre are down to a few small patches. Funds **$1,881**. That one short pipe
+had joined two separate pipe networks, like the 2011 fix. If homes now grow denser,
+water was the main cap on residential growth. Next: check the surface view, then run
+time and read the save.
+
+**Oct 2018: big find, the city centre is rubble.** The surface view shows a large brown
+speckled area in the middle of the city. A query there reads **"Rubble — Zoned:
+Commercial low-density, Land value $215,000/acre, Crime: None, Pollution: Low."** So this
+is zoned, high-value land that's blocked by rubble, most likely from buildings that
+collapsed during the 2002 blackout. The city has room to grow inside its own borders;
+the land just needs clearing. Bulldozing rubble is about $1 a tile in SC2000, far cheaper
+than new zones or pumps. Next: make sure the red burst nearby isn't a spreading fire,
+then clear rubble block by block within the ~$380 above my $1,500 floor.
+
+**Correction (Oct 2018): those were fires, not dry areas.** After 5 seconds of running
+time, the red/yellow patches in the middle of the city visibly **spread as flames**. I
+had been reading them in the underground pipe view as "dry, unwatered" markings. That
+was wrong, and so were two of my notes above:
+- "West pipe joined the network": the shrinking red/yellow patches were fires moving and
+  burning out, not water arriving. The $14 pipe was built, but I have no evidence it
+  changed water coverage.
+- "Rubble from the 2002 blackout": the big brown rubble field in the centre is most
+  likely **burned-out buildings**. That would also explain why population stalled and
+  dropped (4,884 → 4,606) even after the water and tax fixes.
+**Lesson:** red/yellow flicker on the map is fire. Judge water only from the Water
+Supply map, and check for fire before running time. **Now:** put out the fires before
+building or scrolling anywhere new.
+
+**Oct 2018: fighting the fires.** Four fire clusters: west by the road and homes,
+centre, south-centre and south. Building a second fire station ($500) would push funds
+below my floor, so I'm using the free **Emergency → Dispatch Firefighters** tool: a click
+sends the existing fire crew to a spot. The biggest fire, next to homes, goes first.
+I hold-and-slid the Emergency button to pick "Dispatch Firefighters", the same input a
+player uses. I also added `dispatch_fire` / `dispatch_police` / `dispatch_military` tool
+names to the toolmap for future runs.
+
+**Dispatch result.** Clicking a burning tile was refused ("Sorry, you can't send
+firetrucks here"). Clicking the road tile right beside the west fire worked: a crew icon
+appeared there. Lesson: fire crews must be sent to a road next to the fire, not onto the
+flames. After 8 seconds the date hadn't changed, so I'm running longer before judging.
+
+**Fire is an official disaster; the calendar is frozen.** While running, the status bar
+reads **Fire** in red, and the date has stayed at Oct 2018 through over a minute of play.
+SimCity 2000 stops the calendar during a disaster, so taxes, growth and power-plant
+ageing are all on hold until the fire is out. After about a minute the centre and
+south-centre fires burned out by themselves. The west fire (where the crew is) and a
+small south fire are still burning. I'm letting it run rather than spending on a
+second fire station.
+
+**Fires out.** After about 2.5 minutes of play, no flames are left on screen. The crew put
+out the west fire. The others burned out on rubble, where there's nothing left to burn.
+Cost: $0, funds still $1,881. Next: use the overview map (Windows → Map) to find flat,
+empty land for a new neighbourhood, then scroll there with the normal scroll arrows.
+
+**Newspaper after the fire (1 Oct 2018).** Headline "New City Drying Up!", photo caption
+"Water Shortage Reported", and the status bar also reads "Water Shortage Reported". The
+opinion column says "Taxes Suck!", and the mayor is rated 65%. So water is still short
+(not enough supply, separate from the fire mix-up), and residents feel the 8% tax.
+Any new neighbourhood needs its own pump, not a share of today's supply.
+
+**Overview map (Dec 2018; the calendar restarted after the fire).** The whole 128×128
+map shows our city as one small cluster in the middle. Most of the map is brown hills with
+scattered forest, a river along the south, and a pond just north-east of the city. The
+nearest open, tree-free land is right **east of the factory blocks**, so new roads, power
+and water there can link to the existing city cheaply.
+
+**Money is the hard limit.** $1,881 against my $1,500 floor leaves about $380. Bonds
+are a normal game option, but at roughly +$2/yr net, the interest on even a small bond would push
+the budget negative, so no borrowing. Residential demand is at the maximum (+2,000)
+while shop and factory demand are negative. Plan: one small **residential** block
+(road loop about $240, zoning about $80, a short power line), touching the existing
+roads and grid, then let it fill and use the new tax income for a pump.
+
+**What the fire cost.** The Dec 2018 save shows **3,436 people, down from 4,754**: the
+fire burned about 1,300 residents' worth of buildings. Funds slid from $1,881 to $1,814 by
+Feb 2020, so the budget is now slightly negative with fewer taxpayers. That makes new
+housing more urgent. Residential demand is still about +2,000.
+
+**Decision: build the first new neighbourhood now.** It's a 6-tile residential block on the flat
+land east of the city. Its north-west road edge is laid right on the existing diagonal road, so
+it connects at no extra cost, and its power line starts at the existing poles. I'll check the
+cost from the funds change.
+
+**First eastern block built (Feb 2020).** The block cost $152 ($1,814 → $1,662). A query
+inside the loop says "Zoned: Residential low-density", land value $1,000/acre, crime none,
+pollution low. Its road connects to the existing diagonal road and its power line to the
+existing poles. Lesson: the view is zoomed in, so "size 6" made a loop only about 3 real
+tiles across. Next time use a bigger size or zoom out first. Money is now about $160 above
+my floor, so I'll let this block fill and watch the budget before building more.
+
+**Eastern block filled (Dec 2021).** Within about 2 game years, the new loop is full of houses.
+This is the first fresh growth in decades, which shows that new land, not demand, was the limit.
+Money is still drifting down, though: $1,662 → $1,608 (about −$27/yr). Before spending more,
+I'm opening the budget to see what's draining it.
+
+**2021 budget, read as mayor.** Property tax income $173 (it was about $255 before the fire
+destroyed the centre). Spending: police $100, fire $100, ordinances $16, transit $15. Net
+**−$57/yr**, and the treasury is forecast at $1,551 by the end of 2022. The fire shrank the tax base,
+and the budget hasn't adjusted.
+
+Decisions:
+1. **Trim police funding.** Crime nearly halved (832 → 389) along with the population, so
+   full funding is more than this smaller city needs. Fire stays at 100%; we just had a fire.
+2. **Keep property tax at 8%.** Residents already complain ("Taxes Suck!"), and 9% stalled
+   business demand last time.
+3. **Rebuild the burned centre before buying new land.** The rubble sits on land that already
+   has roads, power and pipes. Clearing it costs $1/tile, and rezoning it as homes (where demand
+   is at the maximum) brings taxpayers back far more cheaply than new blocks.
+
+**Police trimmed; rubble diagnosis (Dec 2021).** Police at 90% moved the 2022 estimate from
+−$59 to −$49. I clicked once more toward 80%. A query of the burned centre says "Rubble, Zoned:
+Commercial low-density, 150 ft, land value $1,000". Shop demand is negative, so these lots will
+sit as rubble forever. Homes are what people want, so I'm testing whether rezoning a small
+rubble patch next to a road as light residential works, and what it costs.
+
+**Found a cheap growth lever: empty shop lots.** The $10 test drag turned blue-dotted tiles
+(zoned commercial but never built) into green-dotted residential. Re-zoning over an old zone
+works directly, with no bulldozing first. The burned centre has many of these empty commercial
+lots beside existing roads. They've sat empty because shop demand is negative, while homes are
+at maximum demand. Re-zoning them as homes costs a few dollars per tile, with roads and power
+already there: the cheapest new housing in the city. I'm doing it in small strips, keeping
+money above $1,500.
+
+**Second strip: $10 = 2 tiles.** Light residential zoning is $5/tile. My drag ran mostly along
+one isometric axis, so it zoned a thin 2-tile strip. Lesson: a zone drag covers a rectangle in
+tile space, so to cover an area the drag must run corner to corner. At this zoom, a straight
+horizontal drag of about 96 px covers 3×3 tiles. With money at $1,588 ($88 above the floor),
+I'm pausing spending and letting the city run, to see whether the new homes fill and how
+fast the budget drains.
+
+**Business demand flipped positive; stop re-zoning (Nov 2022).** The Dec 2021 save shows
+population still falling after the fire (3,436 → 2,963), but shop demand is now +587 and factory
+demand +1,763, both negative before. The likely cause: with fewer businesses left after the fire,
+the remaining residents need jobs and shops again. That changes the plan. The burned centre is
+still zoned commercial, so with positive shop demand it can rebuild by itself, for free, on
+roads and power that already exist. Re-zoning it as homes would now be a mistake, so I'm
+stopping after the 4 tiles ($20) already done. Money fell $1,588 → $1,530 in ~11 months
+(about −$58/yr), so I'm right at my $1,500 floor and spending nothing. I'll let the
+city run and watch whether the rubble regrows.
+
+**Oct 2024 save: recovering, but below the money floor.** Population 3,259 (up from 2,963),
+crime 173, pollution 1,819. Money is $1,429, below my $1,500 floor, and still draining about
+$50 a year. Demand swung again: homes +1,991, factories +2,000 (maxed), shops −849. So the jobs
+people want now are factory jobs, not shops. The commercial rubble in the centre still won't
+rebuild. Before spending anything, I'm opening the budget to fix the drain.
+
+**Budget fix: police and fire to 70% (Oct 2024).** The 2024 budget: property tax $156/yr
+against police $85, fire $100, ordinances $14 and transit $15, so −$57 a year, ending 2024 at
+$1,372. Raising tax to 9% killed business demand last time, so I cut spending instead. Crime
+has fallen to 173 (from 832 before the fire) and the fires are out, so I set police and fire to
+70% (confirmed on the budget screen). The 2024 estimate only moved to −$50, because most of the
+year's spending has already happened. The full-year saving (about $40) should show in 2025.
+Risk: fire coverage is weaker. If another fire starts, I'll raise fire funding first.
+
+**Trim result (Aug 2026).** Money went $1,429 (Oct 2024) → $1,369 (Aug 2026): −$60 over ~22
+months, or about −$33 a year, down from −$57. The cut helped but didn't stop the drain. Looking
+at the budget again before deciding on the next lever.
+
+**2026 budget nearly balanced; invest in factory jobs.** Estimate is now −$10/yr: property tax
+$158 against police $70, fire $70, ordinances $15 and transit $15. Money is $1,369, below my
+self-imposed $1,500 floor, but at −$10/yr bankruptcy is more than a century away, so a small
+growth investment is safe. Factory demand is maxed (+2,000) and homes nearly so (+1,991). The
+south-centre rubble is old shop zoning that won't rebuild while shop demand is negative.
+Re-zoning a small patch of it as light industrial, beside the end of the diagonal road and
+away from the homes, adds jobs, which should pull in residents. It should cost about $30–50.
+
+**Factory patch placed: $50 (Aug 2026).** Money $1,369 → $1,319, so 10 tiles at $5. On screen,
+yellow industrial dots now cover the empty tiles between the south-centre rubble, next to the
+end of the diagonal road. Letting it run to see whether factories build there, and whether
+the new jobs move population.
+
+**Factory patch stayed empty (Jun 2028).** After ~2 game years the new industrial patch is
+still bare yellow dots, even though factory demand is maxed (+2,000). Money is $1,290
+($1,319 → $1,290, about −$16/yr, so the budget fix is holding). Population 3,237 in the Aug
+2026 save, flat. My guess is that the patch has no power: zones pass electricity to the zones
+beside them, but rubble doesn't, so a patch surrounded by rubble may be cut off from the grid.
+Querying a tile to check.
+
+**Power map explains the stall (Jun 2028).** On the overview map's Power layer (yellow =
+powered, red = not), the burned centre, including my new factory patch, has no power at all.
+Zones pass power only to zones touching them, and the fire turned the links between them into
+rubble, so the patch is cut off. That's why maxed factory demand built nothing there. The map
+also shows a red patch on the city's west edge: existing buildings with no power, probably
+also cut off by the fire. Reconnecting those is the cheapest win, since the buildings are
+already there. So power is the next fix: reconnect the west edge first, then run a short line
+into the factory patch along tiles that aren't rubble (power lines can't be built on rubble).
+
+**The north-west district is abandoned for lack of power (Jun 2028).** A query of one dark lot
+reads "Abandoned building, Zoned: Residential low-density, Powered: No, Watered: No". The whole
+district north and west of the burned centre (dozens of lots with yellow lightning bolts) is
+homes that people walked out of when the fire cut the power: zones carry power only to the
+zones touching them, and the burned lots between them and the water pumps are now rubble. This
+is the biggest growth lever I've found. Home demand is +1,984 and these lots already have
+roads and zoning, so reconnecting power should refill them at almost no cost. Fix: a short
+power line from the powered pump, across the road, into the nearest abandoned lot.
+
+**Bridge attempt: 2 line tiles, $4.** The first drag laid one tile north of the pump. The second
+laid a tile across the road between the pump and the nearest unpowered lot ($1,290 → $1,286).
+Unpausing briefly so the game recomputes power, then checking whether the lightning bolts clear.
+
+**Power restored, and the district rebuilt within 4 months (Oct 2028).** After the 2-tile, $4
+bridge from the pump, every lightning bolt north of the burned centre disappeared. By October
+the abandoned lots had filled with new homes, apartments and a block of houses. Money is
+unchanged at $1,286. This is the cheapest and biggest fix of the whole game. The lesson for a
+mayor: after a disaster, check the Power map for red, because rubble breaks the
+zone-to-zone power chain, and whole neighbourhoods quietly empty out even though they still
+have roads and zoning. Next I'm looking for the other dark lots with bolts further south-west
+and bridging those the same way.
+
+**Second bridge: the upper south-west district rebuilt (Feb 2029).** A short line from a newly
+powered house into the dark lots south-west of the rubble brought them back too: apartments
+and houses appeared within 4 months. Money $1,286 → $1,278 (line tiles plus 4 months' drain).
+Baseline for comparison: the Jun 2028 save, taken before either bridge, shows population
+3,243. One row of dark lots is left along the bottom-left; bridging it next.
+
+**Third bridge: the last dark row is back (Jun 2029).** One more short line, from a newly
+powered building into the bottom-left row, cleared its lightning bolts too, and houses are
+filling in. All three districts cut off by the fire are back on the grid. Total cost for the
+three bridges: about $12. Money $1,276. Letting it run 2 minutes, then reading population.
+
+**Growth restarted: 4,156 in Apr 2031.** After the three power bridges (~$12), the Apr 2031
+save shows population 4,156, up from 3,243 in Jun 2028 (+28% in under 3 years). Money is
+$1,374 and rising again (from $1,276), because more taxpayers have come back. Side effects:
+crime rose from 198 to 1,041 and pollution from 1,789 to 2,363. The crime jump is partly
+because police funding is at 70%, so I'll raise it now that money is rising. Demand: homes
++2,000, shops +2,000 (they were negative before), factories +948. With shop demand maxed,
+the burned centre, which is still zoned commercial, should rebuild on its own once power
+reaches it. Next: check the Power map for any other dark areas.
+
+**Power map is all yellow (Apr 2031).** After the three bridges, the overview map's Power layer
+shows the whole city powered, with no red left. The brown patches inside the cluster are
+plain rubble with no buildings, not unpowered zones. Next: raise police funding back toward
+85% to bring crime down (1,041), since money is rising again.
+
+**Budget back in the black (Apr 2031).** Police is back up to 85% (checked on screen). With
+the returning residents, property tax is now $233/yr (it was $158 in 2026), so even after the
+police increase the 2031 estimate is **+$45/yr** (treasury $1,374 → $1,419 by year end). Fire
+stays at 70% for now. The city is earning money again for the first time since the fire, so I
+can start reinvesting: first let the burned centre rebuild with shop demand at maximum, then
+put the surplus into water and new home blocks.
+
+**Mar 2033 save: steady but slowing.** Population 4,215 (+59 since Apr 2031), money $1,457 and
+rising, crime down from 1,041 to 839 after the police increase. Demand: homes +2,000, shops
++2,000, factories +220. The re-powered districts have mostly filled, so growth is slowing
+again. The remaining limits are the burned centre (still rubble) and water. Checking whether
+the centre has started rebuilding.
+
+**Clearing rubble in the centre (Mar 2033).** Shop demand has been at +2,000 for two years,
+but the burned centre, still zoned for shops, hasn't rebuilt. My guess is that the rubble
+blocks redevelopment. Test: bulldozed a small patch for $3 ($1,457 → $1,454), and it is now
+cleared ground. Next I'll query it to check that the shop zoning survived, then let the game
+run to see whether a shop appears. If it does, I'll clear the rest a few dollars at a time.
+
+**Bulldozing rubble removes its zoning.** A query on the cleared patch reads "Clear terrain"
+with no zoning line, and the zoomed screenshot shows bare ground with no zone dots. Land value
+there is high ($59,000/acre). So clearing burned land is a two-step job: bulldoze ($1/tile),
+then re-zone. I'm re-zoning the cleared patch as light commercial, because shop demand is
+at maximum. After 15 years as rubble, and 2 of them with shop demand maxed, the old zoned
+rubble clearly wasn't rebuilding on its own.
+
+**Shop patch zoned (Mar 2033).** Re-zoning the cleared patch as light commercial cost $15
+(3 tiles at $5; $1,454 → $1,439), and the blue shop-zone dots are now visible. So the full cost
+to bring a burned tile back is about $6 ($1 to bulldoze + $5 to zone). Running the game briefly
+to see whether a shop builds there before I clear more of the centre.
+
+**It worked: offices on the cleared patch (Jul 2033).** Within 4 game months of re-zoning, a
+large office building went up on the cleared patch and a second one started next to it. So
+the burned centre was stuck because of the rubble, not because of a lack of demand. The
+recipe is: bulldoze rubble ($1/tile), then zone light commercial ($5/tile), about $18 for a
+3-tile patch. Offices bring jobs, which supports the maxed demand for homes. I'm repeating
+it patch by patch eastwards, checking the money after each patch.
+
+**Second centre patch (Jul 2033).** Bulldozed and zoned the next rubble patch to the east for
+shops: $23 ($1,439 → $1,416). The blue zone dots are in place. Running the game briefly to
+confirm that offices go up here too before continuing. I'm keeping each patch small, because
+money is still just under the $1,500 floor, although the budget is now positive (+$45/yr).
+
+**Second patch is building too (Dec 2033).** Five months after zoning, a shop has gone up on
+the west part of the second patch and construction scaffolding covers the rest. Money is
+steady at $1,416 over those months. The recipe works every time, so I'll keep clearing the
+centre one small patch at a time.
+
+**Two more centre strips (Dec 2033).** Bulldozed and zoned two more rubble strips for shops,
+one in the middle and one lower-left: $39 ($1,416 → $1,377). Blue zone dots show on both.
+That's about $77 spent on the centre so far. Running the game to confirm they build; after
+that I'll stop spending until the treasury climbs back toward $1,500.
+
+**Middle strip built (May 2034).** Five months later a shop has gone up on the middle strip.
+The lower-left strip is zoned but still empty. Money rose back to $1,416 after the year-end
+tax collection, so the ~$77 spent on the centre has already been earned back. Pausing new
+spending and letting the game run for a couple of game years to see what the rebuilt centre
+does for population.
+
+**Mar 2036 save: money recovering, population flat.** Population 4,009 (4,215 in Mar 2033),
+money $1,495 (back near the $1,500 floor, about +$40/yr), crime down to 757. Demand: homes
++2,000, shops +512 (the new offices are filling the shop gap), factories −801. The centre
+rebuild added jobs but no residents. Demand for homes has been maxed for decades, so the
+limit is the homes themselves: earlier queries showed houses with "Watered: No", and
+unwatered homes in SC2000 stay low-density. Next: open the overview map's Water layer to
+see which neighbourhoods are dry before spending anything.
+
+**Water map (Mar 2036).** The overview map's Water Supply layer shows most of the city yellow
+(watered). The main dry (red) area is the eastern home block I built after the fire, plus a
+thin strip on the far west edge. So the newest homes have no water. Since homes without water
+stay small, piping water into the east block is the next growth move. Pipes cost about $3 a tile,
+and the block sits right next to the watered centre, so it should only need a short run.
+
+**Underground view of the east (Mar 2036).** With the pipes tool selected, the game shows its
+underground view. The pipes under the centre-north are blue, meaning they carry water. The
+whole pipe grid under the eastern districts is grey, meaning the pipes are laid but empty. So
+the east doesn't need new pipes everywhere, only a link from the blue network into the
+grey grid, which look nearly touching just south-east of the blue pipes. Looking for the gap.
+
+**Pipe link to the east (Mar 2036).** Laid a 3-tile pipe from the end of the blue (watered)
+network down into the grey eastern grid: $9 ($1,495 → $1,486). Right away the new segment and
+the first row of the eastern grid below it turned blue. Running the game so the water can
+spread through the rest of the grid, then I'll recheck the underground view and the Water map.
+
+**Not enough water to go round (Aug 2036).** Five months after the link, water reached the
+grey grid under the centre-east, which is now blue. But the north-west pipes that were blue
+before have gone grey. The game shares a fixed supply across the network, so linking more
+pipes just spread the same water thinner. The real limit is pump output, not pipes. Fix: add
+a water pump by the pond ($100, money $1,486, budget +$40/yr). Pumps next to fresh water
+pump the most, and the pond is next to the city. Moving the view there with the overview map.
+
+**New water pump by the pond (Aug 2036).** Placed a pump on the flat shore at the pond's
+south-west tip, the side nearest the city: $100 ($1,486 → $1,386). A pump only works with
+power, and its water only reaches the city through pipes, so next I'll run a short power line
+and a pipe from the city edge to it. That should cost about $30–40 more.
+
+**Powering the pump (Aug 2036).** Ran a power line from the tall building at the city edge,
+through the trees, toward the new pump: $16 ($1,386 → $1,370). It stopped about one tile short
+of the pump, so I'm adding one more tile into it.
+
+**Pump powered: 30,240 gallons/month (Aug 2036).** A query on the new pump reads "Powered:
+Yes" and "30,240 Gallons per Month", more than the older pumps (one read 22,320). It's next to
+fresh water, so it pumps well. The extra power tile went the wrong way ($2), but the main line
+already touched the pump. Total so far: $118 ($100 pump + $18 lines), money $1,368. Last step:
+a pipe from the pump to the city's pipe network so the water can actually reach homes.
+
+**Pump piped into the city (Aug 2036).** Laid about 10 tiles of pipe from the new pump west
+to the city's southern pipe grid: $30 ($1,368 → $1,338). The new pipe is already blue, and the
+nearest part of the previously grey southern grid turned blue too. Total for the new water
+supply: $148 (pump $100, power $18, pipe $30). Now I'll run the game a couple of years and
+check the Water map and population.
+
+**Jun 2038 save: water added, population still flat.** Population 4,075 (4,009 in Mar 2036),
+money $1,406 (+$68 in two years), crime 934, pollution 2,279. Demand: homes +2,000, shops
+−1,634 (the rebuilt centre has oversupplied shops, so no more commercial), factories −847.
+
+Diagnosis: demand for homes has been at +2,000 since 1934 and the city still won't grow. The
+new pump and the re-powered districts filled the homes that existed, but nearly all home zones
+are *light* residential, which caps each lot at small houses. A mayor would allow taller
+housing where infrastructure already exists. Next experiment: re-zone one existing light
+home block as dense residential ($/tile, roads, power and water already in place), then
+compare its population after a couple of years before rolling it out.
+
+**Correction to the density plan.** Earlier in this run I found that the game refuses to
+re-zone *developed* light housing as dense; it only works on empty land. So instead of
+re-zoning existing blocks, I'm placing a new **dense residential** block on the flat empty
+land between the city and the pond. It's right next to the new pump, its pipe and its power
+line, so it needs little extra infrastructure. With demand for homes at +2,000, dense zoning
+lets each lot grow into apartments instead of houses. Money $1,406, budget slightly positive,
+so this is the one big spend I'll allow before letting taxes rebuild the treasury.
+
+**Dense block, part 1 (Jun 2038).** The block command laid a road ring on the flat land by the
+pond: $100 ($1,406 → $1,306). Its east side reached the water, so the game offered to build a
+bridge ($125 or $250). I picked None, so no bridge was built. Next I'm checking whether the
+dense zone landed inside the ring, and the ring isn't joined to the city's roads yet, so it
+needs a short connector road, or new residents would have no way to reach jobs.
+
+**The block was cut short.** Zoomed in, only the two north edges of the road ring were built
+(about 10 tiles, $100). The bridge dialog interrupted the rest of the command, so no zone and
+no power line were placed. Lesson: keep block commands well away from water. Finishing it by hand:
+a small dense-residential patch just under the new roads (next to the pump's power line and
+pipe), plus one short road joining it to the city's road network.
+
+**Dense patch zoned, and a spending freeze (Jun 2038).** The dense-residential patch (about 4x4
+tiles, green dense dots) plus the connector road down to the city cost $230 ($1,306 → $1,076).
+That's more than I expected: dense zoning and the diagonal road cost more per tile than light
+zoning. Money is now well below the $1,500 floor, so **no more spending** until the treasury
+recovers. Including the cut-short ring, this neighbourhood cost $330 in total. Checking that the
+new zone gets power from the pump line next to it, then letting the game run.
+
+**Query check (Nov 2038).** A tile in the new patch reads "Zoned: Residential high-density,
+Land value $174,000/acre". That's the highest land value I've seen in this city (the cleared
+centre was $59,000). Waterfront land by the pond is the most valuable housing land I have, so
+the dense zone went to the right place. Running the game to see whether apartments go up.
+
+**Still empty after 9 months (Aug 2039, $1,108).** Before spending anything, I checked the Power
+map: the area south-west of the pond, where the new patch is, shows yellow (powered) and joins
+the main grid. So power isn't the blocker. Dense zones in SC2000 often take a while to attract
+their first developer, so I'm giving it more time rather than spending money I don't have.
+Money is recovering slowly (+$32 since the patch).
+
+**Aug 2039 save: population slipping.** 3,834 people (4,075 in Jun 2038), $1,108, crime 1,009,
+pollution 2,205. Demand: homes +2,000, shops −993, factories −986. The waterfront dense patch was
+still empty in Jul 2040, 20 months after zoning, although a new office tower went up in the
+centre. The Power map looked yellow there, but at that scale I can't be sure that the patch
+itself touches the pump's power line, which runs about one tile south of it. So I'm adding a
+1-2 tile power line ($2-4) from that line into the zone's edge, the same cheap fix that brought
+the abandoned districts back. If it still doesn't build, the next thing to check is road access.
+
+**Power link, first try (Jul 2040).** My first 1-tile line went toward the pond. The game offered
+"Raised Wires" over the water ($120) and I declined. It cost $2. Zoomed in, the zone's southern
+tip sits exactly one tile above the pump's power line, a gap power can't cross. So I'm placing
+the second tile straight up from the line into the zone tip, well away from the water.
+
+**Power link landed (Mar 2041, $1,163).** The second short line runs from the pump line straight
+up into the southern tip of the dense patch, so the zone now touches the grid directly. Money is
+still recovering (+$55 since the spending freeze). Running the game to see whether the patch
+starts building. If it is still empty after about two years, road access is the next suspect.
+
+**Still empty in Jan 2042 ($1,198): road access.** Even with power touching it, nothing has been
+built on the patch. Zoomed in, the connector road I laid in 2038 turns down towards the city, but
+it seems to stop at the new office tower, about one tile short of the city road below. A road
+network that doesn't join the rest of the city lets nobody commute, so in SC2000 the zone
+never develops. Fix: a short road from the connector's end onto the city road.
+
+**Road link placed (Jan 2042).** The short road from the connector down to the city road cost $10
+($1,198 → $1,188), so the game did build new road tiles; they're mostly hidden behind the tower.
+Running the game: if the patch now starts building, a missing road link was the reason it sat
+empty for three years.
+
+**Mar 2041 save.** 4,105 people (3,834 in Aug 2039), $1,163, crime 1,057, pollution 2,280.
+Demand: homes +2,000, shops −836, factories −574. The older neighbourhoods have bounced back,
+but the dense patch was still empty in Dec 2042 even after the road link, and money was flat
+over 2042 ($1,188). Opening the overview map's road layer to check whether the new ring really
+joins the city's roads.
+
+**Road map reading and an A/B test (Dec 2042).** On the overview map's Roads layer, the new ring
+by the pond looks joined to the main road network, so access probably isn't the problem. Power
+touches it, land value is the city's highest, and demand for homes is at maximum, yet nothing
+has been built in 4 years. Rather than guess, I'm running a cheap side-by-side test: re-zone a
+small corner (about 2x2) of the empty dense patch as *light* housing (about $20). If small houses
+appear on the light corner and nothing on the dense part, dense housing itself is what this city
+can't support yet (likely the upper-income, low-crime, water conditions apartments need). Then
+the plan becomes light zoning plus fixing those conditions, rather than more dense zoning.
+
+**A/B corner zoned (Dec 2042 → Mar 2043).** Re-zoning the western corner of the patch as light
+housing cost $30 ($1,188 → $1,158). It shows as a paler green patch next to the dense dots.
+Three months later neither part has buildings yet, which is too soon to judge. Taxes brought
+money back to $1,193. I'll give the test about two game years before deciding.
+
+**A/B result (Feb 2045, $1,257).** After 20 months, *both* the light corner and the dense part
+of the pond patch are still empty. So density isn't the problem. Something both share is
+stopping development, and the most likely cause is that the patch can't actually reach the
+city by road. Meanwhile the older city keeps filling in and money is rising again (+$64).
+Next: query the road tiles where the connector meets the city road, one by one, to find the gap.
+
+**Junction queries (Feb 2045).** The connector tile reads "Road, Traffic: 1 cars/minute", so cars
+do use it and the patch is probably joined to the network. The building beside it is an
+"Abandoned building, Commercial low-density, Powered: Yes, Watered: Yes". It's abandoned because
+shop demand is negative (−1,335 in the Mar 2043 save), not because services are missing. That save:
+4,085 people, $1,193, crime 778 (down from 1,057). Next I'm querying tiles inside the empty patch to
+read their Powered/Watered lines directly.
+
+**Power through the middle (Feb 2045).** Querying empty zone tiles only gives "Clear terrain, Zoned:
+Residential high/low-density" and land value ($159-166k), with no power line, so the query tool
+can't tell me whether empty zones get power. The one difference I can see from the east block
+(which filled in 2 years) is that the block command ran a power line through its middle, while this
+patch touches the grid only at one corner tip. In SC2000, empty zone tiles may not carry power
+onward the way built ones do. So, for about $6, I'm running a short line from the tip up through
+the patch interior, away from the pond, then giving it two game years.
+
+**Breakthrough: the pond patch is building (Feb 2047, $1,249).** Two game years after the $8 power
+line along the patch's south-west edge, it has houses, a pool, a large church and bigger buildings
+under construction, in both the light corner and the dense part. Root cause of 6 empty years: the
+patch touched the grid only at one diagonal corner tip, and empty zone tiles don't pass power on
+from there. The query tool doesn't report power on empty zones, and the small Power map looked
+yellow, so both checks missed it. Rule from now on: **every new zone gets a power line through
+it or along a full edge** (as the block command does), never just a corner contact.
+Total cost of this neighbourhood: ring roads $100, zoning $230, links $20, A/B corner $30, lines $10.
+
+**Feb 2045 save (before the patch built).** 4,163 people, $1,257, crime 1,005, pollution 2,277,
+workforce 58%. Demand: homes +2,000, shops −1,010, factories −872. This is the baseline for
+measuring the pond patch, which started building after this save.
+
+**Pond patch full (Sep 2047, $1,318).** One more year and the whole patch is built: small houses
+on the light corner, plus a condo complex, a pool and a church on the dense part. Money is rising
+again (+$69 since Feb 2047) as the new residents pay taxes. Next move, using the same recipe:
+a small dense patch on the flat strip between the ring road and the pump's power line, so it
+touches a road on one side and **runs along the power line on the other**. That's about $100-150,
+which goes below my $1,500 floor, but the first patch shows it pays back, and the budget is positive.
+
+**Second dense patch (Sep 2047).** Zoned about 8 tiles of dense housing between the ring road
+and the first patch for $60 ($1,318 → $1,258). This time it shares a full edge with the power line
+I ran along the first patch, and it fronts the ring road, so it has both power and road access
+from day one. Running two game years to compare.
+
+**Jul 2048 save: growth restarted.** 4,545 people, up from 4,163 in Feb 2045 (+382, the biggest
+gain since the post-fire recovery). Money $1,308, crime 1,100, pollution 2,436, workforce 58%.
+Demand: homes +2,000, shops −176 (was −1,010), factories **+169** (was −872). The new residents
+are using up the spare jobs, so shop and factory demand is climbing back towards positive.
+That's the healthy loop: homes → workers → demand for jobs → businesses → more homes.
+
+**Second patch built (Jun 2049, $1,370).** Within about two years the $60 patch was built with
+condo blocks and pools, because it had power along its edge and road access from the start.
+Money keeps rising (+$112 since zoning it). Next is the same recipe again, north of the ring road:
+a small dense patch on the flat land beyond the road, with a power line from the built pond
+patch across the road into it.
+
+**Third patch, north of the ring (Jun 2049).** Zone plus power line cost $63 ($1,370 → $1,307).
+The land north of the ring starts to slope, so the zone landed as a few scattered flat tiles on
+either side of the new line rather than a neat square. The line crosses the ring road from the
+built pond patch, so those tiles should be powered. A smaller, cheaper test of whether the edge
+of the hills can take housing. Running two game years.
+
+**Warning: "Plant Nearing Death" (newspaper, Jan 2051).** The oil plant built in 2002 is near the
+end of its ~50-year life. Both earlier plant deaths (1951, 2002) blacked out the whole city and
+crashed population (4,642 → 1,054, and 4,586 → 344), so this now comes first. Constraint: an oil
+plant costs $6,600 and the treasury is about $1,370, and a bond's interest would wipe out the budget.
+Plan: (1) query the old plant to see what share of its output the city actually uses, (2) buy the
+cheapest capacity that covers that (wind turbines at $100 each, or a gas plant if it fits),
+(3) wire it into the grid *before* the old plant dies, so there's no blackout this time.
+
+**Sizing the replacement (Apr 2051, paused, $1,451).** From the 2002 plant chooser: coal 200 MW
+$4,000, oil 220 MW $6,600, gas 50 MW $2,000, solar 50 MW $1,300, hydro 20 MW $400, wind 4 MW $100.
+The only big plant I can afford is **solar (50 MW, $1,300)**, which would leave about $150. Before
+committing, I'm querying the old oil plant: if the city uses under about 45 MW (about 20% of its 220 MW),
+solar covers it with no pollution. If it uses more, I'll need solar plus wind turbines, or I'll have to
+let money build up until the plant dies, then buy coal. Zooming out to find the plant.
+
+**Plant query (Apr 2051): 220 MW, running at 42%, age 49 of 50.** The city draws about 92 MW, and
+the plant has about a year left. Solar (50 MW, $1,300) would cover only about half, and coal or oil are
+unaffordable at $1,451. My plan was solar now and wind turbines as taxes came in, rather than
+a bond I couldn't pay back.
+
+**Stopped (Apr 2051).** David asked me to stop here. Final save AGENT060: 4,466 people, $1,451,
+crime 1,097, pollution 2,441, after 151 game years. Never went broke. Peak was 4,891 (1965), and the
+latest growth came from small powered dense-housing patches by the pond.

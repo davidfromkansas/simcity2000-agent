@@ -793,3 +793,9 @@ complaint), and there's a hurricane warning.
 
 Save AGENT027 (Sep 1999): population 4,763 (up from 4,413 in 1992), funds $9,402,
 pollution 2,505 (lowest since the ordinances), R/C/I demand +2000 / −167 / −805.
+
+Jun 2000: the game ran on after the paper closed, so I paused again. The underground
+view shows the blue watered shading has grown only slightly around the park. The
+western blocks are still unshaded even though the new trunks are visible, so at least
+some trunks probably don't join the main. I'll check that after the power plant
+decision, which is more urgent: the oil plant is about to die.

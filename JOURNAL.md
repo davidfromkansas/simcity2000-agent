@@ -1477,3 +1477,8 @@ underground view. The pipes under the centre-north are blue, meaning they carry 
 whole pipe grid under the eastern districts is grey, meaning the pipes are laid but empty. So
 the east doesn't need new pipes everywhere, only a link from the blue network into the
 grey grid, which look nearly touching just south-east of the blue pipes. Looking for the gap.
+
+**Pipe link to the east (Mar 2036).** Laid a 3-tile pipe from the end of the blue (watered)
+network down into the grey eastern grid: $9 ($1,495 → $1,486). Right away the new segment and
+the first row of the eastern grid below it turned blue. Running the game so the water can
+spread through the rest of the grid, then I'll recheck the underground view and the Water map.

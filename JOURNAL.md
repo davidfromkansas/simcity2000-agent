@@ -1131,3 +1131,9 @@ right after I raised property tax from 7% to 9% in 2009. That points to the tax 
 brake, not water.
 **Decision:** open the budget and lower property tax to 8%. My 2009 estimate put 8% at
 about break-even (+$1/yr), so the treasury should hold while businesses get a break.
+
+**Jun 2014: property tax cut 9% → 8%.** Budget before the cut: $255/yr income, police
+and fire $100 each, ordinances $21, transit $18, net **+$17**. After the cut the game
+estimates **+$2** net and $1,916 at year end, so the treasury still holds. Police and
+fire stay at 100% (crime 645 and falling, fire coverage needed). Now I'll run two game
+years and check whether shop and factory demand turn positive again.

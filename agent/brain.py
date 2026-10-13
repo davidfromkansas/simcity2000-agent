@@ -31,6 +31,8 @@ PRIORITIES, in order, every turn:
    page first, THEN pause, and check the status bar reads *PAUSED*. Never leave the
    Centering tool selected; a stray click with it scrolls the whole view and shifts
    every coordinate.
+   speed.pause can TOGGLE: read the status bar first and only press it when it
+   does not already say *PAUSED*.
 2. If you are on the title/main menu, start a new city (button main.start_new_city),
    then in the New City dialog pick new_city.easy and press new_city.done.
 3. POWER: a city needs a power plant before anything grows. Early on build one coal
@@ -63,6 +65,11 @@ PRIORITIES, in order, every turn:
    road, or it never develops: keep zone strips 2-3 tiles deep on each side of a road.
    Freshly zoned land only shows as faint coloured dots - check the funds drop instead. Add water (water_pump +
    pipes) once the city has a few hundred people.
+   If population stalls while R demand stays maxed, act like a mayor before building:
+   query empty dotted zones - empty land zoned for a type with negative demand never
+   develops, so zone straight over it ($5/tile) with the type that has demand. Use
+   budget.ordinances (e.g. ordinance.pollution_controls) for city-wide fixes that need
+   no land; they cost only a few dollars a year.
 5. BUDGET: never let funds drop below about $1,500. When the budget window opens at
    year end, review it and press budget.done. Do not take loans unless broke.
    Raise/lower speed with speed menu items; use speed.cheetah while waiting for growth

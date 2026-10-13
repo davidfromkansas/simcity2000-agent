@@ -36,6 +36,9 @@ PRIORITIES, in order, every turn:
    The Select Powerplant chooser changes layout once new plants are invented: if it
    shows wind/nuclear/solar, use the power_plant_late.* buttons, and check the status
    bar names the plant you meant (e.g. "Oil Power $6,600") before placing it.
+   A dead plant leaves rubble that blocks power lines: wire the new plant through a
+   clean edge, then confirm with the query tool that it runs above 0% of capacity
+   (allow a few game months for that figure to update).
 2. If you are on the title/main menu, start a new city (button main.start_new_city),
    then in the New City dialog pick new_city.easy and press new_city.done.
 3. POWER: a city needs a power plant before anything grows. Early on build one coal

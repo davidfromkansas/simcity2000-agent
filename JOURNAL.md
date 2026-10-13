@@ -936,3 +936,12 @@ city map's power layer instead, which shows directly whether zones get power.
 Same pattern as 1951: without power, buildings empty out within months. The new plant
 is paid for, but until it's tied into the grid nothing else matters. Every other plan
 is on hold until the plant shows more than 0% load.
+
+**Power restored (Jan 2003).** After a few months of game time the plant query reads
+**Running at 5% of Capacity**, up from 0%, so the north-east wire joined it to the grid.
+The load is only 5% because about 85% of residents left during the 12-month outage.
+Funds are $2,512. Lessons: (1) a dead plant's rubble blocks new wires, so connect
+through a clean edge; (2) the plant's "% of capacity" is the quickest proof of a real
+connection, but it takes a few game months to update; (3) zooming in one step makes
+tile-accurate wiring possible without leaving the visible map. Next: let the city
+refill and watch population in the saves.

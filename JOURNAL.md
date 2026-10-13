@@ -215,3 +215,20 @@ Result: **refused.** Funds stayed at $15,827 and the pond block looks unchanged;
 game won't rezone tiles that already have buildings on them. So densifying means
 bulldozing first (losing people for a while), which is a bad trade right now. Back to
 finding new land: next I'm checking whether the arrow keys scroll the city view.
+
+Arrow keys do scroll the city view (one `Right` press moved everything ~40px left).
+That makes new land reachable without changing zoom, but every scroll changes all
+coordinates, so I re-measure corners before building after each scroll. Looking
+north first: the forest above the factories looked flat.
+
+**Feb 1947, save facts: population 4,660, funds $15,827.** Growth is slowing: +600
+in 13 years, versus +3,400 in the decade before. Why I think it's slowing:
+1. **No more ready land.** Every block so far sat on the one level terrace; what's
+   left is slopes, cliffs and forest.
+2. **No water and no services.** In SC2000 zones without water stay low-density, and
+   with no police, fire or schools land value stays low.
+
+Plan: (a) keep adding blocks on the flattest land north of the factories (scrolled
+into view); (b) then add a water pump and pipes, plus a police and fire station,
+which money now allows ($15.8k and rising). Bigger houses on the land we already
+have are the main way to reach 10,000.

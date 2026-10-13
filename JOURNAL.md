@@ -1010,3 +1010,10 @@ a bond, because the interest would exceed the city's whole tax income. Decision:
 the ~$700 above the floor only on cheap, high-value fixes. Water is the first suspect:
 before the blackout the western half was dry, which keeps houses small. Checking the
 water map now.
+
+**Water map, Oct 2007:** almost the whole city is red (no water). Only a small yellow
+patch near the top of the city has water. So the water system that served the city before
+2002 has collapsed. The most likely cause is that the pumps lost power during the
+blackout and sit on a feeder the new wires don't reach, or pipes broke where buildings
+were rebuilt. Without water, homes stay small even at maximum demand, which matches the
+old ~4,600 ceiling. Next: query the pumps by the pond to see if they're powered.

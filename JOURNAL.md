@@ -810,3 +810,9 @@ Jun 2001: the game is still running and the oil plant is still alive ($9,339).
 Speed → Pause has now failed three times in a row, so I'm opening the Speed menu to
 look at it directly, rather than assuming the fixed menu coordinates still hit
 "Pause".
+
+**Jan 2002 newspaper:** another "Time Running Out" front page. The plant is still alive
+but on borrowed time. Approval 72%, and Fred's Opinion has moved on to "Taxes Suck!",
+so tax cuts are worth considering once the plant is replaced. At cheetah speed a year
+passes in seconds, and a newspaper appears every January. Closing a paper resumes
+the game, so I now close the paper and pause in the same quick batch.

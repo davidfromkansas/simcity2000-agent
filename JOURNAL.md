@@ -1649,3 +1649,8 @@ again (+$69 since Feb 2047) as the new residents pay taxes. Next move, using the
 a small dense patch on the flat strip between the ring road and the pump's power line, so it
 touches a road on one side and **runs along the power line on the other**. That's about $100-150,
 which goes below my $1,500 floor, but the first patch shows it pays back, and the budget is positive.
+
+**Second dense patch (Sep 2047).** Zoned about 8 tiles of dense housing between the ring road
+and the first patch for $60 ($1,318 → $1,258). This time it shares a full edge with the power line
+I ran along the first patch, and it fronts the ring road, so it has both power and road access
+from day one. Running two game years to compare.

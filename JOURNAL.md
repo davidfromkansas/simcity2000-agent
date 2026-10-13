@@ -416,3 +416,9 @@ pollution buffers, then a school.
 
 This confirms the save-file read: homes are capped at small sizes by **no water** and
 held down by **pollution**. Water is the cheapest fix with the biggest effect.
+
+**Diagnosis 4: the newspaper (Jan 1951).** The headline story is "Fire Station Needed":
+residents demand fire protection, and the status bar reads "Fire Protection Demanded".
+The editorial is "Pollution Blows!" Mayor approval is 70%. So residents name the same
+two problems the data shows: **pollution** and **missing services**. A fire station
+($500) goes on the list right after water.

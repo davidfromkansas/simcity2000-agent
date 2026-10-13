@@ -192,3 +192,13 @@ all high**, so the city can absorb every zone type. Commercial goes first, becau
 only shop block so far is the half-built one and the factories and homes need shops.
 New block: down-right of the south-west homes (the correct chaining direction this
 time), so its line starts on the homes' powered line.
+
+Commercial block built: funds $15,172 -> $14,875 ($297 - cheaper than earlier blocks
+because part of the ring runs down a slope and some road pieces were refused). The
+blue commercial dots cover the block, trees and all. Running ~3 years.
+
+**Feb 1947 (screen: $15,827).** Shops are going up in the new commercial block, and
+funds keep climbing (+$950 in 6 years). RCI: **R and I high, C now below the line**;
+the shops have caught up. Next moves are another residential block and another
+industrial block. The level land next to the current blocks is used up, so I'm
+looking further out (or scrolling the view) for flat patches.

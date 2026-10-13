@@ -1080,3 +1080,13 @@ powered pumps make water, but **none of the city's pipe network is joined to the
 Water stops right at the pump plateau. That explains why every pipe I added in the
 west did nothing. Next: zoom in on the join between the pump grid and the pipe that
 runs toward the oil plant, find the missing tile(s), and bridge it with a 1–2 tile pipe.
+
+**Jun 2011: the water break was one missing tile.** Zoomed in 2x underground, the city's
+trunk pipe ended in a **cyan end-cap** one tile short of the pump grid. A cyan cap marks
+a pipe end that isn't joined to anything. One $3 pipe tile bridged the gap, and within
+four game months the Water Supply map showed yellow (watered) tiles spreading from the
+pumps into the middle of the city, where before only a speck by the pumps was watered.
+Funds $1,875. Lesson: judge water from the **Water Supply map** (red = dry), not
+the underground view's blue shading, and look for cyan end-caps to find breaks. Next:
+let it run a couple of years so water spreads through the zones and homes can grow
+denser, then read the saves.

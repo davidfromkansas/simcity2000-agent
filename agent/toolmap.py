@@ -145,6 +145,15 @@ BUTTONS: dict[str, Point] = {
     "power_plant.cancel": (459, 191),
     # Budget window
     "budget.done": (458, 123),
+    # City Ordinances window (budget.ordinances opens it): checkbox centres.
+    "budget.ordinances": (439, 183),
+    "ordinance.pro_reading": (264, 212),
+    "ordinance.energy_conservation": (264, 312),
+    "ordinance.pollution_controls": (264, 363),
+    "ordinance.volunteer_fire": (459, 112),
+    "ordinance.free_clinics": (459, 146),
+    "ordinance.city_beautification": (459, 246),
+    "ordinance.done": (175, 390),
     # Bridge prompt when a road crosses water (short span: one option)
     "bridge.none": (346, 185),
     "bridge.causeway": (318, 291),

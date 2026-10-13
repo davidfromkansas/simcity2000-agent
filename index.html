@@ -39,7 +39,7 @@
   .rbar { position:relative; height:12px; background:#0b0f14; border:1px solid var(--line); border-radius:3px; }
   .rbar::after { content:""; position:absolute; left:50%; top:-2px; bottom:-2px; width:1px; background:var(--dim); }
   .rbar div { position:absolute; top:0; bottom:0; }
-  svg { width:100%; height:150px; display:block; }
+  svg { width:100%; height:auto; display:block; }
   .charts { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
   @media (max-width: 600px) { .charts { grid-template-columns:1fr; } }
   .feed { max-height:1100px; overflow:auto; display:flex; flex-direction:column; gap:8px; padding-right:4px; }
@@ -118,7 +118,7 @@
 const $ = id => document.getElementById(id);
 const fmt = n => n == null ? '–' : Number(n).toLocaleString();
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const md = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/`([^`]+)`/g, '<code>$1</code>');
+const md = s => esc(String(s ?? '').replace(/\n(?!\s*[-*\d])/g, ' ')).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/`([^`]+)`/g, '<code>$1</code>');
 const ago = t => { const m = Math.round((Date.now()/1000 - t)/60); return m < 1 ? 'just now' : m < 60 ? m + ' min ago' : Math.round(m/60) + ' h ago'; };
 const clock = t => new Date(t*1000).toLocaleString([], {month:'short', day:'numeric', hour:'2-digit', minute:'2-digit'});
 let TL = null, idx = -1, follow = true, timer = null, filter = 'all';
@@ -179,9 +179,8 @@ function chart(id, key, color, tSel, ref) {
   let sel = -1; pts.forEach((p, i) => { if (p.t <= tSel) sel = i; });
   const refLine = ref ? `<line x1="${P}" x2="${W-P}" y1="${y(ref)}" y2="${y(ref)}" stroke="var(--dim)" stroke-dasharray="4 4"/><text x="${W-P}" y="${y(ref)-3}" fill="var(--dim)" font-size="10" text-anchor="end">${key === 'population' ? 'goal' : 'safety floor'} ${fmt(ref)}</text>` : '';
   const done = sel >= 0 ? pts.slice(0, sel + 1).map((p, i) => `${x(i).toFixed(1)},${y(p[key]).toFixed(1)}`).join(' ') : '';
-  const marker = sel >= 0 ? `<line x1="${x(sel)}" x2="${x(sel)}" y1="${P}" y2="${H-P}" stroke="var(--text)" stroke-opacity=".35"/><circle cx="${x(sel)}" cy="${y(pts[sel][key])}" r="4" fill="${color}"/><text x="${Math.min(W-60, x(sel)+6)}" y="${P+10}" fill="var(--text)" font-size="11">${pts[sel].date}: ${fmt(pts[sel][key])}</text>` : '';
+  const marker = sel >= 0 ? `<line x1="${x(sel)}" x2="${x(sel)}" y1="${P}" y2="${H-P}" stroke="var(--text)" stroke-opacity=".35"/><circle cx="${x(sel)}" cy="${y(pts[sel][key])}" r="4" fill="${color}"/><text x="${P+2}" y="${P+10}" fill="var(--text)" font-size="12">${pts[sel].date}: ${fmt(pts[sel][key])}</text>` : '';
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-  svg.setAttribute('preserveAspectRatio', 'none');
   svg.innerHTML = `${refLine}<polyline points="${line}" fill="none" stroke="${color}" stroke-opacity=".25" stroke-width="2"/><polyline points="${done}" fill="none" stroke="${color}" stroke-width="2"/>${marker}`;
 }
 
@@ -193,7 +192,7 @@ function renderFeed(tSel) {
       return `<div class="item journal"><div class="meta"><span class="tag">Journal</span><span>${clock(e.t)}</span></div><div class="txt${h ? ' h' : ''}">${md(h ? e.text.replace(/^#+\s*/, '') : e.text)}</div></div>`;
     }
     const steps = e.step_end && e.step_end !== e.step ? `steps ${e.step}–${e.step_end}` : `step ${e.step}`;
-    return `<div class="item action${e.errors ? ' err' : ''}"><div class="meta"><span class="tag">Move</span><span>${clock(e.t)}</span><span>${steps}</span></div><div class="txt">${md(e.summary || '(no summary)')}</div>${e.actions.length ? `<div class="acts">${esc(e.actions.join('\n'))}</div>` : ''}</div>`;
+    return `<div class="item action${e.errors ? ' err' : ''}"><div class="meta"><span class="tag">Move</span><span>${clock(e.t)}</span><span>${steps}</span></div><div class="txt">${md(e.summary || (e.errors ? 'Rejected move' : '(no summary)'))}</div>${e.actions.length ? `<div class="acts">${esc(e.actions.join('\n'))}</div>` : ''}</div>`;
   }).join('') || '<div class="note">Nothing yet at this point in the timeline.</div>';
 }
 

@@ -555,3 +555,7 @@ funds didn't drop. Next idea: drag a power line along one tile axis that *starts
 inside* the oil plant and ends next to the old pump. The game skips tiles it can't
 build on, so the first wire tile it lays will be the one touching the plant. That
 closes the one-tile gap without me having to pinpoint the plant's edge.
+
+**Jun 1965 save (AGENT022):** population 4,891 (a slow new high), funds $8,842,
+R +2000, C +3, I -703, pollution **6,743, rising again**. Money is steady and growth
+is a trickle. Residents still want homes; the city can't house them.

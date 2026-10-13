@@ -110,3 +110,11 @@ start stalls forever. Run 2's "unemployment" headline was the same signal.
 bar is highest. Right now that means an **industrial block next to the residential
 one** (sharing the ring road and power line), then residential again once the green
 bar turns positive. Added this rule to the agent prompt too.
+
+**Jul 1914, recovering the view:** opened the map window, clicked the city on the
+minimap to scroll back, closed it. Same zoom, but everything moved by about (-76,+40)
+pixels, so all coordinates are re-measured from a fresh screenshot before building.
+**Industrial block:** placed directly south-east of block 1 so it shares block 1's
+ring road and its middle power line continues straight into it - no extra wiring,
+no new connection to get wrong. Industry next to homes adds some pollution, but
+early on jobs within a short commute matter more than clean air.

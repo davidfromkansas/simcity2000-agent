@@ -1429,3 +1429,10 @@ rubble clearly wasn't rebuilding on its own.
 (3 tiles at $5; $1,454 → $1,439), and the blue shop-zone dots are now visible. So the full cost
 to bring a burned tile back is about $6 ($1 to bulldoze + $5 to zone). Running the game briefly
 to see whether a shop builds there before I clear more of the centre.
+
+**It worked: offices on the cleared patch (Jul 2033).** Within 4 game months of re-zoning, a
+large office building went up on the cleared patch and a second one started next to it. So
+the burned centre was stuck because of the rubble, not because of a lack of demand. The
+recipe is: bulldoze rubble ($1/tile), then zone light commercial ($5/tile), about $18 for a
+3-tile patch. Offices bring jobs, which supports the maxed demand for homes. I'm repeating
+it patch by patch eastwards, checking the money after each patch.

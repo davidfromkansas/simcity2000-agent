@@ -594,3 +594,10 @@ pausing now, then re-centring on the city before doing anything else.
 **pollution 10,251** (up 50% from 6,743 in 1965), EQ 72. Even with water on, the
 population hasn't moved. Pollution is now the dominant problem, and it's what the
 residents keep complaining about.
+
+**Jan 1976 newspaper:** "Barton Labs Perfects The Wind Turbine" (wind power is now
+invented, a clean option for when the oil plant wears out), "Beautiful Smog", and
+"Pollution Blows!" again. Mayor approval is 51%. The game was still running when the
+paper appeared, because my pause click had landed while a paper was on screen.
+Rule: close every paper *first*, then pause, then check that the status bar says
+*PAUSED*.

@@ -1054,3 +1054,11 @@ little more tax. I'm trying one more notch (9%, about +$27/yr) and I'll watch wh
 residential demand drops. If it falls sharply, I'll go back to 8%. I'm keeping police
 and fire at 100%: crime is ~980, and both cost the same $100 whether the city grows or
 not.
+
+**Apr 2010: the tax rise worked.** After a full year at 9% the treasury rose from $1,956
+to **$1,978**, the first rise since the 2002 blackout. That's only ~$25/yr, but money
+has stopped draining. To test the "demand beats supply" water theory cheaply, I'm adding
+**one** $100 pump beside the existing powered pumps, which leaves ~$1,878, still above
+the floor. If the watered area grows after a few months, supply was the limit, and I'll
+add pumps as money allows. If it doesn't, the western pipes are still cut off somewhere
+and I'll go back to tracing.

@@ -727,3 +727,15 @@ residential (green), and the strip beside the V road is commercial (blue). The t
 highest strips stay industrial for now; they're too far from any road, so they need a
 road up the terrace before re-zoning would help. Running the city ~30 s to see if the
 new homes and shops fill in.
+
+**Jul 1992 check: re-zoning alone hasn't worked yet, and water is now the limit.**
+- Save AGENT026 (Jan 1992): population **4,413** (down from 4,578), funds $10,048,
+  pollution steady at 3,282, R/C/I demand +2000 / +188 / −804.
+- The status bar now reads **"Water Shortage Reported"**. The single pump (33,120
+  gallons/month) can't supply the whole city.
+- The re-zoned green and blue strips are still just dots after ~3.5 years. Meanwhile
+  part of the north factory block has turned into houses (red roofs), so the city is
+  shifting from factories to homes on its own.
+- Diagnosis: homes want to grow (R demand maxed), but without enough water they stay
+  small, and new zones are slow to fill. Next: add pumps. They make the most water
+  next to a lake or river, so I'm looking at the pond in the middle of the city.

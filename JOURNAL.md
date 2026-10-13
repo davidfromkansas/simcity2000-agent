@@ -510,3 +510,7 @@ same spot where the first long trunk stopped, so something at that tile blocks
 pipes. New route: chain the cross pipes end-to-end along the other axis (the far
 end of the north pipe -> the end of the middle pipe -> the end of the south pipe).
 The south pipe already joins the pump's line.
+
+Apr 1960 ($8,374): the reroute worked partly. The middle cross pipe now joins the
+south pipe, which joins the pump, so two neighbourhoods are on the pump's network.
+The north-west pipe is still an island; I'll join it once I see water flowing.

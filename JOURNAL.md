@@ -1145,3 +1145,12 @@ maximum (+2,000). Crime rose to 867, so watch it.
 **Read:** the 9% tax was choking businesses, and cutting it is bringing them back. I'll
 keep 8% for two more game years and see whether shop demand turns positive before
 spending any of the thin treasury.
+
+**Oct 2018: slow climb.** Save AGENT041: **4,754** people (+81 in two years), funds
+**$1,905** (flat). Home demand is still at the maximum (+2,000). Shop demand slipped back
+to −613 and factory demand improved to −777.
+**Read:** people want to live here, so the limit is not desirability; it's that existing
+homes can't grow denser. The Water Supply map still shows the west of the city dry, and
+dry homes stay small. With about $400 above my $1,500 floor, the best use of money is
+extending pipes into the west, which is cheap per tile and on screen. Next: underground
+view to see where the western pipes stop.

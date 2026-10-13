@@ -167,3 +167,19 @@ def test_from_env_external(monkeypatch, tmp_path):
     monkeypatch.setenv("CONTROL_DIR", str(tmp_path / "ctl"))
     b = brain.from_env()
     assert isinstance(b, brain.ExternalBrain) and b.provider == "devin"
+
+
+def test_sc2_read_stats(tmp_path):
+    import struct
+
+    from agent import sc2
+
+    vals = [0] * 20
+    vals[sc2.MISC_YEAR_FOUNDED], vals[sc2.MISC_DAYS] = 1900, 10607
+    vals[sc2.MISC_FUNDS], vals[sc2.MISC_POPULATION] = 13740, 749
+    raw = struct.pack(">20i", *vals)
+    misc = bytes([len(raw)]) + raw
+    body = b"SCDH" + b"MISC" + struct.pack(">I", len(misc)) + misc
+    f = tmp_path / "X.SC2"
+    f.write_bytes(b"FORM" + struct.pack(">I", len(body)) + body)
+    assert sc2.read_stats(f) == {"date": "May 1935", "year": 1935, "funds": 13740, "population": 749}

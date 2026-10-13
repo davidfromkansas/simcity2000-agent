@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from . import actions, brain
+from . import actions, brain, sc2
 from .capture import Screen
 
 
@@ -68,6 +68,11 @@ def main() -> int:
                 save_name = actions.next_save_name(game_dir, save_prefix)
                 actions.save_city(save_name)
                 print(f"[agent] saved city as {save_name}.SC2", flush=True)
+                time.sleep(1)
+                stats = sc2.read_stats(game_dir / f"{save_name}.SC2")
+                history.append({"step": step, "action": {"type": "save"},
+                                "result": f"GAME FACTS from {save_name}.SC2 (trust these over the screen): {stats}"})
+                print(f"[agent] game facts: {json.dumps(stats)}", flush=True)
             except Exception as e:
                 print(f"[agent] save failed: {e}", file=sys.stderr)
         time.sleep(step_delay)

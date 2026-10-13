@@ -1026,3 +1026,11 @@ $3 a tile, so this is the cheapest growth fix available while money is tight. Pl
 three 8-tile trunks westward from the edge of the watered network (up-left, down-left,
 and from its south side), each starting on a watered pipe so it joins the network.
 Budget about $75.
+
+**Pump check, Sep 2008.** After seven game months, the three new pipe trunks (~$74)
+haven't spread the watered shading west at all. A query on a pump west of the fire
+station: **Powered: Yes, 22,320 gallons/month**. The pumps survived the 2002 blackout and
+are back on power, so the supply side is fine. The western pipes must not be joined to
+the pumps' network. Pipes only carry water as one connected system, and an island of
+pipes is as dry as no pipes. Next: in the underground view, trace the pipe run from the
+pump plateau westward, find the break, and bridge it with a short drag.

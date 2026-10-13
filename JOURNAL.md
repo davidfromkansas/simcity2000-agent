@@ -1567,3 +1567,8 @@ centre. The Power map looked yellow there, but at that scale I can't be sure tha
 itself touches the pump's power line, which runs about one tile south of it. So I'm adding a
 1-2 tile power line ($2-4) from that line into the zone's edge, the same cheap fix that brought
 the abandoned districts back. If it still doesn't build, the next thing to check is road access.
+
+**Power link, first try (Jul 2040).** My first 1-tile line went toward the pond. The game offered
+"Raised Wires" over the water ($120) and I declined. It cost $2. Zoomed in, the zone's southern
+tip sits exactly one tile above the pump's power line, a gap power can't cross. So I'm placing
+the second tile straight up from the line into the zone tip, well away from the water.

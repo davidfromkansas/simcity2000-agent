@@ -762,3 +762,12 @@ The first new pump checks out too: **Powered: Yes, 15,120 gallons/month**. Total
 pumping capacity is now about **63,000 gallons/month** (33,120 + 2 × 15,120), nearly
 double what it was, for $231. Next: inspect the pipe layer for gaps, then run the
 city and watch for the "Water Shortage" message to clear.
+
+**Underground view (Sep 1999): the real water problem is pipe coverage, not pumps.**
+Blue pipes and watered (blue-shaded) tiles only cover the middle of the city: a loop
+round the oil plant, a patch by the park, and the pump plateau. The big western and
+southern neighbourhoods, where most of the houses are, have **no pipes under them at
+all**, apart from one line up to the north block. Those homes can never grow past
+small houses. Next: run short pipe drags (≤8 tiles each, since longer ones stop
+early) along the western streets, each starting on the end of an existing pipe so
+the network stays joined.

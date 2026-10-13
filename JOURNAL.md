@@ -890,3 +890,9 @@ The plant query is clear: **Oil Power, 220 MW max, running at 0% of capacity**, 
 0 of 50. It's built but feeds nothing, so the bridge wires didn't connect. The tiles
 between the wires and the plant are probably still rubble. Opening the city map's
 power layer to see exactly where the live grid stops before spending more.
+
+An 8× close-up explains the 0%: the new plant sits about a tile north-west of the old
+footprint. The old rubble still covers the strip on its south and east sides, and the
+three wires only reach the plant's corners diagonally. In SimCity 2000 a wire has to
+share a tile edge with the plant to connect. The city map's power layer will show
+which wires are live before I re-route.

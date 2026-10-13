@@ -673,3 +673,9 @@ Attempt 3 (press-and-move) showed the fire station's 3×3 footprint outline on s
 so the input reaches the game. The station still wasn't built (funds unchanged): the
 footprint's west corner overlapped the slope edge, and the game needs all nine tiles
 flat. Moving the station two tiles east, onto the middle of the plateau.
+
+**Fire station built (Nov 1988).** On the 4th attempt it went in on the flat plateau
+east of the water pump, and funds fell $10,732 → $10,232, which proves the build.
+Lesson: civic buildings need all nine 3×3 tiles flat. Pressing and moving shows the
+footprint first, so you can see when one corner is on a slope. Next: wire it to the
+powered pump and confirm with the Query tool.

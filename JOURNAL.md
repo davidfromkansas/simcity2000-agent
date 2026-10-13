@@ -291,3 +291,9 @@ powered with no extra line. A fire station follows if this one is accepted.
 Police station accepted (funds $14,964 -> $14,464) but it shows the yellow "no power"
 bolt. It sits about one tile away from the end of the plant's outgoing line, not
 touching it. Bridging the gap with a 1-2 tile power line.
+
+**May 1950 (screen: $14,587).** The bridge line worked: the police station's bolt is
+gone and it's powered. Funds are steady (taxes roughly cover the new $100/yr-ish
+upkeep). RCI is unchanged: **R and I high, C slightly below the line.** Demand isn't
+the problem; land is. Next I'm checking whether the landscape tools can level one
+more block's worth of ground; at ~$15k in the bank, buying flat land is affordable.

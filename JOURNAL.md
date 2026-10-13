@@ -799,3 +799,9 @@ view shows the blue watered shading has grown only slightly around the park. The
 western blocks are still unshaded even though the new trunks are visible, so at least
 some trunks probably don't join the main. I'll check that after the power plant
 decision, which is more urgent: the oil plant is about to die.
+
+**Jan 2001 newspaper: "Time Running Out".** The Pause press didn't stop the game; it
+ran on from Jun 2000 to Jan 2001. The plant is now at the very end of its life.
+Approval 68%, and "Pollution Blows!" is back in Fred's Opinion. Replacing the plant is
+now the top priority, ahead of water. I'm also checking why Speed → Pause keeps
+failing, since every drift has cost the city years.

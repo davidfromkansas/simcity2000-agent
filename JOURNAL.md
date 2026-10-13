@@ -1672,3 +1672,11 @@ The land north of the ring starts to slope, so the zone landed as a few scattere
 either side of the new line rather than a neat square. The line crosses the ring road from the
 built pond patch, so those tiles should be powered. A smaller, cheaper test of whether the edge
 of the hills can take housing. Running two game years.
+
+**Warning: "Plant Nearing Death" (newspaper, Jan 2051).** The oil plant built in 2002 is near the
+end of its ~50-year life. Both earlier plant deaths (1951, 2002) blacked out the whole city and
+crashed population (4,642 → 1,054, and 4,586 → 344), so this now comes first. Constraint: an oil
+plant costs $6,600 and the treasury is about $1,370, and a bond's interest would wipe out the budget.
+Plan: (1) query the old plant to see what share of its output the city actually uses, (2) buy the
+cheapest capacity that covers that (wind turbines at $100 each, or a gas plant if it fits),
+(3) wire it into the grid *before* the old plant dies, so there's no blackout this time.

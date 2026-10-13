@@ -143,6 +143,16 @@ BUTTONS: dict[str, Point] = {
     "power_plant.oil": (440, 205),
     "power_plant.gas": (200, 300),
     "power_plant.cancel": (459, 191),
+    # Later in the game (wind, nuclear, solar invented) the chooser becomes a 3x3
+    # grid and the early positions above no longer match: read it before picking.
+    "power_plant_late.coal": (204, 155),
+    "power_plant_late.hydro": (320, 155),
+    "power_plant_late.oil": (440, 155),
+    "power_plant_late.gas": (204, 250),
+    "power_plant_late.nuclear": (320, 250),
+    "power_plant_late.wind": (440, 250),
+    "power_plant_late.solar": (204, 345),
+    "power_plant_late.cancel": (459, 91),
     # Budget window
     "budget.done": (458, 123),
     # City Ordinances window (budget.ordinances opens it): checkbox centres.

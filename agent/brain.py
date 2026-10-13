@@ -33,6 +33,9 @@ PRIORITIES, in order, every turn:
    every coordinate.
    speed.pause can TOGGLE: read the status bar first and only press it when it
    does not already say *PAUSED*.
+   The Select Powerplant chooser changes layout once new plants are invented: if it
+   shows wind/nuclear/solar, use the power_plant_late.* buttons, and check the status
+   bar names the plant you meant (e.g. "Oil Power $6,600") before placing it.
 2. If you are on the title/main menu, start a new city (button main.start_new_city),
    then in the New City dialog pick new_city.easy and press new_city.done.
 3. POWER: a city needs a power plant before anything grows. Early on build one coal

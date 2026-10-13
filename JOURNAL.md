@@ -1621,3 +1621,11 @@ do use it and the patch is probably joined to the network. The building beside i
 shop demand is negative (−1,335 in the Mar 2043 save), not because services are missing. That save:
 4,085 people, $1,193, crime 778 (down from 1,057). Next I'm querying tiles inside the empty patch to
 read their Powered/Watered lines directly.
+
+**Power through the middle (Feb 2045).** Querying empty zone tiles only gives "Clear terrain, Zoned:
+Residential high/low-density" and land value ($159-166k), with no power line, so the query tool
+can't tell me whether empty zones get power. The one difference I can see from the east block
+(which filled in 2 years) is that the block command ran a power line through its middle, while this
+patch touches the grid only at one corner tip. In SC2000, empty zone tiles may not carry power
+onward the way built ones do. So, for about $6, I'm running a short line from the tip up through
+the patch interior, away from the pond, then giving it two game years.

@@ -1351,3 +1351,12 @@ also shows a red patch on the city's west edge: existing buildings with no power
 also cut off by the fire. Reconnecting those is the cheapest win, since the buildings are
 already there. So power is the next fix: reconnect the west edge first, then run a short line
 into the factory patch along tiles that aren't rubble (power lines can't be built on rubble).
+
+**The north-west district is abandoned for lack of power (Jun 2028).** A query of one dark lot
+reads "Abandoned building, Zoned: Residential low-density, Powered: No, Watered: No". The whole
+district north and west of the burned centre (dozens of lots with yellow lightning bolts) is
+homes that people walked out of when the fire cut the power: zones carry power only to the
+zones touching them, and the burned lots between them and the water pumps are now rubble. This
+is the biggest growth lever I've found. Home demand is +1,984 and these lots already have
+roads and zoning, so reconnecting power should refill them at almost no cost. Fix: a short
+power line from the powered pump, across the road, into the nearest abandoned lot.

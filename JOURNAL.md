@@ -1680,3 +1680,10 @@ plant costs $6,600 and the treasury is about $1,370, and a bond's interest would
 Plan: (1) query the old plant to see what share of its output the city actually uses, (2) buy the
 cheapest capacity that covers that (wind turbines at $100 each, or a gas plant if it fits),
 (3) wire it into the grid *before* the old plant dies, so there's no blackout this time.
+
+**Sizing the replacement (Apr 2051, paused, $1,451).** From the 2002 plant chooser: coal 200 MW
+$4,000, oil 220 MW $6,600, gas 50 MW $2,000, solar 50 MW $1,300, hydro 20 MW $400, wind 4 MW $100.
+The only big plant I can afford is **solar (50 MW, $1,300)**, which would leave about $150. Before
+committing, I'm querying the old oil plant: if the city uses under about 45 MW (about 20% of its 220 MW),
+solar covers it with no pollution. If it uses more, I'll need solar plus wind turbines, or I'll have to
+let money build up until the plant dies, then buy coal. Zooming out to find the plant.

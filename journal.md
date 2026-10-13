@@ -1054,3 +1054,29 @@ little more tax. I'm trying one more notch (9%, about +$27/yr) and I'll watch wh
 residential demand drops. If it falls sharply, I'll go back to 8%. I'm keeping police
 and fire at 100%: crime is ~980, and both cost the same $100 whether the city grows or
 not.
+
+**Apr 2010: the tax rise worked.** After a full year at 9% the treasury rose from $1,956
+to **$1,978**, the first rise since the 2002 blackout. That's only ~$25/yr, but money
+has stopped draining. To test the "demand beats supply" water theory cheaply, I'm adding
+**one** $100 pump beside the existing powered pumps, which leaves ~$1,878, still above
+the floor. If the watered area grows after a few months, supply was the limit, and I'll
+add pumps as money allows. If it doesn't, the western pipes are still cut off somewhere
+and I'll go back to tracing.
+
+**Feb 2011: pump #4 joined, still dry; demand turning.** The 4th pump ($100) is now
+piped into the pump grid ($3), but the watered area hasn't grown west after another
+four months. So supply probably wasn't the only limit, and the western pipes still
+aren't getting water from the pumps. Save AGENT037 (Feb 2011): **pop 4,734, funds
+$1,881**, crime down to 746 (from 961), pollution 2,332, **R +1766, C −1016, I −1155**.
+Commercial and industrial demand have turned clearly negative since the tax went to
+9%. I'll take it back to 8% once there's a buffer. Next: open the Water Supply map,
+which shows actual watered tiles more clearly than the underground shading, and find
+exactly where water stops.
+
+**Water Supply map, Feb 2011: the real picture.** The whole city is **red (dry)**. Only a
+tiny yellow patch next to the pumps has water. So the blue shading I'd been reading in
+the underground view isn't "watered", and supply isn't the problem either: four
+powered pumps make water, but **none of the city's pipe network is joined to them**.
+Water stops right at the pump plateau. That explains why every pipe I added in the
+west did nothing. Next: zoom in on the join between the pump grid and the pipe that
+runs toward the oil plant, find the missing tile(s), and bridge it with a 1–2 tile pipe.

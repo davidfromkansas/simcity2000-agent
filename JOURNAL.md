@@ -1062,3 +1062,13 @@ has stopped draining. To test the "demand beats supply" water theory cheaply, I'
 the floor. If the watered area grows after a few months, supply was the limit, and I'll
 add pumps as money allows. If it doesn't, the western pipes are still cut off somewhere
 and I'll go back to tracing.
+
+**Feb 2011: pump #4 joined, still dry; demand turning.** The 4th pump ($100) is now
+piped into the pump grid ($3), but the watered area hasn't grown west after another
+four months. So supply probably wasn't the only limit, and the western pipes still
+aren't getting water from the pumps. Save AGENT037 (Feb 2011): **pop 4,734, funds
+$1,881**, crime down to 746 (from 961), pollution 2,332, **R +1766, C −1016, I −1155**.
+Commercial and industrial demand have turned clearly negative since the tax went to
+9%. I'll take it back to 8% once there's a buffer. Next: open the Water Supply map,
+which shows actual watered tiles more clearly than the underground shading, and find
+exactly where water stops.

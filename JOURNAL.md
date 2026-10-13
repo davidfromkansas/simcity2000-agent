@@ -1465,3 +1465,9 @@ rebuild added jobs but no residents. Demand for homes has been maxed for decades
 limit is the homes themselves: earlier queries showed houses with "Watered: No", and
 unwatered homes in SC2000 stay low-density. Next: open the overview map's Water layer to
 see which neighbourhoods are dry before spending anything.
+
+**Water map (Mar 2036).** The overview map's Water Supply layer shows most of the city yellow
+(watered). The main dry (red) area is the eastern home block I built after the fire, plus a
+thin strip on the far west edge. So the newest homes have no water. Since homes without water
+stay small, piping water into the east block is the next growth move. Pipes cost about $3 a tile,
+and the block sits right next to the watered centre, so it should only need a short run.

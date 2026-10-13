@@ -746,3 +746,9 @@ Fred's Opinion still says "Traffic Bites!". A closer look shows the blue "pond" 
 the middle of the city is the pool of a big park, not a lake, so a pump beside it
 would get no bonus. Plan: add more pumps on the flat plateau by the existing pump
 and fire station (both powered), then join them to the pipe network.
+
+Pump siting: the strip of flat tiles between the existing pump (424,304) and the
+fire station, just south of the power line that now links them, is flat and empty.
+New pumps there sit next to a powered line, and I'll join them to the old pump with
+a short pipe drag. Each pump costs $100, so two more pumps would roughly triple the
+water supply for $200.

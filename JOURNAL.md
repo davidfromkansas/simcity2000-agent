@@ -710,3 +710,8 @@ no pollution. They've sat empty for decades because industrial demand is negativ
 mayor would make: **re-zone that empty industrial land as residential** (plus some
 commercial, now that C demand is +604). It's on screen, already flat, and needs no
 demolition of buildings, only de-zoning empty tiles.
+
+Re-zoning, step 1: the dotted strips sit on stepped terraces. Only the strip right
+beside the north neighbourhood is within the 3-tile road reach that zones need, so I'm
+re-zoning that one first (light residential over the empty industrial tiles). The
+higher strips would also need a road before they could grow.

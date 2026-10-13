@@ -1588,3 +1588,9 @@ never develops. Fix: a short road from the connector's end onto the city road.
 ($1,198 → $1,188), so the game did build new road tiles; they're mostly hidden behind the tower.
 Running the game: if the patch now starts building, a missing road link was the reason it sat
 empty for three years.
+
+**Mar 2041 save.** 4,105 people (3,834 in Aug 2039), $1,163, crime 1,057, pollution 2,280.
+Demand: homes +2,000, shops −836, factories −574. The older neighbourhoods have bounced back,
+but the dense patch was still empty in Dec 2042 even after the road link, and money was flat
+over 2042 ($1,188). Opening the overview map's road layer to check whether the new ring really
+joins the city's roads.

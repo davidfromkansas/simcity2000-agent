@@ -1535,3 +1535,9 @@ pond: $100 ($1,406 → $1,306). Its east side reached the water, so the game off
 bridge ($125 or $250). I picked None, so no bridge was built. Next I'm checking whether the
 dense zone landed inside the ring, and the ring isn't joined to the city's roads yet, so it
 needs a short connector road, or new residents would have no way to reach jobs.
+
+**The block was cut short.** Zoomed in, only the two north edges of the road ring were built
+(about 10 tiles, $100). The bridge dialog interrupted the rest of the command, so no zone and
+no power line were placed. Lesson: keep block commands well away from water. Finishing it by hand:
+a small dense-residential patch just under the new roads (next to the pump's power line and
+pipe), plus one short road joining it to the city's road network.

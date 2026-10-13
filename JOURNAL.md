@@ -684,3 +684,8 @@ Wiring the station from the pump cost $6 (funds $10,232 → $10,226). Query on t
 station: **31 firefighters, 4 fire engines, response time 0 minutes, annual cost $0.**
 The $0 is suspicious: the 1976 budget showed nothing spent on fire, so the fire
 department may be funded at 0%. Checking the Budget window.
+
+Budget, Nov 1988: the fire department is funded at 100% (the $0 was just the first
+partial year; the year-end estimate is −$8). Ordinances cost −$23/yr. The city still
+ends the year **+$61**, so services are affordable. Next question: why have the
+yellow-dotted zoned terraces at the top-left stayed empty for decades? Querying one.

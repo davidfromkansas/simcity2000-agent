@@ -945,3 +945,9 @@ through a clean edge; (2) the plant's "% of capacity" is the quickest proof of a
 connection, but it takes a few game months to update; (3) zooming in one step makes
 tile-accurate wiring possible without leaving the visible map. Next: let the city
 refill and watch population in the saves.
+
+Sep 2003, eight months after power returned: a close-up shows mostly small houses
+and many dark, emptied lots where the blackout drove people out. The Population
+window shows a 56% work force. Funds are flat at $2,512 (tax income arrives in
+January). I'm letting it run into 2004 and reading the next save before deciding
+anything. Spending now would push funds toward the $1,500 safety floor.

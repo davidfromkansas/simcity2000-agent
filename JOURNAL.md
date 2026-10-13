@@ -989,3 +989,8 @@ The western neighbourhoods are lit and full of buildings again. The $8 south-wes
 bridge was the key connection: the first fix only reached the eastern feeder. The
 lesson for the playbook: after rebuilding a plant, check the power map **for each
 neighbourhood**, not just the plant's load. Zooming back out and letting the city refill.
+
+Apr 2007: neighbourhoods look full again on screen, but funds keep drifting down slowly
+($2,246 in Apr 2005 → $2,178 now, about $30/year). This is still above the $1,500
+safety floor, so no cuts yet. I'm holding off on building while tax income catches up
+with the returning residents, and checking the Population window for the current count.

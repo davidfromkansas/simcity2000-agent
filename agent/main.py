@@ -58,18 +58,27 @@ class SaveManager:
         self.dir.mkdir(parents=True, exist_ok=True)
         self.last = time.time()
 
+    def _newest_since(self, t: float):
+        files = [p for p in GAME_DIR.glob("*.[Ss][Cc]2") if p.stat().st_mtime >= t - 1]
+        return max(files, key=lambda p: p.stat().st_mtime) if files else None
+
     def save(self) -> str | None:
         before = time.time()
         inp.key(toolmap.HOTKEYS["save_city"])
         time.sleep(3)
-        inp.key("Return")  # dismiss "Game Saved As" box if it is still up
+        inp.key("Return")  # dismiss a "Save City As" / confirmation box if one is up
+        newest = self._newest_since(before)
+        if newest is None:  # hotkey can be swallowed mid-drag/popup; fall back to the menu
+            menu, item = toolmap.MENU_ITEMS["file.save_city"]
+            inp.press_and_pick(*toolmap.MENUS[menu], *item)
+            time.sleep(3)
+            inp.key("Return")
+            newest = self._newest_since(before)
         self.last = time.time()
-        newest = sorted((p for p in GAME_DIR.glob("*.[Ss][Cc]2") if p.stat().st_mtime >= before - 1),
-                        key=lambda p: p.stat().st_mtime)
-        if not newest:
+        if newest is None:
             return None
-        dst = self.dir / f"{dt.datetime.now(dt.timezone.utc):%Y%m%d-%H%M%S}_{newest[-1].name}"
-        shutil.copy2(newest[-1], dst)
+        dst = self.dir / f"{dt.datetime.now(dt.timezone.utc):%Y%m%d-%H%M%S}_{newest.name}"
+        shutil.copy2(newest, dst)
         return str(dst.relative_to(RUNS))
 
 

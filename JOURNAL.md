@@ -613,3 +613,13 @@ View restored (May 1976): the city is fully back on screen. The Centering tool s
 to tiles, so the view now sits two tiles from the original: the pump is at (424,304)
 instead of (407,296), so every old coordinate is **+16, +8**. I'm keeping this view
 and using the new offsets rather than nudging it again.
+
+**Budget review (May 1976):** property tax 7%. The year-end estimate is only about
+$212 in tax income, $100 for police and $18 for transit. The city spends nothing on
+fire, health or education, and has **no city ordinances**. The treasury ($9,893) is
+mostly old savings, not ongoing profit, so anything with yearly upkeep has to be
+chosen carefully. Checking the ordinance list for pollution measures.
+
+Also noticed: the yellow-dotted terraces at the top-left of the view are land zoned
+decades ago that never developed. That's existing, on-screen land the city could
+grow into once whatever's blocking it is fixed (likely power, water or road access).

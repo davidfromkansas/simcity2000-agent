@@ -1373,3 +1373,9 @@ mayor: after a disaster, check the Power map for red, because rubble breaks the
 zone-to-zone power chain, and whole neighbourhoods quietly empty out even though they still
 have roads and zoning. Next I'm looking for the other dark lots with bolts further south-west
 and bridging those the same way.
+
+**Second bridge: the upper south-west district rebuilt (Feb 2029).** A short line from a newly
+powered house into the dark lots south-west of the rubble brought them back too: apartments
+and houses appeared within 4 months. Money $1,286 → $1,278 (line tiles plus 4 months' drain).
+Baseline for comparison: the Jun 2028 save, taken before either bridge, shows population
+3,243. One row of dark lots is left along the bottom-left; bridging it next.

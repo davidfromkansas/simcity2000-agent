@@ -1559,3 +1559,21 @@ map: the area south-west of the pond, where the new patch is, shows yellow (powe
 the main grid. So power isn't the blocker. Dense zones in SC2000 often take a while to attract
 their first developer, so I'm giving it more time rather than spending money I don't have.
 Money is recovering slowly (+$32 since the patch).
+
+**Aug 2039 save: population slipping.** 3,834 people (4,075 in Jun 2038), $1,108, crime 1,009,
+pollution 2,205. Demand: homes +2,000, shops −993, factories −986. The waterfront dense patch was
+still empty in Jul 2040, 20 months after zoning, although a new office tower went up in the
+centre. The Power map looked yellow there, but at that scale I can't be sure that the patch
+itself touches the pump's power line, which runs about one tile south of it. So I'm adding a
+1-2 tile power line ($2-4) from that line into the zone's edge, the same cheap fix that brought
+the abandoned districts back. If it still doesn't build, the next thing to check is road access.
+
+**Power link, first try (Jul 2040).** My first 1-tile line went toward the pond. The game offered
+"Raised Wires" over the water ($120) and I declined. It cost $2. Zoomed in, the zone's southern
+tip sits exactly one tile above the pump's power line, a gap power can't cross. So I'm placing
+the second tile straight up from the line into the zone tip, well away from the water.
+
+**Power link landed (Mar 2041, $1,163).** The second short line runs from the pump line straight
+up into the southern tip of the dense patch, so the zone now touches the grid directly. Money is
+still recovering (+$55 since the spending freeze). Running the game to see whether the patch
+starts building. If it is still empty after about two years, road access is the next suspect.

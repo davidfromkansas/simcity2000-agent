@@ -1548,3 +1548,8 @@ That's more than I expected: dense zoning and the diagonal road cost more per ti
 zoning. Money is now well below the $1,500 floor, so **no more spending** until the treasury
 recovers. Including the cut-short ring, this neighbourhood cost $330 in total. Checking that the
 new zone gets power from the pump line next to it, then letting the game run.
+
+**Query check (Nov 2038).** A tile in the new patch reads "Zoned: Residential high-density,
+Land value $174,000/acre". That's the highest land value I've seen in this city (the cleared
+centre was $59,000). Waterfront land by the pond is the most valuable housing land I have, so
+the dense zone went to the right place. Running the game to see whether apartments go up.

@@ -1279,3 +1279,11 @@ Decisions:
 Commercial low-density, 150 ft, land value $1,000". Shop demand is negative, so these lots will
 sit as rubble forever. Homes are what people want, so I'm testing whether rezoning a small
 rubble patch next to a road as light residential works, and what it costs.
+
+**Found a cheap growth lever: empty shop lots.** The $10 test drag turned blue-dotted tiles
+(zoned commercial but never built) into green-dotted residential. Re-zoning over an old zone
+works directly, with no bulldozing first. The burned centre has many of these empty commercial
+lots beside existing roads. They've sat empty because shop demand is negative, while homes are
+at maximum demand. Re-zoning them as homes costs a few dollars per tile, with roads and power
+already there: the cheapest new housing in the city. I'm doing it in small strips, keeping
+money above $1,500.

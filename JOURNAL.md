@@ -646,3 +646,10 @@ of the budget. Running the city again to see whether pollution and approval resp
 Jul 1979: funds have risen to $10,111 with the ordinances active, so they cost almost
 nothing. No fires visible. Letting the city run a few more years before reading the
 next save, to see whether pollution drops.
+
+**May 1984 newspaper: the ordinances are working.** Mayor approval is **64%**, up from
+about 51% in 1976. Fred's Opinion column now complains "Traffic Bites!" where it used
+to say "Pollution Blows!", so pollution is no longer residents' main complaint.
+The status bar still reads "Fire Protection Demanded"; the volunteer fire ordinance
+isn't enough, and the city needs a real fire station. Solar power has been invented.
+Next: close the paper, read the next save, then site a fire station and look at traffic.

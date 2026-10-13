@@ -1494,3 +1494,7 @@ pump the most, and the pond is next to the city. Moving the view there with the 
 south-west tip, the side nearest the city: $100 ($1,486 → $1,386). A pump only works with
 power, and its water only reaches the city through pipes, so next I'll run a short power line
 and a pipe from the city edge to it. That should cost about $30–40 more.
+
+**Powering the pump (Aug 2036).** Ran a power line from the tall building at the city edge,
+through the trees, toward the new pump: $16 ($1,386 → $1,370). It stopped about one tile short
+of the pump, so I'm adding one more tile into it.

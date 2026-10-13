@@ -1192,3 +1192,16 @@ was wrong, and so were two of my notes above:
 **Lesson:** red/yellow flicker on the map is fire. Judge water only from the Water
 Supply map, and check for fire before running time. **Now:** put out the fires before
 building or scrolling anywhere new.
+
+**Oct 2018: fighting the fires.** Four fire clusters: west by the road and homes,
+centre, south-centre and south. Building a second fire station ($500) would push funds
+below my floor, so I'm using the free **Emergency → Dispatch Firefighters** tool: a click
+sends the existing fire crew to a spot. The biggest fire, next to homes, goes first.
+I hold-and-slid the Emergency button to pick "Dispatch Firefighters", the same input a
+player uses. I also added `dispatch_fire` / `dispatch_police` / `dispatch_military` tool
+names to the toolmap for future runs.
+
+**Dispatch result.** Clicking a burning tile was refused ("Sorry, you can't send
+firetrucks here"). Clicking the road tile right beside the west fire worked: a crew icon
+appeared there. Lesson: fire crews must be sent to a road next to the fire, not onto the
+flames. After 8 seconds the date hadn't changed, so I'm running longer before judging.

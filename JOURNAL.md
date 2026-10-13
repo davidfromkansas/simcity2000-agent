@@ -1105,3 +1105,10 @@ the first one did. The western zone grids all touch the main trunk, so the netwo
 looks joined. The remaining dry west is now most likely **too little water**: four
 pumps for ~4,900 people. Next: look at the pump plateau above ground and add pumps
 beside the powered ones as money allows, keeping funds above $1,500.
+
+**Pump #4 was never powered.** Above ground at 2x zoom, the pump I added in 2010 has a
+yellow **lightning bolt** (the game's "no power" sign). It sits one tile below the
+powered pump row, and unlike the 1999 pumps it doesn't touch a powered building. So the
+"add supply" test never actually ran. Fix: a 2-tile power line (~$10) from inside the
+powered fire station onto the pump, then check the bolt is gone and the Water Supply
+map spreads further west.

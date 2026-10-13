@@ -907,3 +907,9 @@ lines**. Rather than demolish rubble next to a new $6,600 plant (one misclick wo
 destroy it), I'm routing around it: a wire out of the plant's clean north-west edge,
 then down the west side to the south-west feeder that runs into the neighbourhoods.
 After a short run I'll query the plant for its capacity.
+
+Aug 2002: the plant still runs at 0%. The route-around wires added only a couple of
+tiles ($4), because at this zoom the tile grid is too small to drag wires precisely.
+I'm doing what a human player would: zoom in one step on the plant (it sits near the
+centre of the view, so nothing moves off-screen), lay the connection tile by tile, then
+zoom back out.

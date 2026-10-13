@@ -274,3 +274,10 @@ line into the plant did connect. Lesson: on the 2x full view, terraces under
 grassland are hard to see; the 4x crop shows them as darker brown bands. Check a 4x
 crop of the whole block footprint before building. Running ~2 years to see what the
 patches yield.
+
+**Aug 1948, save facts: population 4,434 (down from 4,660), funds $14,793.** The
+first drop, despite a new residential block filling in. Another newspaper since then:
+approval 69%, but the headlines are about pollution and dumping. My read: the city
+is all factories, a coal plant and homes packed side by side, with no services, so
+some residents are leaving. Adding more zones alone has stopped working. Next moves
+target *quality*, not quantity: a police and a fire station first, then water.

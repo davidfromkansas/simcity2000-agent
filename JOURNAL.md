@@ -118,3 +118,11 @@ pixels, so all coordinates are re-measured from a fresh screenshot before buildi
 ring road and its middle power line continues straight into it - no extra wiring,
 no new connection to get wrong. Industry next to homes adds some pollution, but
 early on jobs within a short commute matter more than clean air.
+
+**May 1916 - it works.** Two game years after the industrial block went in: factories
+on block 2 and houses on block 1, the first real growth of any run. All three RCI bars
+now point up. Funds $14,796. This confirms the jobs-first diagnosis.
+**Next: commercial block** chained south-east of the industrial block (shares its road
+and power line). Picked that spot because the other neighbours of the existing blocks
+are the power plant (north-east) or cliff bands (south-west), and `block` needs level
+ground. Commercial now because the blue C bar is up and shops also add jobs.

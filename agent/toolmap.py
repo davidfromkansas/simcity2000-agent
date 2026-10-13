@@ -16,7 +16,6 @@ from typing import Any
 Point = tuple[int, int]
 
 SCREEN = (640, 480)
-MAP_VIEW = (90, 128, 550, 382)  # x1, y1, x2, y2 of the city window at default layout
 
 # ---- Toolbar (left palette) -------------------------------------------------
 # Parent buttons. Rows are 24-25 px apart, columns 22-23 px apart.

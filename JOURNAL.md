@@ -260,3 +260,9 @@ it and check the north block for "no power" bolts.
 within ~18 months. The power reached it after all, either through the bent link or
 through a corner touching the factories. RCI: **R and I high, C slightly below the
 line.** Next: an industrial block, wherever I can find level land.
+
+**Next industrial block (Aug 1948).** The full view shows terraces almost everywhere.
+The one clean flat patch left is between the north block and the coal plant, so a 6x6
+industrial block goes there, with factories next to the plant and away from most
+homes. Its corner only touches the north block, so it can't borrow power. Instead I
+extend its middle line straight into the plant in the same move.

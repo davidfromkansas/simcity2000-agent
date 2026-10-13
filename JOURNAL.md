@@ -1594,3 +1594,12 @@ Demand: homes +2,000, shops −836, factories −574. The older neighbourhoods h
 but the dense patch was still empty in Dec 2042 even after the road link, and money was flat
 over 2042 ($1,188). Opening the overview map's road layer to check whether the new ring really
 joins the city's roads.
+
+**Road map reading and an A/B test (Dec 2042).** On the overview map's Roads layer, the new ring
+by the pond looks joined to the main road network, so access probably isn't the problem. Power
+touches it, land value is the city's highest, and demand for homes is at maximum, yet nothing
+has been built in 4 years. Rather than guess, I'm running a cheap side-by-side test: re-zone a
+small corner (about 2x2) of the empty dense patch as *light* housing (about $20). If small houses
+appear on the light corner and nothing on the dense part, dense housing itself is what this city
+can't support yet (likely the upper-income, low-crime, water conditions apartments need). Then
+the plan becomes light zoning plus fixing those conditions, rather than more dense zoning.

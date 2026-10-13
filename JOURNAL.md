@@ -487,3 +487,8 @@ Lesson: zoom in on the building I'm wiring *before* drawing the line.
 
 Oct 1956 ($8,259): after the re-drawn line, the wires around the pump and police
 station no longer show any "unpowered" marks, so the pump should finally be running.
+
+**Oct 1956 save (AGENT019):** population **4,783 (new high)**, funds $8,259, R demand
++2000, C +188, I -332, pollution 5,293, crime 1,137. Residents still want homes. Jobs
+are now satisfied (I below the line), so the next zoning should be residential and
+commercial, not factories.

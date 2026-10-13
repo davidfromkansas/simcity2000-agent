@@ -1342,3 +1342,12 @@ still bare yellow dots, even though factory demand is maxed (+2,000). Money is $
 2026 save, flat. My guess is that the patch has no power: zones pass electricity to the zones
 beside them, but rubble doesn't, so a patch surrounded by rubble may be cut off from the grid.
 Querying a tile to check.
+
+**Power map explains the stall (Jun 2028).** On the overview map's Power layer (yellow =
+powered, red = not), the burned centre, including my new factory patch, has no power at all.
+Zones pass power only to zones touching them, and the fire turned the links between them into
+rubble, so the patch is cut off. That's why maxed factory demand built nothing there. The map
+also shows a red patch on the city's west edge: existing buildings with no power, probably
+also cut off by the fire. Reconnecting those is the cheapest win, since the buildings are
+already there. So power is the next fix: reconnect the west edge first, then run a short line
+into the factory patch along tiles that aren't rubble (power lines can't be built on rubble).

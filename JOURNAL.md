@@ -1398,3 +1398,10 @@ reaches it. Next: check the Power map for any other dark areas.
 shows the whole city powered, with no red left. The brown patches inside the cluster are
 plain rubble with no buildings, not unpowered zones. Next: raise police funding back toward
 85% to bring crime down (1,041), since money is rising again.
+
+**Budget back in the black (Apr 2031).** Police is back up to 85% (checked on screen). With
+the returning residents, property tax is now $233/yr (it was $158 in 2026), so even after the
+police increase the 2031 estimate is **+$45/yr** (treasury $1,374 → $1,419 by year end). Fire
+stays at 70% for now. The city is earning money again for the first time since the fire, so I
+can start reinvesting: first let the burned centre rebuild with shop demand at maximum, then
+put the surplus into water and new home blocks.

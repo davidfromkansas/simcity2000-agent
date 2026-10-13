@@ -923,3 +923,16 @@ connection with no rubble in the way.
 The north-east wires were built ($10, funds $2,579 in Sep 2002), but the plant query
 still reads 0% of capacity. That figure may refresh only slowly, so I'm checking the
 city map's power layer instead, which shows directly whether zones get power.
+
+**Blackout is collapsing the city.** Native saves during the outage:
+
+| Save | Date | Population | Funds | C demand | Pollution |
+|---|---|---:|---:|---:|---:|
+| AGENT028 | Jan 2002 | 4,586 | $9,207 | −365 | 2,234 |
+| AGENT029 | Mar 2002 | 2,143 | $2,595 | −300 | 2,057 |
+| AGENT030 | Aug 2002 | 947 | $2,589 | +545 | 1,354 |
+| AGENT031 | Sep 2002 | 648 | $2,579 | +946 | 1,262 |
+
+Same pattern as 1951: without power, buildings empty out within months. The new plant
+is paid for, but until it's tied into the grid nothing else matters. Every other plan
+is on hold until the plant shows more than 0% load.

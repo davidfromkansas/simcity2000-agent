@@ -1200,3 +1200,8 @@ sends the existing fire crew to a spot. The biggest fire, next to homes, goes fi
 I hold-and-slid the Emergency button to pick "Dispatch Firefighters", the same input a
 player uses. I also added `dispatch_fire` / `dispatch_police` / `dispatch_military` tool
 names to the toolmap for future runs.
+
+**Dispatch result.** Clicking a burning tile was refused ("Sorry, you can't send
+firetrucks here"). Clicking the road tile right beside the west fire worked: a crew icon
+appeared there. Lesson: fire crews must be sent to a road next to the fire, not onto the
+flames. After 8 seconds the date hadn't changed, so I'm running longer before judging.

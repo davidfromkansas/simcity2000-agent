@@ -478,3 +478,9 @@ the yellow "unpowered" marks. The pump and police station were linked to the *ol
 coal plant's outgoing line, which died with the plant. An unpowered pump pumps
 nothing, so the whole city stayed dry. Fix: a direct line from the oil plant's east
 edge to the pump.
+
+Jun 1955 ($8,166): my plant-to-pump line **missed**. It still shows unpowered marks
+because it doesn't touch the plant, and a zoomed view shows the pump is actually at
+about (406,295), south-east of the police station, not where I clicked. Re-drawing
+along one tile axis, from the tile against the plant's south-east edge to the pump.
+Lesson: zoom in on the building I'm wiring *before* drawing the line.

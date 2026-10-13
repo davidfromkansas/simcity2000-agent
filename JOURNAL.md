@@ -982,3 +982,10 @@ Second try at the south-west bridge worked. Dragging pole-to-pole, from a pole o
 stub to a pole on the western feeder, cost $8 (funds $2,254 → $2,246), and the
 close-up shows new poles linking the two lines. (The first try likely missed both
 lines, so nothing was built.) Letting a few months pass before checking the plant's load.
+
+**Recovery is underway.** Save AGENT033 (Apr 2005): **population 2,479** (from 344 in
+Oct 2004), funds $2,246, workforce 65%, EQ 79, demand R +2000 / C +1512 / I +1449.
+The western neighbourhoods are lit and full of buildings again. The $8 south-west
+bridge was the key connection: the first fix only reached the eastern feeder. The
+lesson for the playbook: after rebuilding a plant, check the power map **for each
+neighbourhood**, not just the plant's load. Zooming back out and letting the city refill.

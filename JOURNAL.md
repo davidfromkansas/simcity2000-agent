@@ -467,3 +467,8 @@ power brought nearly all of it back within two years. So the 1948-1950 "plateau"
 was partly the old plant failing, not only a land shortage. Mayor's lesson: watch
 infrastructure age, not just zoning, and never let the treasury sink below the cost
 of replacing the plant.
+
+**Sep 1953 save:** population 4,449, funds $8,023, R demand +2000, C -28, I +693,
+pollution 5,099 (down from 6,333 with coal; the oil plant is cleaner, as hoped).
+The water map is **still red across the whole city**: the single land pump plus one
+pipe trunk isn't watering anything. Inspecting the underground view next.

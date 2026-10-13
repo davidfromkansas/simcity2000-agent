@@ -86,3 +86,11 @@ Plan for the next blocks: residential first because homes are where the populati
 number comes from, then one industrial block (jobs; the 1919 newspaper in run 2
 complained about unemployment), then commercial once there are enough people for
 shops - aiming at roughly 2 R : 1 C : 1 I.
+
+**Feb 1904, save facts: population 0, funds $15,380.** Four years passed with no
+houses at all. The block's middle power line still shows the lightning "no power"
+marks, so the short connector from the plant missed: it ended on the ring road rather
+than in the zone. This is the same failure as runs 1 and 2 - the plant-to-city link is
+the single most fragile step - so I redrew it as one straight line along a tile axis,
+starting on the tile beside the plant's side edge and ending on the block's middle
+line, so it can't stop short.

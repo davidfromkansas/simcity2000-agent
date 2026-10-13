@@ -1608,3 +1608,24 @@ the plan becomes light zoning plus fixing those conditions, rather than more den
 housing cost $30 ($1,188 → $1,158). It shows as a paler green patch next to the dense dots.
 Three months later neither part has buildings yet, which is too soon to judge. Taxes brought
 money back to $1,193. I'll give the test about two game years before deciding.
+
+**A/B result (Feb 2045, $1,257).** After 20 months, *both* the light corner and the dense part
+of the pond patch are still empty. So density isn't the problem. Something both share is
+stopping development, and the most likely cause is that the patch can't actually reach the
+city by road. Meanwhile the older city keeps filling in and money is rising again (+$64).
+Next: query the road tiles where the connector meets the city road, one by one, to find the gap.
+
+**Junction queries (Feb 2045).** The connector tile reads "Road, Traffic: 1 cars/minute", so cars
+do use it and the patch is probably joined to the network. The building beside it is an
+"Abandoned building, Commercial low-density, Powered: Yes, Watered: Yes". It's abandoned because
+shop demand is negative (−1,335 in the Mar 2043 save), not because services are missing. That save:
+4,085 people, $1,193, crime 778 (down from 1,057). Next I'm querying tiles inside the empty patch to
+read their Powered/Watered lines directly.
+
+**Power through the middle (Feb 2045).** Querying empty zone tiles only gives "Clear terrain, Zoned:
+Residential high/low-density" and land value ($159-166k), with no power line, so the query tool
+can't tell me whether empty zones get power. The one difference I can see from the east block
+(which filled in 2 years) is that the block command ran a power line through its middle, while this
+patch touches the grid only at one corner tip. In SC2000, empty zone tiles may not carry power
+onward the way built ones do. So, for about $6, I'm running a short line from the tip up through
+the patch interior, away from the pond, then giving it two game years.

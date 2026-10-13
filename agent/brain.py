@@ -72,6 +72,8 @@ one feeder is joined: open the power map and check every neighbourhood is powere
    road, or it never develops: keep zone strips 2-3 tiles deep on each side of a road.
    Freshly zoned land only shows as faint coloured dots - check the funds drop instead. Add water (water_pump +
    pipes) once the city has a few hundred people.
+  Judge water only from the Water Supply map (red = dry), not the underground blue shading.
+  A cyan end-cap on a pipe marks an unjoined end; a single missing tile can cut off the whole network.
    If population stalls while R demand stays maxed, act like a mayor before building:
    query empty dotted zones - empty land zoned for a type with negative demand never
    develops, so zone straight over it ($5/tile) with the type that has demand. Use

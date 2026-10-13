@@ -1,0 +1,67 @@
+# docker compose up --build
+#   live view : http://localhost:6080/vnc.html?autoconnect=1&resize=scale
+#   viewer    : http://localhost:8080/   (live view + recordings + decision log)
+x-common: &common
+  build: .
+  image: simcity2000-agent:latest
+  restart: unless-stopped
+  volumes:
+    - ./runs:/runs
+    - game-data:/games/sc2000
+  environment: &env
+    RUNS_DIR: /runs
+    GAME_DIR: /games/sc2000
+    RUN_ID: ${RUN_ID:-}
+
+services:
+  game:
+    <<: *common
+    command: ["/app/games/start-game.sh"]
+    ports:
+      - "${NOVNC_PORT:-6080}:6080"
+      - "${VIEWER_PORT:-8080}:8080"
+    environment:
+      <<: *env
+      VNC_PASSWORD: ${VNC_PASSWORD:-}
+      VNC_VIEW_ONLY: ${VNC_VIEW_ONLY:-1}
+      DOSBOX_CAPTURE: ${DOSBOX_CAPTURE:-0}
+    healthcheck:
+      test: ["CMD-SHELL", "DISPLAY=:99 xdotool search --class dosbox >/dev/null"]
+      interval: 5s
+      timeout: 5s
+      retries: 60
+      start_period: 120s
+
+  agent:
+    <<: *common
+    command: ["python3", "-m", "agent.main"]
+    depends_on:
+      game:
+        condition: service_healthy
+    environment:
+      <<: *env
+      DISPLAY: game:99
+      AGENT_POLICY: ${AGENT_POLICY:-auto}
+      LLM_PROVIDER: ${LLM_PROVIDER:-}
+      LLM_MODEL: ${LLM_MODEL:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      STEP_DELAY_SECONDS: ${STEP_DELAY_SECONDS:-2}
+      SAVE_EVERY_SECONDS: ${SAVE_EVERY_SECONDS:-300}
+      MAX_STEPS: ${MAX_STEPS:-0}
+
+  recorder:
+    <<: *common
+    command: ["/app/recorder/record.sh"]
+    depends_on:
+      game:
+        condition: service_healthy
+    environment:
+      <<: *env
+      DISPLAY: game:99
+      RECORDER_MODE: ${RECORDER_MODE:-x11grab}
+      SEGMENT_SECONDS: ${SEGMENT_SECONDS:-300}
+      RECORD_FPS: ${RECORD_FPS:-10}
+
+volumes:
+  game-data:

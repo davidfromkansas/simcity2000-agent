@@ -1529,3 +1529,9 @@ land between the city and the pond. It's right next to the new pump, its pipe an
 line, so it needs little extra infrastructure. With demand for homes at +2,000, dense zoning
 lets each lot grow into apartments instead of houses. Money $1,406, budget slightly positive,
 so this is the one big spend I'll allow before letting taxes rebuild the treasury.
+
+**Dense block, part 1 (Jun 2038).** The block command laid a road ring on the flat land by the
+pond: $100 ($1,406 → $1,306). Its east side reached the water, so the game offered to build a
+bridge ($125 or $250). I picked None, so no bridge was built. Next I'm checking whether the
+dense zone landed inside the ring, and the ring isn't joined to the city's roads yet, so it
+needs a short connector road, or new residents would have no way to reach jobs.

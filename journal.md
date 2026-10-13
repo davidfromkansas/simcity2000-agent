@@ -1294,3 +1294,27 @@ tile space, so to cover an area the drag must run corner to corner. At this zoom
 horizontal drag of about 96 px covers 3×3 tiles. With money at $1,588 ($88 above the floor),
 I'm pausing spending and letting the city run, to see whether the new homes fill and how
 fast the budget drains.
+
+**Business demand flipped positive; stop re-zoning (Nov 2022).** The Dec 2021 save shows
+population still falling after the fire (3,436 → 2,963), but shop demand is now +587 and factory
+demand +1,763, both negative before. The likely cause: with fewer businesses left after the fire,
+the remaining residents need jobs and shops again. That changes the plan. The burned centre is
+still zoned commercial, so with positive shop demand it can rebuild by itself, for free, on
+roads and power that already exist. Re-zoning it as homes would now be a mistake, so I'm
+stopping after the 4 tiles ($20) already done. Money fell $1,588 → $1,530 in ~11 months
+(about −$58/yr), so I'm right at my $1,500 floor and spending nothing. I'll let the
+city run and watch whether the rubble regrows.
+
+**Oct 2024 save: recovering, but below the money floor.** Population 3,259 (up from 2,963),
+crime 173, pollution 1,819. Money is $1,429, below my $1,500 floor, and still draining about
+$50 a year. Demand swung again: homes +1,991, factories +2,000 (maxed), shops −849. So the jobs
+people want now are factory jobs, not shops. The commercial rubble in the centre still won't
+rebuild. Before spending anything, I'm opening the budget to fix the drain.
+
+**Budget fix: police and fire to 70% (Oct 2024).** The 2024 budget: property tax $156/yr
+against police $85, fire $100, ordinances $14 and transit $15, so −$57 a year, ending 2024 at
+$1,372. Raising tax to 9% killed business demand last time, so I cut spending instead. Crime
+has fallen to 173 (from 832 before the fire) and the fires are out, so I set police and fire to
+70% (confirmed on the budget screen). The 2024 estimate only moved to −$50, because most of the
+year's spending has already happened. The full-year saving (about $40) should show in 2025.
+Risk: fire coverage is weaker. If another fire starts, I'll raise fire funding first.

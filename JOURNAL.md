@@ -853,3 +853,7 @@ The first oil placement didn't take: "Oil Power $6,600" was selected but funds s
 at $9,207. The dead plant's rubble covers the site, and unlike 1951 the game won't
 build over it. Clearing the old 4×4 footprint with the bulldozer first, then placing
 the oil plant again.
+
+Save AGENT028 (Jan 2002, in blackout): population 4,586, funds $9,207. My clearing
+batch failed on a tool-name slip: "bulldozer" is the toolbar group, and the tool
+itself is `demolish` (the same trap as "roads" vs `road`). Retrying with `demolish`.

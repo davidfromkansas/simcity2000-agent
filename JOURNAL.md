@@ -1330,3 +1330,8 @@ growth investment is safe. Factory demand is maxed (+2,000) and homes nearly so 
 south-centre rubble is old shop zoning that won't rebuild while shop demand is negative.
 Re-zoning a small patch of it as light industrial, beside the end of the diagonal road and
 away from the homes, adds jobs, which should pull in residents. It should cost about $30–50.
+
+**Factory patch placed: $50 (Aug 2026).** Money $1,369 → $1,319, so 10 tiles at $5. On screen,
+yellow industrial dots now cover the empty tiles between the south-centre rubble, next to the
+end of the diagonal road. Letting it run to see whether factories build there, and whether
+the new jobs move population.

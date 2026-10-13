@@ -1642,3 +1642,10 @@ Total cost of this neighbourhood: ring roads $100, zoning $230, links $20, A/B c
 **Feb 2045 save (before the patch built).** 4,163 people, $1,257, crime 1,005, pollution 2,277,
 workforce 58%. Demand: homes +2,000, shops −1,010, factories −872. This is the baseline for
 measuring the pond patch, which started building after this save.
+
+**Pond patch full (Sep 2047, $1,318).** One more year and the whole patch is built: small houses
+on the light corner, plus a condo complex, a pool and a church on the dense part. Money is rising
+again (+$69 since Feb 2047) as the new residents pay taxes. Next move, using the same recipe:
+a small dense patch on the flat strip between the ring road and the pump's power line, so it
+touches a road on one side and **runs along the power line on the other**. That's about $100-150,
+which goes below my $1,500 floor, but the first patch shows it pays back, and the budget is positive.

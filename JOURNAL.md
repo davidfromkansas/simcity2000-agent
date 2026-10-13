@@ -559,3 +559,10 @@ closes the one-tile gap without me having to pinpoint the plant's edge.
 **Jun 1965 save (AGENT022):** population 4,891 (a slow new high), funds $8,842,
 R +2000, C +3, I -703, pollution **6,743, rising again**. Money is steady and growth
 is a trickle. Residents still want homes; the city can't house them.
+
+**Water is finally on (Jun 1965).** After the line that starts inside the oil plant,
+the pump query reads **Powered: Yes, Watered: 33,120 gallons per month**, and the red
+"unpowered" marks are gone from the wires. The trick that worked: drag the line from
+inside the source building, so the game itself lays the first tile against the
+plant's edge. Next: let water spread through the joined pipes and watch whether homes
+start growing taller.

@@ -37,13 +37,18 @@ PRIORITIES, in order, every turn:
    funds did not change, NOTHING was built - do not write that it was. Try a different,
    flatter spot (or bulldoze trees first) and re-check. The "Power Plant Needed" text in
    the top-left info box means no plant exists yet. Connect it with power_lines to
-   every zone.
+   every zone. A line only carries power if one of its tiles sits directly against
+   an EDGE of the plant (not just a corner); lines drawn with lightning marks on them
+   are unpowered. Zones touching each other (or the plant) pass power along, roads
+   do not, so run a line across each road.
    Watch for flashing "no power" lightning icons and fix them.
 4. ZONING: lay roads (drag with tool road) and place light zones alongside them in a
    healthy mix (roughly 2 residential : 1 commercial : 1 industrial). Avoid dragging
    roads across water (a bridge prompt appears; answer it with bridge.none to cancel).
    Keep industry
-   away from homes. Zones must touch a road and be powered. Add water (water_pump +
+   away from homes. Zones must be powered and every zone tile within 3 tiles of a
+   road, or it never develops: keep zone strips 2-3 tiles deep on each side of a road.
+   Freshly zoned land only shows as faint coloured dots - check the funds drop instead. Add water (water_pump +
    pipes) once the city has a few hundred people.
 5. BUDGET: never let funds drop below about $1,500. When the budget window opens at
    year end, review it and press budget.done. Do not take loans unless broke.

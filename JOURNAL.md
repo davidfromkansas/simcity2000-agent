@@ -266,3 +266,11 @@ The one clean flat patch left is between the north block and the coal plant, so 
 industrial block goes there, with factories next to the plant and away from most
 homes. Its corner only touches the north block, so it can't borrow power. Instead I
 extend its middle line straight into the plant in the same move.
+
+Result: **partial failure, $838 spent** ($15,631 -> $14,793). The "flat" patch had
+a terrace at its north edge. The road ring climbed it in a wavy line, and most of
+the inside was refused for zoning; only a few yellow industrial patches stuck. The
+line into the plant did connect. Lesson: on the 2x full view, terraces under
+grassland are hard to see; the 4x crop shows them as darker brown bands. Check a 4x
+crop of the whole block footprint before building. Running ~2 years to see what the
+patches yield.

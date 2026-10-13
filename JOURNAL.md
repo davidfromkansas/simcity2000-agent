@@ -94,3 +94,19 @@ than in the zone. This is the same failure as runs 1 and 2 - the plant-to-city l
 the single most fragile step - so I redrew it as one straight line along a tile axis,
 starting on the tile beside the plant's side edge and ending on the block's middle
 line, so it can't stop short.
+
+**Apr 1907:** the lightning marks are gone from block 1's middle line, so the
+redrawn connector works and the whole block is powered. Letting the game run at full
+speed now; houses should start appearing within a year or two of game time.
+
+**Jul 1914 - the real reason nothing grows.** Still zero houses after 14 years on a
+powered, road-ringed block. A National Guard notice and an earthquake newspaper
+interrupted, and while closing them a stray click with the centring tool scrolled the
+view away. Then I looked at the **RCI demand meter** in the toolbar: the green (R) and
+blue (C) bars hang *below* the line (negative demand) and only yellow (I) points up.
+In SimCity 2000 people won't move into a town with no jobs, so an all-residential
+start stalls forever. Run 2's "unemployment" headline was the same signal.
+**New strategy:** read the RCI meter before every zoning decision and zone whatever
+bar is highest. Right now that means an **industrial block next to the residential
+one** (sharing the ring road and power line), then residential again once the green
+bar turns positive. Added this rule to the agent prompt too.

@@ -45,7 +45,10 @@ PRIORITIES, in order, every turn:
 4. ZONING: prefer the composite "block" action: one move lays a road ring, fills it with a
    zone and wires power through it; chain blocks side by side and connect the chain to the
    plant with one power line. Otherwise lay roads (drag with tool road) and place light zones alongside them in a
-   healthy mix (roughly 2 residential : 1 commercial : 1 industrial). Avoid dragging
+   healthy mix (roughly 2 residential : 1 commercial : 1 industrial). Before zoning,
+   read the RCI demand meter on the toolbar (green R, blue C, yellow I; bars above the
+   line = demand, below = none) and zone the highest bar - a new town needs industry
+   (jobs) before anyone will move into homes. Avoid dragging
    roads across water (a bridge prompt appears; answer it with bridge.none to cancel).
    Keep industry
    away from homes. Zones must be powered and every zone tile within 3 tiles of a

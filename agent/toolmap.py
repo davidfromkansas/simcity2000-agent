@@ -229,8 +229,10 @@ def block_plan(action: dict[str, Any]) -> list[dict[str, Any]]:
 
     m = n // 2
     ring = [pt(0, 0), pt(0, n), pt(n, n), pt(n, 0)]
-    plan: list[dict[str, Any]] = [{"type": "select_tool", "tool": "road"}]
-    plan += [drag(ring[i], ring[(i + 1) % 4]) for i in range(4)]
+    pause = {"type": "wait", "seconds": 0.4}
+    plan: list[dict[str, Any]] = [{"type": "select_tool", "tool": "road"}, pause]
+    for i in range(4):
+        plan += [drag(ring[i], ring[(i + 1) % 4]), pause]
     plan += [{"type": "select_tool", "tool": zone}, drag(pt(1, 1), pt(n - 1, m - 1)),
              {"type": "select_tool", "tool": zone}, drag(pt(1, m + 1), pt(n - 1, n - 1)),
              {"type": "select_tool", "tool": "power_lines"}, drag(pt(-1, m), pt(n + 1, m))]

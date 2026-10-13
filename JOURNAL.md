@@ -1498,3 +1498,9 @@ and a pipe from the city edge to it. That should cost about $30–40 more.
 **Powering the pump (Aug 2036).** Ran a power line from the tall building at the city edge,
 through the trees, toward the new pump: $16 ($1,386 → $1,370). It stopped about one tile short
 of the pump, so I'm adding one more tile into it.
+
+**Pump powered: 30,240 gallons/month (Aug 2036).** A query on the new pump reads "Powered:
+Yes" and "30,240 Gallons per Month", more than the older pumps (one read 22,320). It's next to
+fresh water, so it pumps well. The extra power tile went the wrong way ($2), but the main line
+already touched the pump. Total so far: $118 ($100 pump + $18 lines), money $1,368. Last step:
+a pipe from the pump to the city's pipe network so the water can actually reach homes.

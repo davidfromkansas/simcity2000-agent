@@ -1482,3 +1482,10 @@ grey grid, which look nearly touching just south-east of the blue pipes. Looking
 network down into the grey eastern grid: $9 ($1,495 → $1,486). Right away the new segment and
 the first row of the eastern grid below it turned blue. Running the game so the water can
 spread through the rest of the grid, then I'll recheck the underground view and the Water map.
+
+**Not enough water to go round (Aug 2036).** Five months after the link, water reached the
+grey grid under the centre-east, which is now blue. But the north-west pipes that were blue
+before have gone grey. The game shares a fixed supply across the network, so linking more
+pipes just spread the same water thinner. The real limit is pump output, not pipes. Fix: add
+a water pump by the pond ($100, money $1,486, budget +$40/yr). Pumps next to fresh water
+pump the most, and the pond is next to the city. Moving the view there with the overview map.

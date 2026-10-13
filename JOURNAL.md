@@ -133,3 +133,14 @@ built: its ring ran into a slope, so only the south-east end got zoned and some
 shops appeared there. RCI now says **R strongly up, C slightly down, I slightly
 down** - factories and shops are waiting for workers and customers, so the next
 blocks are residential.
+
+Checked the zoom: one `zoom_in` doubled everything (plant ~100px wide), so the blocks
+had been built at the intended 16px-tile scale. Zoomed back out. Every zoom or scroll
+nudges the view, so I re-measure ring corners on a 4x crop before each new block.
+
+**Where to put more homes:** south-west of the blocks is a strip only ~4 tiles deep
+before a terrace; north-east is a cliff. The only big level patch is north-west of
+block 1, and it has a small pond in it. Built the next residential block there
+anyway: losing a few water tiles is cheaper than terraforming, it shares block 1's
+north-west road, and its middle power line lands exactly on block 1's line, so it is
+powered with no extra wiring.

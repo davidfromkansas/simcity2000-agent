@@ -896,3 +896,8 @@ footprint. The old rubble still covers the strip on its south and east sides, an
 three wires only reach the plant's corners diagonally. In SimCity 2000 a wire has to
 share a tile edge with the plant to connect. The city map's power layer will show
 which wires are live before I re-route.
+
+The power layer of the city map shows **every zone red, i.e. unpowered**. The whole
+city has been dark since the plant died in Jan 2002. Next test: one straight wire
+along the tile grid, from the plant's centre out through its south-east edge toward
+the east wire. If funds drop, the rubble accepts wires and the edge connection is real.

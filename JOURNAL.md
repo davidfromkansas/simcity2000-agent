@@ -519,3 +519,7 @@ The north-west pipe is still an island; I'll join it once I see water flowing.
 I -679, pollution 5,243. Population is flat but money is steady. Residents still want
 homes, while shops and factories have enough. So the land for homes is the
 constraint, which is why water (to let houses grow taller) is still the priority.
+
+Jan 1962 ($8,566): with the middle and south pipes joined to the pump, the Water
+Supply map is still red. The pipes now look fine, so I'm checking the pump itself
+with the query tool (is it powered, how much is it pumping) before spending more.

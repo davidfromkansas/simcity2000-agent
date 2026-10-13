@@ -377,3 +377,30 @@ me hoard cash. A real mayor would turn the reserve into things that raise land
 value and lift growth caps (water, parks, a school, a fire station), and could cut the
 tax rate to pull in residents and businesses, since tax income is too small to matter
 next to the reserve.
+
+**Diagnosis 2: the save file's own city statistics.** These fields come from the
+OpenCity2k file spec (RCI demand is -2000..+2000):
+
+| Save | Date | Pop | R demand | C demand | I demand | Pollution | Crime | Work force % | EQ |
+|---|---|---|---|---|---|---|---|---|---|
+| AGENT011 | May 1925 | 3,392 | -974 | -1104 | +2000 | 4,474 | 853 | 68 | 83 |
+| AGENT012 | Nov 1934 | 4,053 | +2000 | -530 | -981 | 5,428 | 1,226 | 64 | 81 |
+| AGENT013 | Feb 1947 | 4,660 | +2000 | -1432 | +2000 | 5,927 | 1,481 | 60 | 74 |
+| AGENT014 | Aug 1948 | 4,434 | +1977 | -640 | +2000 | 5,843 | 1,601 | 60 | 74 |
+| AGENT015 | May 1950 | 4,642 | +2000 | -321 | +1961 | 6,333 | 1,278 | 59 | 74 |
+
+Mayor's read:
+- **Residential demand has been maxed at +2000 since 1934.** People want to live here;
+  the city isn't giving them homes. This is a supply problem, not a demand problem.
+  Each home tile stays small: no water, a cheap coal plant and factories next to homes
+  (pollution has risen every save), and no parks, so land value is low.
+- **Industrial demand is also maxed.** Jobs are wanted too; work force % is falling (68 -> 59).
+- **Commercial demand is negative** and there are **0 neighbour-connection tiles**, so
+  shops have no outside trade. That's acceptable for now since R and I lead.
+- **Education (EQ) is falling** (83 -> 74) with no school. Smarter residents bring cleaner
+  industry, which lets homes sit near jobs.
+- Crime dropped after the police station (1,601 -> 1,278): that intervention worked.
+
+Decision: increase housing supply and housing quality on land I already have:
+water everywhere, high-density homes on any free tile away from smoke, parks as
+pollution buffers, then a school.

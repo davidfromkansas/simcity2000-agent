@@ -608,3 +608,8 @@ screen (407,296) is now at about (135,225), so the view has moved by roughly
 view, so two clicks at (184,220) should each shift it back about (+136,+35). Then I'll
 re-measure the pump to confirm the old coordinates hold. I also added a prompt rule:
 close every newspaper page before pausing, and never leave the Centering tool selected.
+
+View restored (May 1976): the city is fully back on screen. The Centering tool snaps
+to tiles, so the view now sits two tiles from the original: the pump is at (424,304)
+instead of (407,296), so every old coordinate is **+16, +8**. I'm keeping this view
+and using the new offsets rather than nudging it again.

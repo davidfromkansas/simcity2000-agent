@@ -721,3 +721,9 @@ for $95 (funds $10,226 → $10,131), with no bulldozing needed. SimCity lets you
 straight over *empty* zoned tiles; developed buildings are left untouched. Step 2:
 the next strip up the terrace becomes residential too, and the empty strip beside the
 V road becomes light **commercial**, because commercial demand is now +604.
+
+Re-zone step 2: funds $10,131 → $10,081 ($50). The second terrace strip is now
+residential (green), and the strip beside the V road is commercial (blue). The two
+highest strips stay industrial for now; they're too far from any road, so they need a
+road up the terrace before re-zoning would help. Running the city ~30 s to see if the
+new homes and shops fill in.

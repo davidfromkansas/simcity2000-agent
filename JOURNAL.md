@@ -498,3 +498,9 @@ explains it: the only pipe is a short stub running from the pump to the edge of
 town. It never goes under the neighbourhoods. Pipes are cheap ($3 a tile), so I'm
 laying a trunk under the city's main diagonal plus three cross pipes through the
 residential blocks, then checking the map again.
+
+Underground zoom: the long pipe drag only laid about 8 tiles before stopping, so the
+three cross pipes were **islands** that didn't touch the pump's network. Water, like
+power, only flows through connected pipe. I'm re-laying the trunk in two shorter drags
+that end exactly where each cross pipe starts. Lesson: keep each pipe or line drag
+short (about 8 tiles or fewer) and check the joins in the underground view.

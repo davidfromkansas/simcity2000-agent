@@ -56,3 +56,23 @@ game silently refuses to build on slopes, which is what made the earlier AI run 
 First `block` test at (100,170) placed the zone and the power line correctly but left
 the road ring ragged, so a 0.4s pause was added between the four ring drags (DOSBox
 drops input when drags are issued back to back).
+
+Looking closer at the first block: 3 of the 4 ring roads were laid; the north-east
+edge was missing (the drag issued right after the previous one was dropped). The
+running container still has the old code, so I re-drew that edge by hand rather than
+restart the city. Funds went $20,000 -> $19,513 for the block, confirming it built.
+
+**Power plant choice:** coal ($4,000) rather than oil/gas/hydro - it is the cheapest
+plant with enough output (~200 MW) for the first several thousand people, and on Easy
+the pollution only matters near homes. Placed on the flat ground just south of block 1
+and wired to the block's power stub with a short line that ends on the plant's edge
+(not its corner - the lesson from run 1).
+
+Both plant placements failed: the tool showed "Coal Power $4,000" but funds did not
+drop, so the game refused the spot. This map is a maze of terraces and cliffs; a 4x4
+plant needs level ground and the 8x8 blocks need even more of it. Rather than pay to
+terraform, I **re-rolled the map**: still January 1900 with only ~$500 spent, so
+nothing of value is lost, and restarting the container also loads the fixed `block`
+code (pauses between ring drags). New rule for myself: before building, look for one
+big level area (uniform diamond lattice, no brown cliff bands) and test-place the
+plant there first; build blocks only after the plant's $4,000 shows up in the funds.

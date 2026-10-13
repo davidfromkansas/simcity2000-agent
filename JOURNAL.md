@@ -529,3 +529,8 @@ with the query tool (is it powered, how much is it pumping) before spending more
 on screen but never touched the pump. That's why no pipe network could ever carry
 water. Lesson: use the query tool on a building to check it's powered; don't infer it
 from line colours.
+
+Zoomed surface view: the wires around the pump form a tangle that stops one tile
+short of the oil plant. Buildings pass power to touching buildings, and the police
+station touches the plant, so I'm running a 2-tile line from the pump's south-west
+neighbour into the police station, then querying the pump again.

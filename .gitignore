@@ -1,0 +1,6 @@
+runs/*
+!runs/.gitkeep
+games/sc2000/
+__pycache__/
+*.pyc
+.env

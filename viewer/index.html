@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SimCity 2000 Agent</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { --bg:#10131a; --panel:#1a1f2b; --ink:#e8ecf3; --dim:#8b95a8; --acc:#ffcf3f; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:14px/1.4 system-ui, sans-serif; background:var(--bg); color:var(--ink); }
+  header { padding:12px 20px; display:flex; gap:16px; align-items:center; border-bottom:1px solid #2a3142; }
+  header h1 { font-size:18px; margin:0; } header a { color:var(--acc); }
+  main { display:grid; grid-template-columns: minmax(640px, 1fr) 420px; gap:16px; padding:16px; }
+  section { background:var(--panel); border-radius:8px; padding:12px; }
+  h2 { font-size:14px; margin:0 0 8px; color:var(--dim); text-transform:uppercase; letter-spacing:.05em; }
+  iframe { width:100%; aspect-ratio: 4/3; border:0; background:#000; border-radius:4px; }
+  select, button { background:#262d3d; color:var(--ink); border:1px solid #39425a; border-radius:4px; padding:4px 8px; }
+  .videos a, .saves a { display:block; color:var(--acc); }
+  video { width:100%; margin-top:8px; background:#000; }
+  .steps { max-height: 70vh; overflow:auto; }
+  .step { display:grid; grid-template-columns: 160px 1fr; gap:8px; padding:8px 0; border-bottom:1px solid #2a3142; }
+  .step img { width:160px; image-rendering: pixelated; cursor:zoom-in; border-radius:3px; }
+  .step .meta { color:var(--dim); font-size:12px; }
+  .step code { font-size:11px; white-space:pre-wrap; word-break:break-all; color:#b6f0c0; }
+  #zoom { position:fixed; inset:0; background:#000c; display:none; align-items:center; justify-content:center; }
+  #zoom img { max-width:95vw; max-height:95vh; image-rendering: pixelated; }
+</style>
+</head>
+<body>
+<header>
+  <h1>SimCity 2000 Agent</h1>
+  <a id="vnclink" target="_blank">open live view (noVNC)</a>
+  <span>run <select id="run"></select></span>
+  <span id="status" style="color:var(--dim)"></span>
+</header>
+<main>
+  <div>
+    <section>
+      <h2>Live</h2>
+      <iframe id="live"></iframe>
+    </section>
+    <section style="margin-top:16px">
+      <h2>Recordings</h2>
+      <div class="videos" id="videos"></div>
+      <video id="player" controls></video>
+      <h2 style="margin-top:12px">Game saves</h2>
+      <div class="saves" id="saves"></div>
+    </section>
+  </div>
+  <section>
+    <h2>Decision log (newest first)</h2>
+    <div class="steps" id="steps"></div>
+  </section>
+</main>
+<div id="zoom" onclick="this.style.display='none'"><img></div>
+<script>
+const novncPort = new URLSearchParams(location.search).get('novnc') || '6080';
+const vncUrl = `${location.protocol}//${location.hostname}:${novncPort}/vnc.html?autoconnect=1&resize=scale&view_only=1&reconnect=1`;
+document.getElementById('live').src = vncUrl;
+document.getElementById('vnclink').href = vncUrl;
+const sel = document.getElementById('run');
+let runs = [];
+
+async function loadRuns() {
+  const r = await (await fetch('/api/runs')).json();
+  runs = r.runs;
+  const keep = sel.value;
+  sel.innerHTML = runs.map(x => `<option value="${x.id}">${x.id}${x.current ? ' (live)' : ''} · ${x.steps} steps</option>`).join('');
+  sel.value = keep && runs.some(x => x.id === keep) ? keep : (r.current || (runs[0] && runs[0].id) || '');
+  renderRun();
+}
+
+function renderRun() {
+  const run = runs.find(x => x.id === sel.value);
+  if (!run) return;
+  document.getElementById('videos').innerHTML = run.videos.length
+    ? run.videos.map(v => `<a href="#" data-v="/runs/${v}">${v.split('/').slice(1).join('/')}</a>`).join('')
+    : '<span style="color:var(--dim)">no chunks yet</span>';
+  document.querySelectorAll('.videos a').forEach(a => a.onclick = e => {
+    e.preventDefault(); const p = document.getElementById('player'); p.src = a.dataset.v; p.play(); });
+  document.getElementById('saves').innerHTML = run.saves.map(s => `<a href="/runs/${s}" download>${s.split('/').pop()}</a>`).join('')
+    || '<span style="color:var(--dim)">none yet</span>';
+  loadSteps(run.id);
+}
+
+async function loadSteps(id) {
+  const r = await (await fetch(`/api/steps?run=${encodeURIComponent(id)}&limit=100`)).json();
+  document.getElementById('status').textContent = `${r.total} decisions`;
+  document.getElementById('steps').innerHTML = r.steps.map(s => `
+    <div class="step">
+      <img src="/runs/${id}/${s.screenshot}" loading="lazy" onclick="zoom(this.src)">
+      <div>
+        <div class="meta">#${s.step} · ${s.timestamp} · ${s.policy || ''}</div>
+        <div>${escapeHtml(s.reasoning || '')}</div>
+        <code>${escapeHtml(JSON.stringify(s.actions))}</code>
+      </div>
+    </div>`).join('');
+}
+function zoom(src) { const z = document.getElementById('zoom'); z.querySelector('img').src = src; z.style.display = 'flex'; }
+function escapeHtml(s) { return s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+sel.onchange = renderRun;
+loadRuns();
+setInterval(loadRuns, 10000);
+</script>
+</body>
+</html>

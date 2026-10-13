@@ -76,6 +76,21 @@ that it is disabled.
 6. Sleep `STEP_DELAY`, repeat.
 
 
+## Bigger moves: the `block` action
+
+Instead of pixel-by-pixel roads and zones, the player can send one composite move:
+
+```json
+{"type": "block", "x": 200, "y": 260, "zone": "light_residential", "size": 8}
+```
+
+It lays a `size` x `size` road ring whose west corner tile is at screen `(x, y)`, fills
+the inside with the zone, and runs a power line through the middle that pokes one tile
+out on both sides. Blocks placed at `(x + 8*size, y + 4*size)` share a road and the
+power line, so one `power_lines` drag from a plant edge powers the whole chain. It
+assumes 16px-wide tiles (one `zoom_in` from the starting view) and refuses blocks that
+would reach outside the visible map.
+
 ## Let an outside player decide (no API key): `LLM_PROVIDER=external`
 
 Set `LLM_PROVIDER=external` (alias `devin`) and the agent hands every decision to

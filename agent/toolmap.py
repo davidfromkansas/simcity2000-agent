@@ -163,7 +163,10 @@ BUTTONS: dict[str, Point] = {
     "save.saved_ok": (320, 235),  # click the "Game Saved As" notice to close it
 }
 
-ACTION_TYPES = ("select_tool", "menu", "button", "click", "drag", "key", "type", "wait")
+ACTION_TYPES = ("select_tool", "menu", "button", "click", "drag", "key", "type", "wait", "block")
+BLOCK_ZONES = tuple(f"{d}_{k}" for k in ("residential", "commercial", "industrial") for d in ("light", "dense"))
+# Visible city area (inside the map window) where composite actions may draw.
+MAP_VIEW = (90, 130, 548, 390)
 
 
 def subtool_point(name: str) -> tuple[Point, Point]:
@@ -181,7 +184,13 @@ def describe() -> str:
     return (
         "Toolbar tools (select_tool): " + ", ".join(tool_names()) + "\n"
         "Menu items (menu): " + ", ".join(MENU_ITEMS) + "\n"
-        "Dialog buttons (button): " + ", ".join(BUTTONS)
+        "Dialog buttons (button): " + ", ".join(BUTTONS) + "\n"
+        'Composite (block): {"type":"block","x":X,"y":Y,"zone":"light_residential","size":8} '
+        "lays a size x size road ring whose WEST corner tile is at screen (X,Y), fills the inside "
+        "with the zone (" + ", ".join(BLOCK_ZONES) + ") and runs a power line through the middle that "
+        "pokes one tile out of the ring on both sides along the down-right axis. The next block at "
+        "(X+8*size, Y+4*size) shares a road and the power line; draw one power_lines drag from a plant "
+        "edge to the line stub to power the chain. Assumes 16px-wide tiles (one zoom_in from start)."
     )
 
 
@@ -197,6 +206,42 @@ def _int(action: dict[str, Any], *keys: str) -> None:
         limit = SCREEN[0] if k.startswith("x") else SCREEN[1]
         if not 0 <= v < limit:
             raise InvalidAction(f"{action.get('type')}: '{k}'={v} is off screen")
+
+
+def block_plan(action: dict[str, Any]) -> list[dict[str, Any]]:
+    """Expand a ``block`` action into primitive select_tool/drag actions."""
+    n = action.get("size", 8)
+    if not isinstance(n, int) or isinstance(n, bool) or not 4 <= n <= 14:
+        raise InvalidAction("block: 'size' must be an integer 4-14")
+    zone = action.get("zone")
+    if zone not in BLOCK_ZONES:
+        raise InvalidAction(f"block: 'zone' must be one of {BLOCK_ZONES}")
+    _int(action, "x", "y")
+    x, y = int(action["x"]), int(action["y"])
+    half_w, half_h = 8, 4  # screen offset of one tile step along each isometric axis
+
+    def pt(a: int, b: int) -> dict[str, int]:
+        # a: down-right (SE) axis, b: up-right (NE) axis
+        return {"x": x + (a + b) * half_w, "y": y + (a - b) * half_h}
+
+    def drag(p: dict[str, int], q: dict[str, int]) -> dict[str, Any]:
+        return {"type": "drag", "x1": p["x"], "y1": p["y"], "x2": q["x"], "y2": q["y"]}
+
+    m = n // 2
+    ring = [pt(0, 0), pt(0, n), pt(n, n), pt(n, 0)]
+    plan: list[dict[str, Any]] = [{"type": "select_tool", "tool": "road"}]
+    plan += [drag(ring[i], ring[(i + 1) % 4]) for i in range(4)]
+    plan += [{"type": "select_tool", "tool": zone}, drag(pt(1, 1), pt(n - 1, m - 1)),
+             {"type": "select_tool", "tool": zone}, drag(pt(1, m + 1), pt(n - 1, n - 1)),
+             {"type": "select_tool", "tool": "power_lines"}, drag(pt(-1, m), pt(n + 1, m))]
+    x0, y0, x1, y1 = MAP_VIEW
+    for a in plan:
+        if a["type"] == "drag":
+            for px, py in ((a["x1"], a["y1"]), (a["x2"], a["y2"])):
+                if not (x0 <= px <= x1 and y0 <= py <= y1):
+                    raise InvalidAction(f"block: reaches ({px},{py}) outside the visible map {MAP_VIEW}; "
+                                        "pick a corner nearer the middle, a smaller size, or scroll")
+    return plan
 
 
 def validate_action(action: dict[str, Any]) -> None:
@@ -217,6 +262,8 @@ def validate_action(action: dict[str, Any]) -> None:
         raise InvalidAction("key: 'key' must be a non-empty string")
     if t == "type" and not isinstance(action.get("text"), str):
         raise InvalidAction("type: 'text' must be a string")
+    if t == "block":
+        block_plan(action)
     if t == "wait":
         s = action.get("seconds", 2)
         if not isinstance(s, (int, float)) or not 0 <= s <= 60:

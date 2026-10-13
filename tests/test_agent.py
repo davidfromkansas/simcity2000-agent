@@ -183,3 +183,31 @@ def test_sc2_read_stats(tmp_path):
     f = tmp_path / "X.SC2"
     f.write_bytes(b"FORM" + struct.pack(">I", len(body)) + body)
     assert sc2.read_stats(f) == {"date": "May 1935", "year": 1935, "funds": 13740, "population": 749}
+
+
+def test_block_plan_and_execute():
+    from types import SimpleNamespace
+
+    from agent import actions, toolmap
+
+    plan = toolmap.block_plan({"type": "block", "x": 200, "y": 260, "zone": "light_residential", "size": 8})
+    drags = [a for a in plan if a["type"] == "drag"]
+    assert len(drags) == 7
+    assert (drags[0]["x1"], drags[0]["y1"], drags[0]["x2"], drags[0]["y2"]) == (200, 260, 264, 228)
+    assert (drags[-1]["x1"], drags[-1]["y1"]) == (224, 240)  # power line stub one tile outside the ring
+    calls = []
+    inp = SimpleNamespace(drag=lambda *a: calls.append(("drag", a)), click=lambda *a: calls.append(("click", a)),
+                          hold_and_pick=lambda *a: calls.append(("pick", a)))
+    out = actions.execute({"type": "block", "x": 200, "y": 260, "zone": "light_industrial"}, inp)
+    assert "light_industrial" in out and sum(c[0] == "drag" for c in calls) == 7
+
+
+def test_block_rejects_off_map_and_bad_zone():
+    import pytest
+
+    from agent import toolmap
+
+    with pytest.raises(toolmap.InvalidAction):
+        toolmap.validate_action({"type": "block", "x": 500, "y": 380, "zone": "light_residential"})
+    with pytest.raises(toolmap.InvalidAction):
+        toolmap.validate_action({"type": "block", "x": 200, "y": 260, "zone": "airport"})

@@ -42,7 +42,9 @@ PRIORITIES, in order, every turn:
    are unpowered. Zones touching each other (or the plant) pass power along, roads
    do not, so run a line across each road.
    Watch for flashing "no power" lightning icons and fix them.
-4. ZONING: lay roads (drag with tool road) and place light zones alongside them in a
+4. ZONING: prefer the composite "block" action: one move lays a road ring, fills it with a
+   zone and wires power through it; chain blocks side by side and connect the chain to the
+   plant with one power line. Otherwise lay roads (drag with tool road) and place light zones alongside them in a
    healthy mix (roughly 2 residential : 1 commercial : 1 industrial). Avoid dragging
    roads across water (a bridge prompt appears; answer it with bridge.none to cancel).
    Keep industry

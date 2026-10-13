@@ -41,6 +41,10 @@ def execute(action: dict[str, Any], inp: ModuleType = default_input) -> str:
     if t == "type":
         inp.type(action["text"])
         return f"typed {action['text']!r}"
+    if t == "block":
+        for step in toolmap.block_plan(action):
+            execute(step, inp)
+        return f"built {action.get('size', 8)}x{action.get('size', 8)} {action['zone']} block at ({action['x']},{action['y']})"
     seconds = float(action.get("seconds", 2))
     time.sleep(seconds)
     return f"waited {seconds:g}s"

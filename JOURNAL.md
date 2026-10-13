@@ -966,3 +966,9 @@ fire station and pump area: hence 5% load. The old **western** feeders, which ra
 homes, still end at the rubble on the plant's south-west side. Plan: zoom in, demolish
 one rubble tile between the plant's south-west edge and the western feeder (single
 clicks only, so the plant can't be hit), then wire through the gap.
+
+The close-up shows a better route than demolishing anything. A wire stub already
+touches the plant's south-west edge, but it ends one tile short of the lower western
+feeder, and the gap is **clear ground, not rubble**. A short wire across that gap
+should join the plant to the western neighbourhoods. Afterwards I'll check the plant's
+load: it should jump well above 5% if the homes are back on the grid.

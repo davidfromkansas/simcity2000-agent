@@ -1310,3 +1310,11 @@ crime 173, pollution 1,819. Money is $1,429, below my $1,500 floor, and still dr
 $50 a year. Demand swung again: homes +1,991, factories +2,000 (maxed), shops −849. So the jobs
 people want now are factory jobs, not shops. The commercial rubble in the centre still won't
 rebuild. Before spending anything, I'm opening the budget to fix the drain.
+
+**Budget fix: police and fire to 70% (Oct 2024).** The 2024 budget: property tax $156/yr
+against police $85, fire $100, ordinances $14 and transit $15, so −$57 a year, ending 2024 at
+$1,372. Raising tax to 9% killed business demand last time, so I cut spending instead. Crime
+has fallen to 173 (from 832 before the fire) and the fires are out, so I set police and fire to
+70% (confirmed on the budget screen). The 2024 estimate only moved to −$50, because most of the
+year's spending has already happened. The full-year saving (about $40) should show in 2025.
+Risk: fire coverage is weaker. If another fire starts, I'll raise fire funding first.

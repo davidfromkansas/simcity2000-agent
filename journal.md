@@ -1162,3 +1162,33 @@ beside the western segment. Pipes join any pipe on a neighbouring tile, so runni
 alongside it is enough. Cost **$14** (funds $1,905 → $1,891). The Water Supply map now
 shows more of the south-west centre watered. A strip on the far west and one on the
 east are still red. Next: run two game years and read the save.
+
+**Oct 2018: west pipe joined the network.** The underground view now shows almost the
+entire pipe grid light blue (carrying water). The red/yellow "dry" markings that covered
+the west-centre are down to a few small patches. Funds **$1,881**. That one short pipe
+had joined two separate pipe networks, like the 2011 fix. If homes now grow denser,
+water was the main cap on residential growth. Next: check the surface view, then run
+time and read the save.
+
+**Oct 2018: big find, the city centre is rubble.** The surface view shows a large brown
+speckled area in the middle of the city. A query there reads **"Rubble — Zoned:
+Commercial low-density, Land value $215,000/acre, Crime: None, Pollution: Low."** So this
+is zoned, high-value land that's blocked by rubble, most likely from buildings that
+collapsed during the 2002 blackout. The city has room to grow inside its own borders;
+the land just needs clearing. Bulldozing rubble is about $1 a tile in SC2000, far cheaper
+than new zones or pumps. Next: make sure the red burst nearby isn't a spreading fire,
+then clear rubble block by block within the ~$380 above my $1,500 floor.
+
+**Correction (Oct 2018): those were fires, not dry areas.** After 5 seconds of running
+time, the red/yellow patches in the middle of the city visibly **spread as flames**. I
+had been reading them in the underground pipe view as "dry, unwatered" markings. That
+was wrong, and so were two of my notes above:
+- "West pipe joined the network": the shrinking red/yellow patches were fires moving and
+  burning out, not water arriving. The $14 pipe was built, but I have no evidence it
+  changed water coverage.
+- "Rubble from the 2002 blackout": the big brown rubble field in the centre is most
+  likely **burned-out buildings**. That would also explain why population stalled and
+  dropped (4,884 → 4,606) even after the water and tax fixes.
+**Lesson:** red/yellow flicker on the map is fire. Judge water only from the Water
+Supply map, and check for fire before running time. **Now:** put out the fires before
+building or scrolling anywhere new.

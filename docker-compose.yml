@@ -1,0 +1,27 @@
+services:
+  sc2k-agent:
+    build: .
+    image: simcity2000-agent
+    # Watch live at http://localhost:${NOVNC_PORT:-6080}/
+    ports:
+      - "${NOVNC_PORT:-6080}:6080"
+    environment:
+      # Set one of these in your shell or in a .env file next to this compose file.
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      LLM_PROVIDER: ${LLM_PROVIDER:-}      # anthropic | openai (auto-detected from keys)
+      LLM_MODEL: ${LLM_MODEL:-}            # default claude-sonnet-4-5 / gpt-4o
+      STEP_DELAY: ${STEP_DELAY:-1.5}       # seconds between actions
+      SAVE_EVERY: ${SAVE_EVERY:-25}        # in-game File > Save City As every N steps
+      SAVE_NAME: ${SAVE_NAME:-AGENT}       # saves AGENT001.SC2, AGENT002.SC2, ...
+      MAX_STEPS: ${MAX_STEPS:-0}           # 0 = run forever
+      AGENT_ENABLED: ${AGENT_ENABLED:-1}   # 0 = just run the game (watch / play via VNC)
+      VNC_VIEW_ONLY: ${VNC_VIEW_ONLY:-}    # non-empty = viewers cannot send input
+      RECORD: ${RECORD:-0}                 # 1 = ffmpeg screen recording into runs/
+      NOVNC_HOST_PORT: ${NOVNC_PORT:-6080}
+    volumes:
+      # Game files are downloaded here on first start (never committed).
+      - ./games/simcity2000:/app/games/simcity2000
+      - ./runs:/app/runs
+    shm_size: 256m
+    restart: unless-stopped

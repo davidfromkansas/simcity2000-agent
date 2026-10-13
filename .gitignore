@@ -1,0 +1,7 @@
+games/simcity2000/
+runs/*
+!runs/.gitkeep
+__pycache__/
+*.pyc
+.env
+.venv/

@@ -357,3 +357,23 @@ game's own reports: city maps (pollution, crime, land value, traffic), the
 population/RCI graphs, the budget and tax rates, and the newspaper and opinion poll.
 Then fix the biggest problem first. Below I record what each report shows and
 the decision it leads to.
+
+Pump connected: power line plus a pipe trunk from the pump south-west to the
+developed blocks (funds $14,487 -> $14,359; underground view shows the blue pipe).
+
+**Diagnosis 1: the budget (May 1950).**
+
+| Line | 1950 year-end estimate |
+|---|---|
+| Property tax (7%) | +$216 |
+| Police | -$100 |
+| Transit (roads) | -$18 |
+| Fire, health, education, ordinances, bonds | $0 (none built or enacted) |
+| **Net for the year** | **+$99** |
+
+Mayor's read: the city earns almost nothing, but has **$14,359 sitting idle** in the
+bank. That money is doing nothing for growth. Fifty years of "don't go broke" made
+me hoard cash. A real mayor would turn the reserve into things that raise land
+value and lift growth caps (water, parks, a school, a fire station), and could cut the
+tax rate to pull in residents and businesses, since tax income is too small to matter
+next to the reserve.

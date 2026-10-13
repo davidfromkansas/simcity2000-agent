@@ -1521,3 +1521,11 @@ are *light* residential, which caps each lot at small houses. A mayor would allo
 housing where infrastructure already exists. Next experiment: re-zone one existing light
 home block as dense residential ($/tile, roads, power and water already in place), then
 compare its population after a couple of years before rolling it out.
+
+**Correction to the density plan.** Earlier in this run I found that the game refuses to
+re-zone *developed* light housing as dense; it only works on empty land. So instead of
+re-zoning existing blocks, I'm placing a new **dense residential** block on the flat empty
+land between the city and the pond. It's right next to the new pump, its pipe and its power
+line, so it needs little extra infrastructure. With demand for homes at +2,000, dense zoning
+lets each lot grow into apartments instead of houses. Money $1,406, budget slightly positive,
+so this is the one big spend I'll allow before letting taxes rebuild the treasury.

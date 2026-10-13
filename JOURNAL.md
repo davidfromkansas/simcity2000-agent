@@ -1411,3 +1411,9 @@ rising, crime down from 1,041 to 839 after the police increase. Demand: homes +2
 +2,000, factories +220. The re-powered districts have mostly filled, so growth is slowing
 again. The remaining limits are the burned centre (still rubble) and water. Checking whether
 the centre has started rebuilding.
+
+**Clearing rubble in the centre (Mar 2033).** Shop demand has been at +2,000 for two years,
+but the burned centre, still zoned for shops, hasn't rebuilt. My guess is that the rubble
+blocks redevelopment. Test: bulldozed a small patch for $3 ($1,457 → $1,454), and it is now
+cleared ground. Next I'll query it to check that the shop zoning survived, then let the game
+run to see whether a shop appears. If it does, I'll clear the rest a few dollars at a time.

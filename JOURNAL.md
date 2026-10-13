@@ -422,3 +422,22 @@ residents demand fire protection, and the status bar reads "Fire Protection Dema
 The editorial is "Pollution Blows!" Mayor approval is 70%. So residents name the same
 two problems the data shows: **pollution** and **missing services**. A fire station
 ($500) goes on the list right after water.
+
+### Crisis: the power plant is gone (Feb 1951)
+
+After closing the newspaper the status bar reads **"Power Plant Needed"**, and where the
+coal plant stood there's only rubble. SC2000 plants wear out after about 50 years;
+this one went up in 1901. **The whole city is now without power**, and the water pump
+needs power too. This is likely part of the 1948-1951 stall. Rebuilding now is the
+first priority.
+
+Mayor's choice: **oil instead of coal.** Pollution is the residents' top complaint
+("Pollution Blows!") and the plant sits in the middle of town. Oil costs more
+(~$6,600 vs ~$4,000) but makes more power with less smoke, and the city has
+$14,458 idle. Rebuilt on the old site, which is known to be level and already has
+the power lines attached.
+
+Mar 1951 paper: **"Williams Labs Creates Gas Power"**, so gas plants are now
+available, and **approval has dropped 70% -> 61%** in two months without power.
+Clearing the rubble (bulldozer) and opening the plant chooser on the old site; I'll
+pick from what the chooser actually offers.

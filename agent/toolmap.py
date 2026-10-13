@@ -52,6 +52,9 @@ TOOLBAR: dict[str, Point] = {
 
 # Pop-up items: (parent button, index). Item i sits at parent_y + 8 + 16*i.
 SUBTOOLS: dict[str, tuple[str, int]] = {
+    "dispatch_police": ("emergency", 0),
+    "dispatch_fire": ("emergency", 1),
+    "dispatch_military": ("emergency", 2),
     "demolish": ("bulldozer", 0),
     "level_terrain": ("bulldozer", 1),
     "raise_terrain": ("bulldozer", 2),

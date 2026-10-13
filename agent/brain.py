@@ -27,6 +27,10 @@ PRIORITIES, in order, every turn:
    budget window, query box, file dialog or confirmation is open, your action must
    dismiss or answer it (use a named button, or click its Done/OK/Cancel/close box,
    or press Escape/Return). Never try to build while a dialog is open.
+   Newspapers can stack several pages and appear while the game runs: close every
+   page first, THEN pause, and check the status bar reads *PAUSED*. Never leave the
+   Centering tool selected; a stray click with it scrolls the whole view and shifts
+   every coordinate.
 2. If you are on the title/main menu, start a new city (button main.start_new_city),
    then in the New City dialog pick new_city.easy and press new_city.done.
 3. POWER: a city needs a power plant before anything grows. Early on build one coal

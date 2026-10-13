@@ -601,3 +601,10 @@ invented, a clean option for when the oil plant wears out), "Beautiful Smog", an
 paper appeared, because my pause click had landed while a paper was on screen.
 Rule: close every paper *first*, then pause, then check that the status bar says
 *PAUSED*.
+
+**Getting back to the city view (May 1976, paused):** the pump that used to be at
+screen (407,296) is now at about (135,225), so the view has moved by roughly
+(-272,-71) pixels. The Centering tool puts whatever point I click at the middle of the
+view, so two clicks at (184,220) should each shift it back about (+136,+35). Then I'll
+re-measure the pump to confirm the old coordinates hold. I also added a prompt rule:
+close every newspaper page before pausing, and never leave the Centering tool selected.

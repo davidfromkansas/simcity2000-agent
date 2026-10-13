@@ -1178,3 +1178,17 @@ collapsed during the 2002 blackout. The city has room to grow inside its own bor
 the land just needs clearing. Bulldozing rubble is about $1 a tile in SC2000, far cheaper
 than new zones or pumps. Next: make sure the red burst nearby isn't a spreading fire,
 then clear rubble block by block within the ~$380 above my $1,500 floor.
+
+**Correction (Oct 2018): those were fires, not dry areas.** After 5 seconds of running
+time, the red/yellow patches in the middle of the city visibly **spread as flames**. I
+had been reading them in the underground pipe view as "dry, unwatered" markings. That
+was wrong, and so were two of my notes above:
+- "West pipe joined the network": the shrinking red/yellow patches were fires moving and
+  burning out, not water arriving. The $14 pipe was built, but I have no evidence it
+  changed water coverage.
+- "Rubble from the 2002 blackout": the big brown rubble field in the centre is most
+  likely **burned-out buildings**. That would also explain why population stalled and
+  dropped (4,884 → 4,606) even after the water and tax fixes.
+**Lesson:** red/yellow flicker on the map is fire. Judge water only from the Water
+Supply map, and check for fire before running time. **Now:** put out the fires before
+building or scrolling anywhere new.

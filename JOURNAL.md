@@ -901,3 +901,9 @@ The power layer of the city map shows **every zone red, i.e. unpowered**. The wh
 city has been dark since the plant died in Jan 2002. Next test: one straight wire
 along the tile grid, from the plant's centre out through its south-east edge toward
 the east wire. If funds drop, the rubble accepts wires and the edge connection is real.
+
+The test wire cost only $2: just the far tile was built, so **rubble won't take power
+lines**. Rather than demolish rubble next to a new $6,600 plant (one misclick would
+destroy it), I'm routing around it: a wire out of the plant's clean north-west edge,
+then down the west side to the south-west feeder that runs into the neighbourhoods.
+After a short run I'll query the plant for its capacity.

@@ -835,3 +835,7 @@ layout changes as new plants are invented (wind in 1976, solar later), so the fi
 "oil" button position now lands on wind. A $100 lesson, not a disaster, but it shows
 the toolmap's chooser positions are only valid early in the game. I'm reopening the
 chooser to read the current layout before picking again.
+
+A close-up of the plant site shows the wind turbine just north of the old plant, the
+old plant's grey **rubble still in place**, and flashing red "no power" markers on
+every power line. The whole city is in blackout, so the replacement plant can't wait.

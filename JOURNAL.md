@@ -1287,3 +1287,10 @@ lots beside existing roads. They've sat empty because shop demand is negative, w
 at maximum demand. Re-zoning them as homes costs a few dollars per tile, with roads and power
 already there: the cheapest new housing in the city. I'm doing it in small strips, keeping
 money above $1,500.
+
+**Second strip: $10 = 2 tiles.** Light residential zoning is $5/tile. My drag ran mostly along
+one isometric axis, so it zoned a thin 2-tile strip. Lesson: a zone drag covers a rectangle in
+tile space, so to cover an area the drag must run corner to corner. At this zoom, a straight
+horizontal drag of about 96 px covers 3×3 tiles. With money at $1,588 ($88 above the floor),
+I'm pausing spending and letting the city run, to see whether the new homes fill and how
+fast the budget drains.

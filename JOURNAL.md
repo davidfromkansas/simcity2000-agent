@@ -566,3 +566,9 @@ the pump query reads **Powered: Yes, Watered: 33,120 gallons per month**, and th
 inside the source building, so the game itself lays the first tile against the
 plant's edge. Next: let water spread through the joined pipes and watch whether homes
 start growing taller.
+
+**Feb 1966 newspaper:** the opinion column says "Pollution Blows!" and **mayor
+approval is down to 47%** (61% in 1951). Pollution in the save rose from 5,148 (1962)
+to 6,743 (1965). Residents' biggest complaint is clearly pollution, so after water,
+the next priority is pollution relief: parks and trees between the factories and the
+homes, and moving to a cleaner power mix when the oil plant can be replaced.

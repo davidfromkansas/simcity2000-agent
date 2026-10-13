@@ -168,3 +168,17 @@ own copy instead, put the game files (containing `SC2000.EXE`) in
 
 Note: the game's executable in this release is `SC2000.EXE` (there is no
 `SIMCITY.EXE`); `games/dosbox-x.conf` launches `SC2000.EXE NOSOUND`.
+
+## Live dashboard (GitHub Pages)
+
+`dashboard/publish.py` builds a static dashboard into a `gh-pages` worktree and pushes it.
+It shows stats from the newest native save, a city screenshot, a timeline slider over all
+snapshots, population/funds charts, R/C/I demand, and an activity feed merging the
+agent's move summaries (`runs/*/actions.jsonl`) with `JOURNAL.md` paragraphs.
+
+```bash
+git worktree add --detach ../simcity2000-pages && (cd ../simcity2000-pages && git checkout --orphan gh-pages && git rm -rfq .)
+.venv/bin/python dashboard/publish.py --pages-dir ../simcity2000-pages --every 300
+```
+
+Enable it once under Settings → Pages → Deploy from branch → `gh-pages` / root.

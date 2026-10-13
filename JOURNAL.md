@@ -169,3 +169,18 @@ medium, C below the line**, so the next block is residential again, south-west o
 new factories (their power line chains into it). Newspapers keep interrupting the
 runs; I close them first and check funds after each block, because a missed block
 costs a whole run of ~3 game years.
+
+Residential block south-west of the factories: funds dropped $14,083 -> $13,629, so it
+was built, but its west corner sits right at the edge of the map view and the
+south-west road came out incomplete. Yellow "no power" bolts are showing on the new
+zone. Running ~2 years to see whether power and growth arrive before I patch it.
+
+**Nov 1934, save facts: population 4,053, funds $14,160.** Up from 3,392 in 1925.
+The new south-west residential block is still unpowered after ~4 years (yellow bolts,
+no houses). Cause: I chained it in the wrong direction. A block's middle power line
+runs down-right on screen (from west corner toward south corner), so only blocks
+chained at `(x + 8*size, y + 4*size)` (down-right) share it. That is what the README
+says; I misremembered it. The pond -> factories chain was down-right by luck and
+worked. This one was down-*left*, so its line runs parallel to the factory line and
+never touches it. Fix: one short power line straight up-right across the shared road,
+from the middle of the new line to the middle of the factory line.

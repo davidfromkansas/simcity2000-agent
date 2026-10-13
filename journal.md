@@ -1080,3 +1080,39 @@ powered pumps make water, but **none of the city's pipe network is joined to the
 Water stops right at the pump plateau. That explains why every pipe I added in the
 west did nothing. Next: zoom in on the join between the pump grid and the pipe that
 runs toward the oil plant, find the missing tile(s), and bridge it with a 1–2 tile pipe.
+
+**Jun 2011: the water break was one missing tile.** Zoomed in 2x underground, the city's
+trunk pipe ended in a **cyan end-cap** one tile short of the pump grid. A cyan cap marks
+a pipe end that isn't joined to anything. One $3 pipe tile bridged the gap, and within
+four game months the Water Supply map showed yellow (watered) tiles spreading from the
+pumps into the middle of the city, where before only a speck by the pumps was watered.
+Funds $1,875. Lesson: judge water from the **Water Supply map** (red = dry), not
+the underground view's blue shading, and look for cyan end-caps to find breaks. Next:
+let it run a couple of years so water spreads through the zones and homes can grow
+denser, then read the saves.
+
+**Jun 2012: first growth from water.** Save AGENT038: **pop 4,884**, a new high (from
+4,734 in Feb 2011), funds **$1,889** (steady at the 9% tax), R +1880, C −852, I −1271.
+The Water Supply map shows the centre watered, but the western neighbourhoods are still
+red, so the western pipes must have more breaks like the first one. Next: scan the
+western pipe network at 2x zoom for cyan end-caps and bridge each with single $3 tiles.
+That's the cheapest growth available while money is near the floor.
+
+**Correction, Jun 2012.** Looking closer at the western pipes, cyan dots appear at the end
+of *every* pipe branch, including ones that are properly joined. So a cyan dot just
+means an open end. It's only a break when it stops one tile short of another pipe, as
+the first one did. The western zone grids all touch the main trunk, so the network
+looks joined. The remaining dry west is now most likely **too little water**: four
+pumps for ~4,900 people. Next: look at the pump plateau above ground and add pumps
+beside the powered ones as money allows, keeping funds above $1,500.
+
+**Pump #4 was never powered.** Above ground at 2x zoom, the pump I added in 2010 has a
+yellow **lightning bolt** (the game's "no power" sign). It sits one tile below the
+powered pump row, and unlike the 1999 pumps it doesn't touch a powered building. So the
+"add supply" test never actually ran. Fix: a 2-tile power line (~$10) from inside the
+powered fire station onto the pump, then check the bolt is gone and the Water Supply
+map spreads further west.
+
+**Aug 2012: pump #4 powered.** The 2-tile power line from the fire station connected
+($8, funds $1,881), and the lightning bolt on the pump is gone. All four pumps now run.
+Next: the Water Supply map shows whether the extra supply pushes water further west.

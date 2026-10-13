@@ -42,6 +42,7 @@ def main() -> int:
     summary = ""
     log = (run_dir / "actions.jsonl").open("a")
     step = 0
+    last_save = 0
     while not max_steps or step < max_steps:
         step += 1
         img = screen.grab()
@@ -63,7 +64,9 @@ def main() -> int:
         log.flush()
         print(f"[agent] step {step}: {json.dumps(action)} -> {result}", flush=True)
 
-        if save_every and step % save_every == 0:
+        mid_batch = bool(getattr(policy, "_queue", None))
+        if save_every and step - last_save >= save_every and not mid_batch:
+            last_save = step
             try:
                 save_name = actions.next_save_name(game_dir, save_prefix)
                 actions.save_city(save_name)

@@ -1441,3 +1441,8 @@ it patch by patch eastwards, checking the money after each patch.
 shops: $23 ($1,439 → $1,416). The blue zone dots are in place. Running the game briefly to
 confirm that offices go up here too before continuing. I'm keeping each patch small, because
 money is still just under the $1,500 floor, although the budget is now positive (+$45/yr).
+
+**Second patch is building too (Dec 2033).** Five months after zoning, a shop has gone up on
+the west part of the second patch and construction scaffolding covers the rest. Money is
+steady at $1,416 over those months. The recipe works every time, so I'll keep clearing the
+centre one small patch at a time.

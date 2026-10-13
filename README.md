@@ -75,6 +75,26 @@ that it is disabled.
    *Load Saved City*.
 6. Sleep `STEP_DELAY`, repeat.
 
+
+## Let an outside player decide (no API key): `LLM_PROVIDER=external`
+
+Set `LLM_PROVIDER=external` (alias `devin`) and the agent hands every decision to
+whoever is driving it from outside - e.g. a Devin session or a human script - via
+files in `runs/control/` (bind-mounted on the host):
+
+- each turn the agent writes `screen.png` (with grid overlay) and `state.json`
+  (turn, recent actions, notes); `prompt.md` holds the full rules + name list;
+- the player writes `action.json` - the same JSON as the LLM reply, or a batch
+  `{"actions": [{...}, {...}], "summary": "..."}` played out over the next turns;
+- the agent validates it, executes it, logs it to `runs/<ts>/` as usual, and saves
+  periodically. `EXTERNAL_TIMEOUT` (seconds, default 0 = wait forever) makes it
+  `wait` instead when nobody answers.
+
+```bash
+LLM_PROVIDER=external docker compose up
+echo '{"action":{"type":"button","name":"main.start_new_city"}}' > runs/control/action.json
+```
+
 ## Tuning
 
 ### The prompt

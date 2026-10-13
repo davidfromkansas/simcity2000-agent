@@ -6,7 +6,9 @@ import base64
 import json
 import os
 import re
+import time
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any
 
 import requests
@@ -175,15 +177,81 @@ class Brain:
         return r.json()["choices"][0]["message"]["content"]
 
 
+@dataclass
+class ExternalBrain:
+    """Hands each decision to an outside player (e.g. a Devin session) via files.
+
+    Every turn it writes ``screen.png`` (grid overlay) and ``state.json`` into
+    ``control_dir`` and waits for ``action.json``: either one decision
+    ``{"action": {...}, "summary": ...}`` or a batch ``{"actions": [{...}, ...]}``
+    that is played out over the next turns without waiting.
+    """
+
+    control_dir: Path
+    timeout: float = 0.0
+    poll: float = 0.5
+    provider: str = "external"
+    model: str = "file"
+    _queue: list[dict[str, Any]] = field(default_factory=list)
+    _turn: int = 0
+
+    def __post_init__(self) -> None:
+        self.control_dir.mkdir(parents=True, exist_ok=True)
+        os.chmod(self.control_dir, 0o777)
+        prompt = self.control_dir / "prompt.md"
+        prompt.write_text(SYSTEM_PROMPT + "\n\n" + toolmap.describe() + "\n")
+        os.chmod(prompt, 0o666)
+
+    def decide(self, img: Image.Image, history: list[dict[str, Any]], summary: str) -> dict[str, Any]:
+        self._turn += 1
+        if self._queue:
+            return self._queue.pop(0)
+        action_file = self.control_dir / "action.json"
+        tmp = self.control_dir / "screen.tmp.png"
+        with_grid(img).save(tmp, format="PNG")
+        tmp.replace(self.control_dir / "screen.png")
+        state = {"turn": self._turn, "summary": summary, "history": history, "waiting_since": time.time()}
+        (self.control_dir / "state.json").write_text(json.dumps(state, indent=1))
+        deadline = time.time() + self.timeout if self.timeout else None
+        while not action_file.exists():
+            if deadline and time.time() > deadline:
+                return {"observation": "no external move in time", "action": {"type": "wait", "seconds": 1},
+                        "summary": summary}
+            time.sleep(self.poll)
+        text = action_file.read_text()
+        action_file.unlink()
+        obj = extract_json(text)
+        if isinstance(obj.get("actions"), list) and obj["actions"]:
+            note = str(obj.get("summary") or summary)
+            decisions = []
+            for a in obj["actions"]:
+                if not isinstance(a, dict):
+                    raise BrainError("each entry in 'actions' must be an object")
+                toolmap.validate_action(a)
+                decisions.append({"observation": obj.get("observation"), "reasoning": obj.get("reasoning"),
+                                  "action": a, "summary": note})
+            self._queue = decisions[1:]
+            return decisions[0]
+        return parse_decision(text)
+
+
 DEFAULT_MODELS = {"anthropic": "claude-sonnet-4-5", "openai": "gpt-4o"}
+EXTERNAL_PROVIDERS = {"external", "devin"}
 
 
-def from_env() -> Brain:
+def from_env() -> Brain | ExternalBrain:
     provider = os.environ.get("LLM_PROVIDER", "").lower()
+    if provider in EXTERNAL_PROVIDERS:
+        run_dir = Path(os.environ.get("RUN_DIR", "runs"))
+        return ExternalBrain(
+            control_dir=Path(os.environ.get("CONTROL_DIR", str(run_dir / "control"))),
+            timeout=float(os.environ.get("EXTERNAL_TIMEOUT", "0")),
+            provider=provider,
+        )
     if not provider:
         provider = "anthropic" if os.environ.get("ANTHROPIC_API_KEY") else "openai" if os.environ.get("OPENAI_API_KEY") else ""
     if provider not in DEFAULT_MODELS:
-        raise BrainError("set ANTHROPIC_API_KEY or OPENAI_API_KEY (and optionally LLM_PROVIDER=anthropic|openai)")
+        raise BrainError("set ANTHROPIC_API_KEY or OPENAI_API_KEY, or LLM_PROVIDER=external to play from outside")
     key = os.environ.get("ANTHROPIC_API_KEY" if provider == "anthropic" else "OPENAI_API_KEY", "")
     if not key:
         raise BrainError(f"LLM_PROVIDER={provider} but its API key env var is empty")

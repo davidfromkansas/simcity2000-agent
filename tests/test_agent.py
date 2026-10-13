@@ -119,3 +119,51 @@ def test_next_save_name(tmp_path):
     (tmp_path / "AGENT001.SC2").write_bytes(b"")
     (tmp_path / "agent002.sc2").write_bytes(b"")
     assert actions.next_save_name(tmp_path, "agent") == "AGENT003"
+
+
+def _answer_when_asked(ctl, payload):
+    import threading
+    import time
+
+    def go():
+        while not (ctl / "screen.png").exists():
+            time.sleep(0.01)
+        (ctl / "action.json").write_text(json.dumps(payload))
+
+    t = threading.Thread(target=go)
+    t.start()
+    return t
+
+
+def test_external_brain_single_and_batch(tmp_path):
+    ctl = tmp_path / "control"
+    b = brain.ExternalBrain(control_dir=ctl, poll=0.01)
+    assert "RESOLVE MODAL DIALOGS" in (ctl / "prompt.md").read_text()
+    img = Image.new("RGB", (640, 480))
+    t = _answer_when_asked(ctl, {"action": {"type": "button", "name": "main.start_new_city"}, "summary": "s"})
+    d = b.decide(img, [], "")
+    t.join()
+    assert d["action"]["name"] == "main.start_new_city" and not (ctl / "action.json").exists()
+    assert json.loads((ctl / "state.json").read_text())["turn"] == 1
+    (ctl / "screen.png").unlink()
+    batch = {"actions": [{"type": "select_tool", "tool": "road"}, {"type": "wait", "seconds": 2}], "summary": "b"}
+    t = _answer_when_asked(ctl, batch)
+    assert b.decide(img, [], "")["action"]["tool"] == "road"
+    t.join()
+    assert b.decide(img, [], "")["action"] == {"type": "wait", "seconds": 2}
+
+
+def test_external_brain_rejects_bad_action_and_times_out(tmp_path):
+    ctl = tmp_path / "c"
+    b = brain.ExternalBrain(control_dir=ctl, poll=0.01, timeout=0.05)
+    assert b.decide(Image.new("RGB", (640, 480)), [], "x")["action"]["type"] == "wait"
+    (ctl / "action.json").write_text(json.dumps({"actions": [{"type": "select_tool", "tool": "nope"}]}))
+    with pytest.raises(ValueError):
+        b.decide(Image.new("RGB", (640, 480)), [], "")
+
+
+def test_from_env_external(monkeypatch, tmp_path):
+    monkeypatch.setenv("LLM_PROVIDER", "devin")
+    monkeypatch.setenv("CONTROL_DIR", str(tmp_path / "ctl"))
+    b = brain.from_env()
+    assert isinstance(b, brain.ExternalBrain) and b.provider == "devin"

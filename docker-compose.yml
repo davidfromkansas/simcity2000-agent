@@ -9,7 +9,7 @@ services:
       # Set one of these in your shell or in a .env file next to this compose file.
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
-      LLM_PROVIDER: ${LLM_PROVIDER:-}      # anthropic | openai (auto-detected from keys)
+      LLM_PROVIDER: ${LLM_PROVIDER:-}      # anthropic | openai | external (auto-detected from keys)
       LLM_MODEL: ${LLM_MODEL:-}            # default claude-sonnet-4-5 / gpt-4o
       STEP_DELAY: ${STEP_DELAY:-1.5}       # seconds between actions
       SAVE_EVERY: ${SAVE_EVERY:-25}        # in-game File > Save City As every N steps

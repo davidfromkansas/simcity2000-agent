@@ -1322,3 +1322,11 @@ Risk: fire coverage is weaker. If another fire starts, I'll raise fire funding f
 **Trim result (Aug 2026).** Money went $1,429 (Oct 2024) → $1,369 (Aug 2026): −$60 over ~22
 months, or about −$33 a year, down from −$57. The cut helped but didn't stop the drain. Looking
 at the budget again before deciding on the next lever.
+
+**2026 budget nearly balanced; invest in factory jobs.** Estimate is now −$10/yr: property tax
+$158 against police $70, fire $70, ordinances $15 and transit $15. Money is $1,369, below my
+self-imposed $1,500 floor, but at −$10/yr bankruptcy is more than a century away, so a small
+growth investment is safe. Factory demand is maxed (+2,000) and homes nearly so (+1,991). The
+south-centre rubble is old shop zoning that won't rebuild while shop demand is negative.
+Re-zoning a small patch of it as light industrial, beside the end of the diagonal road and
+away from the homes, adds jobs, which should pull in residents. It should cost about $30–50.

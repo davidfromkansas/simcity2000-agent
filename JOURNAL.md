@@ -885,3 +885,8 @@ The three bridge wires cost $10 (funds $2,595). After a month the north-west che
 storage still read Powered: No, so I let the sim run to Jun 2002 and queried again
 near the plant. That hit the police station (25 officers, $100/yr), whose query box
 doesn't show power. Next I'm querying the plant itself for its output and load.
+
+The plant query is clear: **Oil Power, 220 MW max, running at 0% of capacity**, age
+0 of 50. It's built but feeds nothing, so the bridge wires didn't connect. The tiles
+between the wires and the plant are probably still rubble. Opening the city map's
+power layer to see exactly where the live grid stops before spending more.

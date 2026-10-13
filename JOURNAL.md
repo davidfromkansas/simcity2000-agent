@@ -232,3 +232,21 @@ Plan: (a) keep adding blocks on the flattest land north of the factories (scroll
 into view); (b) then add a water pump and pipes, plus a police and fire station,
 which money now allows ($15.8k and rising). Bigger houses on the land we already
 have are the main way to reach 10,000.
+
+**North block (Feb 1947).** After scrolling, the flat strip north of the factories is
+only ~6 tiles deep before the next terrace, so this one is a 6x6 residential block
+sharing the factories' north-east road. It is chained *up-right* (the only direction
+with room), so its middle power line doesn't land on a powered line. Fix in the same
+move: extend the line 2 tiles down-right, then 3 tiles down-left onto the pond
+block's north-east road, right next to its powered houses (a power line crossing a
+road conducts into the neighbouring zone).
+
+Result: built (funds $15,827 -> $15,477), but my scroll-offset estimate was one tile
+off. The new block sits one row of trees above the factories instead of sharing
+their road, so my link line probably stops short of anything powered. Zooming in on
+the link end to patch it. Lesson: after a scroll, measure an existing corner on a
+zoomed crop instead of computing it from the scroll distance.
+
+Zoomed crop: the link ended one tile above the factories' north-east road, with the
+powered houses just across it. Extending it 2 tiles down-left across the road should
+complete the connection (~$15).

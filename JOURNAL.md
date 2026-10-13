@@ -783,3 +783,13 @@ The pipe trunks went in for $200 (funds $9,602 → $9,402). New blue lines now r
 the north-west, middle and south-west blocks. Watered tiles only show their blue
 shading after the simulation recalculates, so I'm running the city about 20 seconds
 before judging whether the trunks joined the main.
+
+**Jan 2000 newspaper: "Plant Nearing Death".** The oil plant built in 1951 is near the
+end of its ~50-year life. In 1951 the old plant died with no replacement, and the
+population crashed from 4,642 to 1,054, so this time **I'll build a replacement
+before it dies**. Same paper: mayor approval is **72%**, the highest since the 1930s
+(up from 51% in 1976), Fred's Opinion says "Lazy Students!" (education is the next
+complaint), and there's a hurricane warning.
+
+Save AGENT027 (Sep 1999): population 4,763 (up from 4,413 in 1992), funds $9,402,
+pollution 2,505 (lowest since the ordinances), R/C/I demand +2000 / −167 / −805.

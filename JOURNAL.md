@@ -1572,3 +1572,8 @@ the abandoned districts back. If it still doesn't build, the next thing to check
 "Raised Wires" over the water ($120) and I declined. It cost $2. Zoomed in, the zone's southern
 tip sits exactly one tile above the pump's power line, a gap power can't cross. So I'm placing
 the second tile straight up from the line into the zone tip, well away from the water.
+
+**Power link landed (Mar 2041, $1,163).** The second short line runs from the pump line straight
+up into the southern tip of the dense patch, so the zone now touches the grid directly. Money is
+still recovering (+$55 since the spending freeze). Running the game to see whether the patch
+starts building. If it is still empty after about two years, road access is the next suspect.

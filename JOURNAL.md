@@ -1405,3 +1405,9 @@ police increase the 2031 estimate is **+$45/yr** (treasury $1,374 → $1,419 by 
 stays at 70% for now. The city is earning money again for the first time since the fire, so I
 can start reinvesting: first let the burned centre rebuild with shop demand at maximum, then
 put the surplus into water and new home blocks.
+
+**Mar 2033 save: steady but slowing.** Population 4,215 (+59 since Apr 2031), money $1,457 and
+rising, crime down from 1,041 to 839 after the police increase. Demand: homes +2,000, shops
++2,000, factories +220. The re-powered districts have mostly filled, so growth is slowing
+again. The remaining limits are the burned centre (still rubble) and water. Checking whether
+the centre has started rebuilding.

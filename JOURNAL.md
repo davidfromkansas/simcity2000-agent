@@ -637,3 +637,8 @@ Each one targets a problem the city's own reports flagged:
 Ordinances act city-wide, need no land (the visible land is the constraint), and can
 be switched off. Checking the estimated annual cost against the ~$212 yearly tax
 income before confirming.
+
+All four ordinances are active, and they cost very little: Pollution Controls $12/yr,
+Volunteer Fire Dept $4/yr, City Beautification $3/yr, Pro-Reading $2/yr, **$21/yr in
+total** against about $212/yr of tax income. A city-wide policy fix for about a tenth
+of the budget. Running the city again to see whether pollution and approval respond.

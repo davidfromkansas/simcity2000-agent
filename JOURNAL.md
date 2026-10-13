@@ -441,3 +441,8 @@ Mar 1951 paper: **"Williams Labs Creates Gas Power"**, so gas plants are now
 available, and **approval has dropped 70% -> 61%** in two months without power.
 Clearing the rubble (bulldozer) and opening the plant chooser on the old site; I'll
 pick from what the chooser actually offers.
+
+**Plant chooser (Jul 1951, $14,443):** Coal 200 MW/$4,000 · Hydro 20 MW/$400 (needs a
+waterfall) · Oil 220 MW/$6,600 · **Gas 50 MW/$2,000 (new)**. Gas is too small for
+~4,600 people plus growth. **Chose oil:** the most power, and less smoke than coal
+right next to homes. That leaves about $7,800 for water and services.

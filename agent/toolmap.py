@@ -137,9 +137,11 @@ BUTTONS: dict[str, Point] = {
     "new_city.year_2050": (384, 274),
     "new_city.done": (319, 293),
     # Power plant chooser (after clicking the map with power_plant)
-    "power_plant.coal": (204, 250),
-    "power_plant.hydro": (320, 250),
-    "power_plant.oil": (440, 250),
+    # Card centres; the gas card (second row) appears once gas is invented (~1951).
+    "power_plant.coal": (204, 205),
+    "power_plant.hydro": (320, 205),
+    "power_plant.oil": (440, 205),
+    "power_plant.gas": (200, 300),
     "power_plant.cancel": (459, 191),
     # Budget window
     "budget.done": (458, 123),

@@ -281,3 +281,13 @@ approval 69%, but the headlines are about pollution and dumping. My read: the ci
 is all factories, a coal plant and homes packed side by side, with no services, so
 some residents are leaving. Adding more zones alone has stopped working. Next moves
 target *quality*, not quantity: a police and a fire station first, then water.
+
+**Services (May 1949, screen: $14,964).** First service building: a **police
+station** ($500) on the flat wooded patch just south-east of the coal plant. Why
+police first: crime rises with density and drags down land value and residential
+desirability, and this spot touches the plant and the blocks below it, so it is
+powered with no extra line. A fire station follows if this one is accepted.
+
+Police station accepted (funds $14,964 -> $14,464) but it shows the yellow "no power"
+bolt. It sits about one tile away from the end of the plant's outgoing line, not
+touching it. Bridging the gap with a 1-2 tile power line.

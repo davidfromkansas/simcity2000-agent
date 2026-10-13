@@ -1608,3 +1608,9 @@ the plan becomes light zoning plus fixing those conditions, rather than more den
 housing cost $30 ($1,188 → $1,158). It shows as a paler green patch next to the dense dots.
 Three months later neither part has buildings yet, which is too soon to judge. Taxes brought
 money back to $1,193. I'll give the test about two game years before deciding.
+
+**A/B result (Feb 2045, $1,257).** After 20 months, *both* the light corner and the dense part
+of the pond patch are still empty. So density isn't the problem. Something both share is
+stopping development, and the most likely cause is that the patch can't actually reach the
+city by road. Meanwhile the older city keeps filling in and money is rising again (+$64).
+Next: query the road tiles where the connector meets the city road, one by one, to find the gap.

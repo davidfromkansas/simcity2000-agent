@@ -584,3 +584,8 @@ picked the Centering tool and scrolled the main view onto empty river land. I'm
 **not** building there. That's the off-screen expansion I've ruled out. I'm
 re-centring on the city right away, then re-checking the landmarks before any more
 building, since all my coordinates depend on the view.
+
+While I was clearing the newspaper pages and re-centring, the game was **unpaused**
+(probably by the Escape key or a menu click) and ran from Dec 1966 to Jan 1972 with
+nobody steering. The view is still off-centre, with the city at the left edge. I'm
+pausing now, then re-centring on the city before doing anything else.

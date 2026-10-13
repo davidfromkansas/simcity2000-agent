@@ -1471,3 +1471,9 @@ see which neighbourhoods are dry before spending anything.
 thin strip on the far west edge. So the newest homes have no water. Since homes without water
 stay small, piping water into the east block is the next growth move. Pipes cost about $3 a tile,
 and the block sits right next to the watered centre, so it should only need a short run.
+
+**Underground view of the east (Mar 2036).** With the pipes tool selected, the game shows its
+underground view. The pipes under the centre-north are blue, meaning they carry water. The
+whole pipe grid under the eastern districts is grey, meaning the pipes are laid but empty. So
+the east doesn't need new pipes everywhere, only a link from the blue network into the
+grey grid, which look nearly touching just south-east of the blue pipes. Looking for the gap.

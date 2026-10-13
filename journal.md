@@ -1494,3 +1494,30 @@ pump the most, and the pond is next to the city. Moving the view there with the 
 south-west tip, the side nearest the city: $100 ($1,486 → $1,386). A pump only works with
 power, and its water only reaches the city through pipes, so next I'll run a short power line
 and a pipe from the city edge to it. That should cost about $30–40 more.
+
+**Powering the pump (Aug 2036).** Ran a power line from the tall building at the city edge,
+through the trees, toward the new pump: $16 ($1,386 → $1,370). It stopped about one tile short
+of the pump, so I'm adding one more tile into it.
+
+**Pump powered: 30,240 gallons/month (Aug 2036).** A query on the new pump reads "Powered:
+Yes" and "30,240 Gallons per Month", more than the older pumps (one read 22,320). It's next to
+fresh water, so it pumps well. The extra power tile went the wrong way ($2), but the main line
+already touched the pump. Total so far: $118 ($100 pump + $18 lines), money $1,368. Last step:
+a pipe from the pump to the city's pipe network so the water can actually reach homes.
+
+**Pump piped into the city (Aug 2036).** Laid about 10 tiles of pipe from the new pump west
+to the city's southern pipe grid: $30 ($1,368 → $1,338). The new pipe is already blue, and the
+nearest part of the previously grey southern grid turned blue too. Total for the new water
+supply: $148 (pump $100, power $18, pipe $30). Now I'll run the game a couple of years and
+check the Water map and population.
+
+**Jun 2038 save: water added, population still flat.** Population 4,075 (4,009 in Mar 2036),
+money $1,406 (+$68 in two years), crime 934, pollution 2,279. Demand: homes +2,000, shops
+−1,634 (the rebuilt centre has oversupplied shops, so no more commercial), factories −847.
+
+Diagnosis: demand for homes has been at +2,000 since 1934 and the city still won't grow. The
+new pump and the re-powered districts filled the homes that existed, but nearly all home zones
+are *light* residential, which caps each lot at small houses. A mayor would allow taller
+housing where infrastructure already exists. Next experiment: re-zone one existing light
+home block as dense residential ($/tile, roads, power and water already in place), then
+compare its population after a couple of years before rolling it out.

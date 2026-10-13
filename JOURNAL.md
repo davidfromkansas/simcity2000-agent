@@ -184,3 +184,11 @@ says; I misremembered it. The pond -> factories chain was down-right by luck and
 worked. This one was down-*left*, so its line runs parallel to the factory line and
 never touches it. Fix: one short power line straight up-right across the shared road,
 from the middle of the new line to the middle of the factory line.
+
+**Jan 1941 (screen: $15,172).** The short power link worked: it cost $10, the bolts
+disappeared, and the south-west residential block is filling with houses. Funds are
+*rising* - taxes now cover upkeep. For the first time the RCI meter shows **R, C and I
+all high**, so the city can absorb every zone type. Commercial goes first, because the
+only shop block so far is the half-built one and the factories and homes need shops.
+New block: down-right of the south-west homes (the correct chaining direction this
+time), so its line starts on the homes' powered line.

@@ -1489,3 +1489,8 @@ before have gone grey. The game shares a fixed supply across the network, so lin
 pipes just spread the same water thinner. The real limit is pump output, not pipes. Fix: add
 a water pump by the pond ($100, money $1,486, budget +$40/yr). Pumps next to fresh water
 pump the most, and the pond is next to the city. Moving the view there with the overview map.
+
+**New water pump by the pond (Aug 2036).** Placed a pump on the flat shore at the pond's
+south-west tip, the side nearest the city: $100 ($1,486 → $1,386). A pump only works with
+power, and its water only reaches the city through pipes, so next I'll run a short power line
+and a pipe from the city edge to it. That should cost about $30–40 more.

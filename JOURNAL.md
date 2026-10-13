@@ -1614,3 +1614,10 @@ of the pond patch are still empty. So density isn't the problem. Something both 
 stopping development, and the most likely cause is that the patch can't actually reach the
 city by road. Meanwhile the older city keeps filling in and money is rising again (+$64).
 Next: query the road tiles where the connector meets the city road, one by one, to find the gap.
+
+**Junction queries (Feb 2045).** The connector tile reads "Road, Traffic: 1 cars/minute", so cars
+do use it and the patch is probably joined to the network. The building beside it is an
+"Abandoned building, Commercial low-density, Powered: Yes, Watered: Yes". It's abandoned because
+shop demand is negative (−1,335 in the Mar 2043 save), not because services are missing. That save:
+4,085 people, $1,193, crime 778 (down from 1,057). Next I'm querying tiles inside the empty patch to
+read their Powered/Watered lines directly.

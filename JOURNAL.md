@@ -446,3 +446,10 @@ pick from what the chooser actually offers.
 waterfall) · Oil 220 MW/$6,600 · **Gas 50 MW/$2,000 (new)**. Gas is too small for
 ~4,600 people plus growth. **Chose oil:** the most power, and less smoke than coal
 right next to homes. That leaves about $7,800 for water and services.
+
+**Oil plant built (Jul 1951): funds $14,443 -> $7,843.** It sits on the old coal
+site, so the existing lines and the police-station/pump link should pick it up.
+Lesson recorded in the AI prompt too: choosing a plant takes three clicks (plant
+tool -> click the site to open the chooser -> pick a card -> click the site again);
+my first try switched tools before the last click and built nothing.
+Plants expire after ~50 years. The next one is due around 2001.

@@ -771,3 +771,10 @@ all**, apart from one line up to the north block. Those homes can never grow pas
 small houses. Next: run short pipe drags (≤8 tiles each, since longer ones stop
 early) along the western streets, each starting on the end of an existing pipe so
 the network stays joined.
+
+Pipe plan: three trunks into the west, all starting on the existing main where it
+ends at (268,268) by the park. One runs up-left through the north-west blocks, one
+down-left through the southern blocks, and one through the middle. Each is a chain of
+drags of 7 tiles or fewer, each starting where the last one ended. Zones pass water
+on to neighbouring zone tiles (as they do power), so trunks a few blocks apart should
+cover everything. Expected cost about $5 per tile.

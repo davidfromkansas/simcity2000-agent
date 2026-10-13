@@ -1379,3 +1379,8 @@ powered house into the dark lots south-west of the rubble brought them back too:
 and houses appeared within 4 months. Money $1,286 → $1,278 (line tiles plus 4 months' drain).
 Baseline for comparison: the Jun 2028 save, taken before either bridge, shows population
 3,243. One row of dark lots is left along the bottom-left; bridging it next.
+
+**Third bridge: the last dark row is back (Jun 2029).** One more short line, from a newly
+powered building into the bottom-left row, cleared its lightning bolts too, and houses are
+filling in. All three districts cut off by the fire are back on the grid. Total cost for the
+three bridges: about $12. Money $1,276. Letting it run 2 minutes, then reading population.

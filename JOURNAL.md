@@ -1577,3 +1577,9 @@ the second tile straight up from the line into the zone tip, well away from the 
 up into the southern tip of the dense patch, so the zone now touches the grid directly. Money is
 still recovering (+$55 since the spending freeze). Running the game to see whether the patch
 starts building. If it is still empty after about two years, road access is the next suspect.
+
+**Still empty in Jan 2042 ($1,198): road access.** Even with power touching it, nothing has been
+built on the patch. Zoomed in, the connector road I laid in 2038 turns down towards the city, but
+it seems to stop at the new office tower, about one tile short of the city road below. A road
+network that doesn't join the rest of the city lets nobody commute, so in SC2000 the zone
+never develops. Fix: a short road from the connector's end onto the city road.

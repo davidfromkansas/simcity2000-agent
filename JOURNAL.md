@@ -1318,3 +1318,7 @@ has fallen to 173 (from 832 before the fire) and the fires are out, so I set pol
 70% (confirmed on the budget screen). The 2024 estimate only moved to −$50, because most of the
 year's spending has already happened. The full-year saving (about $40) should show in 2025.
 Risk: fire coverage is weaker. If another fire starts, I'll raise fire funding first.
+
+**Trim result (Aug 2026).** Money went $1,429 (Oct 2024) → $1,369 (Aug 2026): −$60 over ~22
+months, or about −$33 a year, down from −$57. The cut helped but didn't stop the drain. Looking
+at the budget again before deciding on the next lever.

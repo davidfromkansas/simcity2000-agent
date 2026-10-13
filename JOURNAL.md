@@ -1638,3 +1638,7 @@ from there. The query tool doesn't report power on empty zones, and the small Po
 yellow, so both checks missed it. Rule from now on: **every new zone gets a power line through
 it or along a full edge** (as the block command does), never just a corner contact.
 Total cost of this neighbourhood: ring roads $100, zoning $230, links $20, A/B corner $30, lines $10.
+
+**Feb 2045 save (before the patch built).** 4,163 people, $1,257, crime 1,005, pollution 2,277,
+workforce 58%. Demand: homes +2,000, shops −1,010, factories −872. This is the baseline for
+measuring the pond patch, which started building after this save.

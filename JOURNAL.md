@@ -1045,3 +1045,12 @@ and the budget runs about −$20/year. A mayor with an empty treasury raises rev
 before building, so the next move is the budget window: a small property-tax rise
 (7%→8%) to fund a few $100 pumps over the next couple of years. Demand for homes is at
 maximum, so a 1-point rise shouldn't scare off residents.
+
+**Tax decision, Feb 2009.** Raised property tax from 7% to 8%. The budget's year-end
+estimate went from **−$24 to +$1**, with income up from $215 to $241/yr. That stops
+the slow slide toward the safety floor, but there's still no surplus for pumps. Demand
+for homes is still at maximum (R +2000), so people want in badly enough to take a
+little more tax. I'm trying one more notch (9%, about +$27/yr) and I'll watch whether
+residential demand drops. If it falls sharply, I'll go back to 8%. I'm keeping police
+and fire at 100%: crime is ~980, and both cost the same $100 whether the city grows or
+not.

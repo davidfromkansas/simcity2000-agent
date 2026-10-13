@@ -1335,3 +1335,10 @@ away from the homes, adds jobs, which should pull in residents. It should cost a
 yellow industrial dots now cover the empty tiles between the south-centre rubble, next to the
 end of the diagonal road. Letting it run to see whether factories build there, and whether
 the new jobs move population.
+
+**Factory patch stayed empty (Jun 2028).** After ~2 game years the new industrial patch is
+still bare yellow dots, even though factory demand is maxed (+2,000). Money is $1,290
+($1,319 → $1,290, about −$16/yr, so the budget fix is holding). Population 3,237 in the Aug
+2026 save, flat. My guess is that the patch has no power: zones pass electricity to the zones
+beside them, but rubble doesn't, so a patch surrounded by rubble may be cut off from the grid.
+Querying a tile to check.

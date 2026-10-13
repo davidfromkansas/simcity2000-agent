@@ -1654,3 +1654,9 @@ which goes below my $1,500 floor, but the first patch shows it pays back, and th
 and the first patch for $60 ($1,318 → $1,258). This time it shares a full edge with the power line
 I ran along the first patch, and it fronts the ring road, so it has both power and road access
 from day one. Running two game years to compare.
+
+**Jul 2048 save: growth restarted.** 4,545 people, up from 4,163 in Feb 2045 (+382, the biggest
+gain since the post-fire recovery). Money $1,308, crime 1,100, pollution 2,436, workforce 58%.
+Demand: homes +2,000, shops −176 (was −1,010), factories **+169** (was −872). The new residents
+are using up the spare jobs, so shop and factory demand is climbing back towards positive.
+That's the healthy loop: homes → workers → demand for jobs → businesses → more homes.

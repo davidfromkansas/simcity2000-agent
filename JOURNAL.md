@@ -1583,3 +1583,8 @@ built on the patch. Zoomed in, the connector road I laid in 2038 turns down towa
 it seems to stop at the new office tower, about one tile short of the city road below. A road
 network that doesn't join the rest of the city lets nobody commute, so in SC2000 the zone
 never develops. Fix: a short road from the connector's end onto the city road.
+
+**Road link placed (Jan 2042).** The short road from the connector down to the city road cost $10
+($1,198 → $1,188), so the game did build new road tiles; they're mostly hidden behind the tower.
+Running the game: if the patch now starts building, a missing road link was the reason it sat
+empty for three years.

@@ -623,3 +623,17 @@ chosen carefully. Checking the ordinance list for pollution measures.
 Also noticed: the yellow-dotted terraces at the top-left of the view are land zoned
 decades ago that never developed. That's existing, on-screen land the city could
 grow into once whatever's blocking it is fixed (likely power, water or road access).
+
+**Mayor's policy package (May 1976): city ordinances instead of more construction.**
+Each one targets a problem the city's own reports flagged:
+
+| Ordinance | Why |
+|---|---|
+| Pollution Controls | Pollution is at 10,251, residents' top complaint ("Pollution Blows!"), approval at 51% |
+| Volunteer Fire Dept | "Fire Station Wanted" / "Fire Protection Demanded", with no fire department at all |
+| Pro-Reading Campaign | Education quotient has slid from 83 to 72 since 1925 |
+| City Beautification | Raises land value, which attracts denser and better housing |
+
+Ordinances act city-wide, need no land (the visible land is the constraint), and can
+be switched off. Checking the estimated annual cost against the ~$212 yearly tax
+income before confirming.

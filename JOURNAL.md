@@ -642,3 +642,7 @@ All four ordinances are active, and they cost very little: Pollution Controls $1
 Volunteer Fire Dept $4/yr, City Beautification $3/yr, Pro-Reading $2/yr, **$21/yr in
 total** against about $212/yr of tax income. A city-wide policy fix for about a tenth
 of the budget. Running the city again to see whether pollution and approval respond.
+
+Jul 1979: funds have risen to $10,111 with the ordinances active, so they cost almost
+nothing. No fires visible. Letting the city run a few more years before reading the
+next save, to see whether pollution drops.

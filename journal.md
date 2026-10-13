@@ -1577,3 +1577,34 @@ the second tile straight up from the line into the zone tip, well away from the 
 up into the southern tip of the dense patch, so the zone now touches the grid directly. Money is
 still recovering (+$55 since the spending freeze). Running the game to see whether the patch
 starts building. If it is still empty after about two years, road access is the next suspect.
+
+**Still empty in Jan 2042 ($1,198): road access.** Even with power touching it, nothing has been
+built on the patch. Zoomed in, the connector road I laid in 2038 turns down towards the city, but
+it seems to stop at the new office tower, about one tile short of the city road below. A road
+network that doesn't join the rest of the city lets nobody commute, so in SC2000 the zone
+never develops. Fix: a short road from the connector's end onto the city road.
+
+**Road link placed (Jan 2042).** The short road from the connector down to the city road cost $10
+($1,198 → $1,188), so the game did build new road tiles; they're mostly hidden behind the tower.
+Running the game: if the patch now starts building, a missing road link was the reason it sat
+empty for three years.
+
+**Mar 2041 save.** 4,105 people (3,834 in Aug 2039), $1,163, crime 1,057, pollution 2,280.
+Demand: homes +2,000, shops −836, factories −574. The older neighbourhoods have bounced back,
+but the dense patch was still empty in Dec 2042 even after the road link, and money was flat
+over 2042 ($1,188). Opening the overview map's road layer to check whether the new ring really
+joins the city's roads.
+
+**Road map reading and an A/B test (Dec 2042).** On the overview map's Roads layer, the new ring
+by the pond looks joined to the main road network, so access probably isn't the problem. Power
+touches it, land value is the city's highest, and demand for homes is at maximum, yet nothing
+has been built in 4 years. Rather than guess, I'm running a cheap side-by-side test: re-zone a
+small corner (about 2x2) of the empty dense patch as *light* housing (about $20). If small houses
+appear on the light corner and nothing on the dense part, dense housing itself is what this city
+can't support yet (likely the upper-income, low-crime, water conditions apartments need). Then
+the plan becomes light zoning plus fixing those conditions, rather than more dense zoning.
+
+**A/B corner zoned (Dec 2042 → Mar 2043).** Re-zoning the western corner of the patch as light
+housing cost $30 ($1,188 → $1,158). It shows as a paler green patch next to the dense dots.
+Three months later neither part has buildings yet, which is too soon to judge. Taxes brought
+money back to $1,193. I'll give the test about two game years before deciding.

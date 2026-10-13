@@ -1017,3 +1017,12 @@ patch near the top of the city has water. So the water system that served the ci
 blackout and sit on a feeder the new wires don't reach, or pipes broke where buildings
 were rebuilt. Without water, homes stay small even at maximum demand, which matches the
 old ~4,600 ceiling. Next: query the pumps by the pond to see if they're powered.
+
+**Underground view, Oct 2007.** Water reaches only the plant district: the blue-shaded,
+watered tiles stop at its west edge. The large western neighbourhoods, where most homes
+are, have almost no pipes under them, so they've never had water. That's the clearest
+cause of the ~4,600 ceiling: unwatered homes can't grow past small houses. Pipes cost
+$3 a tile, so this is the cheapest growth fix available while money is tight. Plan:
+three 8-tile trunks westward from the edge of the watered network (up-left, down-left,
+and from its south side), each starting on a watered pipe so it joins the network.
+Budget about $75.

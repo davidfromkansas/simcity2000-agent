@@ -869,3 +869,9 @@ in the south-west. It's still trees, with **$256,000/acre** land value, no crime
 pollution. That's prime land, so what holds it back isn't desirability; it's weak
 commercial demand (it swung between −356 and +604 across the last saves). Next I'm
 querying a developed block to confirm the new plant's power is reaching homes.
+
+Querying a developed industrial building north-west of the plant shows **Powered: No**
+and Watered: No. The new oil plant is built but not tied into the grid: clearing the
+rubble likely also took out the wire tiles touching the old plant. Same fix as in 1951:
+redraw a short power line starting inside the new plant out to the nearest existing
+line, then re-query.

@@ -1417,3 +1417,10 @@ but the burned centre, still zoned for shops, hasn't rebuilt. My guess is that t
 blocks redevelopment. Test: bulldozed a small patch for $3 ($1,457 → $1,454), and it is now
 cleared ground. Next I'll query it to check that the shop zoning survived, then let the game
 run to see whether a shop appears. If it does, I'll clear the rest a few dollars at a time.
+
+**Bulldozing rubble removes its zoning.** A query on the cleared patch reads "Clear terrain"
+with no zoning line, and the zoomed screenshot shows bare ground with no zone dots. Land value
+there is high ($59,000/acre). So clearing burned land is a two-step job: bulldoze ($1/tile),
+then re-zone. I'm re-zoning the cleared patch as light commercial, because shop demand is
+at maximum. After 15 years as rubble, and 2 of them with shop demand maxed, the old zoned
+rubble clearly wasn't rebuilding on its own.

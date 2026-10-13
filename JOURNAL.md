@@ -523,3 +523,9 @@ constraint, which is why water (to let houses grow taller) is still the priority
 Jan 1962 ($8,566): with the middle and south pipes joined to the pump, the Water
 Supply map is still red. The pipes now look fine, so I'm checking the pump itself
 with the query tool (is it powered, how much is it pumping) before spending more.
+
+**Root cause found (Jan 1962):** the query tool on the water pump says
+**Powered: No, Watered: 0 gallons per month.** My earlier power-line fixes looked right
+on screen but never touched the pump. That's why no pipe network could ever carry
+water. Lesson: use the query tool on a building to check it's powered; don't infer it
+from line colours.

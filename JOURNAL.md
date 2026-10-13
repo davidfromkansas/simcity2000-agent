@@ -514,3 +514,8 @@ The south pipe already joins the pump's line.
 Apr 1960 ($8,374): the reroute worked partly. The middle cross pipe now joins the
 south pipe, which joins the pump, so two neighbourhoods are on the pump's network.
 The north-west pipe is still an island; I'll join it once I see water flowing.
+
+**Apr 1960 save (AGENT020):** population 4,791, funds $8,426, R demand +2000, C -350,
+I -679, pollution 5,243. Population is flat but money is steady. Residents still want
+homes, while shops and factories have enough. So the land for homes is the
+constraint, which is why water (to let houses grow taller) is still the priority.

@@ -504,3 +504,9 @@ three cross pipes were **islands** that didn't touch the pump's network. Water, 
 power, only flows through connected pipe. I'm re-laying the trunk in two shorter drags
 that end exactly where each cross pipe starts. Lesson: keep each pipe or line drag
 short (about 8 tiles or fewer) and check the joins in the underground view.
+
+Both re-lay drags were silently refused (nothing appeared, funds unchanged), the
+same spot where the first long trunk stopped, so something at that tile blocks
+pipes. New route: chain the cross pipes end-to-end along the other axis (the far
+end of the north pipe -> the end of the middle pipe -> the end of the south pipe).
+The south pipe already joins the pump's line.

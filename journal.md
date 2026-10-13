@@ -1342,3 +1342,40 @@ still bare yellow dots, even though factory demand is maxed (+2,000). Money is $
 2026 save, flat. My guess is that the patch has no power: zones pass electricity to the zones
 beside them, but rubble doesn't, so a patch surrounded by rubble may be cut off from the grid.
 Querying a tile to check.
+
+**Power map explains the stall (Jun 2028).** On the overview map's Power layer (yellow =
+powered, red = not), the burned centre, including my new factory patch, has no power at all.
+Zones pass power only to zones touching them, and the fire turned the links between them into
+rubble, so the patch is cut off. That's why maxed factory demand built nothing there. The map
+also shows a red patch on the city's west edge: existing buildings with no power, probably
+also cut off by the fire. Reconnecting those is the cheapest win, since the buildings are
+already there. So power is the next fix: reconnect the west edge first, then run a short line
+into the factory patch along tiles that aren't rubble (power lines can't be built on rubble).
+
+**The north-west district is abandoned for lack of power (Jun 2028).** A query of one dark lot
+reads "Abandoned building, Zoned: Residential low-density, Powered: No, Watered: No". The whole
+district north and west of the burned centre (dozens of lots with yellow lightning bolts) is
+homes that people walked out of when the fire cut the power: zones carry power only to the
+zones touching them, and the burned lots between them and the water pumps are now rubble. This
+is the biggest growth lever I've found. Home demand is +1,984 and these lots already have
+roads and zoning, so reconnecting power should refill them at almost no cost. Fix: a short
+power line from the powered pump, across the road, into the nearest abandoned lot.
+
+**Bridge attempt: 2 line tiles, $4.** The first drag laid one tile north of the pump. The second
+laid a tile across the road between the pump and the nearest unpowered lot ($1,290 → $1,286).
+Unpausing briefly so the game recomputes power, then checking whether the lightning bolts clear.
+
+**Power restored, and the district rebuilt within 4 months (Oct 2028).** After the 2-tile, $4
+bridge from the pump, every lightning bolt north of the burned centre disappeared. By October
+the abandoned lots had filled with new homes, apartments and a block of houses. Money is
+unchanged at $1,286. This is the cheapest and biggest fix of the whole game. The lesson for a
+mayor: after a disaster, check the Power map for red, because rubble breaks the
+zone-to-zone power chain, and whole neighbourhoods quietly empty out even though they still
+have roads and zoning. Next I'm looking for the other dark lots with bolts further south-west
+and bridging those the same way.
+
+**Second bridge: the upper south-west district rebuilt (Feb 2029).** A short line from a newly
+powered house into the dark lots south-west of the rubble brought them back too: apartments
+and houses appeared within 4 months. Money $1,286 → $1,278 (line tiles plus 4 months' drain).
+Baseline for comparison: the Jun 2028 save, taken before either bridge, shows population
+3,243. One row of dark lots is left along the bottom-left; bridging it next.

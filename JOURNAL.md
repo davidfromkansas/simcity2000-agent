@@ -857,3 +857,9 @@ the oil plant again.
 Save AGENT028 (Jan 2002, in blackout): population 4,586, funds $9,207. My clearing
 batch failed on a tool-name slip: "bulldozer" is the toolbar group, and the tool
 itself is `demolish` (the same trap as "roads" vs `road`). Retrying with `demolish`.
+
+**New oil plant built (Jan 2002).** After clearing the rubble with `demolish`, the
+plant went in on the old site, and funds fell $9,207 → **$2,605** (−$6,602), which
+proves the build. That leaves the city above the $1,500 floor with positive yearly
+income. Running briefly at llama speed to let power spread, then checking that the
+zones are powered again.

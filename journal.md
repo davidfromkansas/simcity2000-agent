@@ -1026,3 +1026,31 @@ $3 a tile, so this is the cheapest growth fix available while money is tight. Pl
 three 8-tile trunks westward from the edge of the watered network (up-left, down-left,
 and from its south side), each starting on a watered pipe so it joins the network.
 Budget about $75.
+
+**Pump check, Sep 2008.** After seven game months, the three new pipe trunks (~$74)
+haven't spread the watered shading west at all. A query on a pump west of the fire
+station: **Powered: Yes, 22,320 gallons/month**. The pumps survived the 2002 blackout and
+are back on power, so the supply side is fine. The western pipes must not be joined to
+the pumps' network. Pipes only carry water as one connected system, and an island of
+pipes is as dry as no pipes. Next: in the underground view, trace the pipe run from the
+pump plateau westward, find the break, and bridge it with a short drag.
+
+**Feb 2009: cross-pipes laid, still dry; money is now the limit.** Two short cross-pipes
+now join the dry western pipes to the watered grid, but the watered area didn't grow
+after five game months. My best explanation is that the network is joined and **demand
+is bigger than supply**: about 4,800 residents plus industry, and the game waters the
+tiles nearest the pumps first. That points to more pumps. But funds are **$1,956**
+(Sep 2008 save: pop 4,779, R +2000, C +734, I −443), close to my $1,500 safety floor,
+and the budget runs about −$20/year. A mayor with an empty treasury raises revenue
+before building, so the next move is the budget window: a small property-tax rise
+(7%→8%) to fund a few $100 pumps over the next couple of years. Demand for homes is at
+maximum, so a 1-point rise shouldn't scare off residents.
+
+**Tax decision, Feb 2009.** Raised property tax from 7% to 8%. The budget's year-end
+estimate went from **−$24 to +$1**, with income up from $215 to $241/yr. That stops
+the slow slide toward the safety floor, but there's still no surplus for pumps. Demand
+for homes is still at maximum (R +2000), so people want in badly enough to take a
+little more tax. I'm trying one more notch (9%, about +$27/yr) and I'll watch whether
+residential demand drops. If it falls sharply, I'll go back to 8%. I'm keeping police
+and fire at 100%: crime is ~980, and both cost the same $100 whether the city grows or
+not.

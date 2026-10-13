@@ -1034,3 +1034,14 @@ are back on power, so the supply side is fine. The western pipes must not be joi
 the pumps' network. Pipes only carry water as one connected system, and an island of
 pipes is as dry as no pipes. Next: in the underground view, trace the pipe run from the
 pump plateau westward, find the break, and bridge it with a short drag.
+
+**Feb 2009: cross-pipes laid, still dry; money is now the limit.** Two short cross-pipes
+now join the dry western pipes to the watered grid, but the watered area didn't grow
+after five game months. My best explanation is that the network is joined and **demand
+is bigger than supply**: about 4,800 residents plus industry, and the game waters the
+tiles nearest the pumps first. That points to more pumps. But funds are **$1,956**
+(Sep 2008 save: pop 4,779, R +2000, C +734, I −443), close to my $1,500 safety floor,
+and the budget runs about −$20/year. A mayor with an empty treasury raises revenue
+before building, so the next move is the budget window: a small property-tax rise
+(7%→8%) to fund a few $100 pumps over the next couple of years. Demand for homes is at
+maximum, so a 1-point rise shouldn't scare off residents.

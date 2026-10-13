@@ -1247,3 +1247,10 @@ housing more urgent. Residential demand is still about +2,000.
 land east of the city. Its north-west road edge is laid right on the existing diagonal road, so
 it connects at no extra cost, and its power line starts at the existing poles. I'll check the
 cost from the funds change.
+
+**First eastern block built (Feb 2020).** The block cost $152 ($1,814 → $1,662). A query
+inside the loop says "Zoned: Residential low-density", land value $1,000/acre, crime none,
+pollution low. Its road connects to the existing diagonal road and its power line to the
+existing poles. Lesson: the view is zoomed in, so "size 6" made a loop only about 3 real
+tiles across. Next time use a bigger size or zoom out first. Money is now about $160 above
+my floor, so I'll let this block fill and watch the budget before building more.

@@ -484,3 +484,6 @@ because it doesn't touch the plant, and a zoomed view shows the pump is actually
 about (406,295), south-east of the police station, not where I clicked. Re-drawing
 along one tile axis, from the tile against the plant's south-east edge to the pump.
 Lesson: zoom in on the building I'm wiring *before* drawing the line.
+
+Oct 1956 ($8,259): after the re-drawn line, the wires around the pump and police
+station no longer show any "unpowered" marks, so the pump should finally be running.

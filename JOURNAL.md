@@ -1112,3 +1112,7 @@ powered pump row, and unlike the 1999 pumps it doesn't touch a powered building.
 "add supply" test never actually ran. Fix: a 2-tile power line (~$10) from inside the
 powered fire station onto the pump, then check the bolt is gone and the Water Supply
 map spreads further west.
+
+**Aug 2012: pump #4 powered.** The 2-tile power line from the fire station connected
+($8, funds $1,881), and the lightning bolt on the pump is gone. All four pumps now run.
+Next: the Water Supply map shows whether the extra supply pushes water further west.

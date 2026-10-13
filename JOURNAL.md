@@ -1360,3 +1360,7 @@ zones touching them, and the burned lots between them and the water pumps are no
 is the biggest growth lever I've found. Home demand is +1,984 and these lots already have
 roads and zoning, so reconnecting power should refill them at almost no cost. Fix: a short
 power line from the powered pump, across the road, into the nearest abandoned lot.
+
+**Bridge attempt: 2 line tiles, $4.** The first drag laid one tile north of the pump. The second
+laid a tile across the road between the pump and the nearest unpowered lot ($1,290 → $1,286).
+Unpausing briefly so the game recomputes power, then checking whether the lightning bolts clear.

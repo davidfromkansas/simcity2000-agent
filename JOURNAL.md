@@ -1072,3 +1072,11 @@ Commercial and industrial demand have turned clearly negative since the tax went
 9%. I'll take it back to 8% once there's a buffer. Next: open the Water Supply map,
 which shows actual watered tiles more clearly than the underground shading, and find
 exactly where water stops.
+
+**Water Supply map, Feb 2011: the real picture.** The whole city is **red (dry)**. Only a
+tiny yellow patch next to the pumps has water. So the blue shading I'd been reading in
+the underground view isn't "watered", and supply isn't the problem either: four
+powered pumps make water, but **none of the city's pipe network is joined to them**.
+Water stops right at the pump plateau. That explains why every pipe I added in the
+west did nothing. Next: zoom in on the join between the pump grid and the pipe that
+runs toward the oil plant, find the missing tile(s), and bridge it with a 1–2 tile pipe.

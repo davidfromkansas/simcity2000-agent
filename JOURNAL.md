@@ -144,3 +144,10 @@ block 1, and it has a small pond in it. Built the next residential block there
 anyway: losing a few water tiles is cheaper than terraforming, it shares block 1's
 north-west road, and its middle power line lands exactly on block 1's line, so it is
 powered with no extra wiring.
+
+**May 1925, save facts: population 3,392, funds $14,152.** A third of the way there,
+and money is steady. The pond block filled with houses within three years. The RCI
+meter has flipped again: **I strongly up, R and C down** - the new residents need
+jobs. So the next block is industrial, on the flat forest west of the pond block
+(chained power again). This R -> I -> R see-saw is the core loop: zone whatever
+the meter asks for, one 8x8 block at a time, and let ~3 game years pass between moves.

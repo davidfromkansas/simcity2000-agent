@@ -1294,3 +1294,13 @@ tile space, so to cover an area the drag must run corner to corner. At this zoom
 horizontal drag of about 96 px covers 3×3 tiles. With money at $1,588 ($88 above the floor),
 I'm pausing spending and letting the city run, to see whether the new homes fill and how
 fast the budget drains.
+
+**Business demand flipped positive; stop re-zoning (Nov 2022).** The Dec 2021 save shows
+population still falling after the fire (3,436 → 2,963), but shop demand is now +587 and factory
+demand +1,763, both negative before. The likely cause: with fewer businesses left after the fire,
+the remaining residents need jobs and shops again. That changes the plan. The burned centre is
+still zoned commercial, so with positive shop demand it can rebuild by itself, for free, on
+roads and power that already exist. Re-zoning it as homes would now be a mistake, so I'm
+stopping after the 4 tiles ($20) already done. Money fell $1,588 → $1,530 in ~11 months
+(about −$58/yr), so I'm right at my $1,500 floor and spending nothing. I'll let the
+city run and watch whether the rubble regrows.

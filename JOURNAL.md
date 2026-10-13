@@ -972,3 +972,8 @@ touches the plant's south-west edge, but it ends one tile short of the lower wes
 feeder, and the gap is **clear ground, not rubble**. A short wire across that gap
 should join the plant to the western neighbourhoods. Afterwards I'll check the plant's
 load: it should jump well above 5% if the homes are back on the grid.
+
+Jan 2005: the plant runs at **2%**, lower than before, and funds are $2,254 (slowly
+falling, because tax income from ~300 residents no longer covers police and fire). The
+south-west bridge didn't reconnect the western neighbourhoods. Either the wire didn't
+land, or that lower feeder is itself cut further along. Inspecting the close-up next.

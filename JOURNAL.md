@@ -1687,3 +1687,12 @@ The only big plant I can afford is **solar (50 MW, $1,300)**, which would leave 
 committing, I'm querying the old oil plant: if the city uses under about 45 MW (about 20% of its 220 MW),
 solar covers it with no pollution. If it uses more, I'll need solar plus wind turbines, or I'll have to
 let money build up until the plant dies, then buy coal. Zooming out to find the plant.
+
+**Plant query (Apr 2051): 220 MW, running at 42%, age 49 of 50.** The city draws about 92 MW, and
+the plant has about a year left. Solar (50 MW, $1,300) would cover only about half, and coal or oil are
+unaffordable at $1,451. My plan was solar now and wind turbines as taxes came in, rather than
+a bond I couldn't pay back.
+
+**Stopped (Apr 2051).** David asked me to stop here. Final save AGENT060: 4,466 people, $1,451,
+crime 1,097, pollution 2,441, after 151 game years. Never went broke. Peak was 4,891 (1965), and the
+latest growth came from small powered dense-housing patches by the pond.

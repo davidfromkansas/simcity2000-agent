@@ -848,3 +848,8 @@ small for the city would mean rolling blackouts. Pollution Controls is already
 holding pollution down, and nuclear is unaffordable. I've added the late-game chooser
 positions to the toolmap (`power_plant_late.*`), plus a prompt rule to check the
 status bar names the right plant before placing it.
+
+The first oil placement didn't take: "Oil Power $6,600" was selected but funds stayed
+at $9,207. The dead plant's rubble covers the site, and unlike 1951 the game won't
+build over it. Clearing the old 4×4 footprint with the bulldozer first, then placing
+the oil plant again.

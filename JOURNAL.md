@@ -757,3 +757,8 @@ water supply for $200.
 joining pipe). Query on the second new pump: **Powered: Yes, 15,120 gallons/month**.
 Being next to the powered line was enough to power it. Checking the first new pump,
 then the underground water view, to make sure the pipes reach every neighbourhood.
+
+The first new pump checks out too: **Powered: Yes, 15,120 gallons/month**. Total
+pumping capacity is now about **63,000 gallons/month** (33,120 + 2 × 15,120), nearly
+double what it was, for $231. Next: inspect the pipe layer for gaps, then run the
+city and watch for the "Water Shortage" message to clear.

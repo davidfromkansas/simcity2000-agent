@@ -1273,3 +1273,9 @@ Decisions:
 3. **Rebuild the burned centre before buying new land.** The rubble sits on land that already
    has roads, power and pipes. Clearing it costs $1/tile, and rezoning it as homes (where demand
    is at the maximum) brings taxpayers back far more cheaply than new blocks.
+
+**Police trimmed; rubble diagnosis (Dec 2021).** Police at 90% moved the 2022 estimate from
+−$59 to −$49. I clicked once more toward 80%. A query of the burned centre says "Rubble, Zoned:
+Commercial low-density, 150 ft, land value $1,000". Shop demand is negative, so these lots will
+sit as rubble forever. Homes are what people want, so I'm testing whether rezoning a small
+rubble patch next to a road as light residential works, and what it costs.

@@ -1162,3 +1162,10 @@ beside the western segment. Pipes join any pipe on a neighbouring tile, so runni
 alongside it is enough. Cost **$14** (funds $1,905 → $1,891). The Water Supply map now
 shows more of the south-west centre watered. A strip on the far west and one on the
 east are still red. Next: run two game years and read the save.
+
+**Oct 2018: west pipe joined the network.** The underground view now shows almost the
+entire pipe grid light blue (carrying water). The red/yellow "dry" markings that covered
+the west-centre are down to a few small patches. Funds **$1,881**. That one short pipe
+had joined two separate pipe networks, like the 2011 fix. If homes now grow denser,
+water was the main cap on residential growth. Next: check the surface view, then run
+time and read the save.

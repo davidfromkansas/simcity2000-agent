@@ -1446,3 +1446,8 @@ money is still just under the $1,500 floor, although the budget is now positive 
 the west part of the second patch and construction scaffolding covers the rest. Money is
 steady at $1,416 over those months. The recipe works every time, so I'll keep clearing the
 centre one small patch at a time.
+
+**Two more centre strips (Dec 2033).** Bulldozed and zoned two more rubble strips for shops,
+one in the middle and one lower-left: $39 ($1,416 → $1,377). Blue zone dots show on both.
+That's about $77 spent on the centre so far. Running the game to confirm they build; after
+that I'll stop spending until the treasury climbs back toward $1,500.

@@ -1629,3 +1629,28 @@ can't tell me whether empty zones get power. The one difference I can see from t
 patch touches the grid only at one corner tip. In SC2000, empty zone tiles may not carry power
 onward the way built ones do. So, for about $6, I'm running a short line from the tip up through
 the patch interior, away from the pond, then giving it two game years.
+
+**Breakthrough: the pond patch is building (Feb 2047, $1,249).** Two game years after the $8 power
+line along the patch's south-west edge, it has houses, a pool, a large church and bigger buildings
+under construction, in both the light corner and the dense part. Root cause of 6 empty years: the
+patch touched the grid only at one diagonal corner tip, and empty zone tiles don't pass power on
+from there. The query tool doesn't report power on empty zones, and the small Power map looked
+yellow, so both checks missed it. Rule from now on: **every new zone gets a power line through
+it or along a full edge** (as the block command does), never just a corner contact.
+Total cost of this neighbourhood: ring roads $100, zoning $230, links $20, A/B corner $30, lines $10.
+
+**Feb 2045 save (before the patch built).** 4,163 people, $1,257, crime 1,005, pollution 2,277,
+workforce 58%. Demand: homes +2,000, shops −1,010, factories −872. This is the baseline for
+measuring the pond patch, which started building after this save.
+
+**Pond patch full (Sep 2047, $1,318).** One more year and the whole patch is built: small houses
+on the light corner, plus a condo complex, a pool and a church on the dense part. Money is rising
+again (+$69 since Feb 2047) as the new residents pay taxes. Next move, using the same recipe:
+a small dense patch on the flat strip between the ring road and the pump's power line, so it
+touches a road on one side and **runs along the power line on the other**. That's about $100-150,
+which goes below my $1,500 floor, but the first patch shows it pays back, and the budget is positive.
+
+**Second dense patch (Sep 2047).** Zoned about 8 tiles of dense housing between the ring road
+and the first patch for $60 ($1,318 → $1,258). This time it shares a full edge with the power line
+I ran along the first patch, and it fronts the ring road, so it has both power and road access
+from day one. Running two game years to compare.

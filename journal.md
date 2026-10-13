@@ -1654,3 +1654,36 @@ which goes below my $1,500 floor, but the first patch shows it pays back, and th
 and the first patch for $60 ($1,318 → $1,258). This time it shares a full edge with the power line
 I ran along the first patch, and it fronts the ring road, so it has both power and road access
 from day one. Running two game years to compare.
+
+**Jul 2048 save: growth restarted.** 4,545 people, up from 4,163 in Feb 2045 (+382, the biggest
+gain since the post-fire recovery). Money $1,308, crime 1,100, pollution 2,436, workforce 58%.
+Demand: homes +2,000, shops −176 (was −1,010), factories **+169** (was −872). The new residents
+are using up the spare jobs, so shop and factory demand is climbing back towards positive.
+That's the healthy loop: homes → workers → demand for jobs → businesses → more homes.
+
+**Second patch built (Jun 2049, $1,370).** Within about two years the $60 patch was built with
+condo blocks and pools, because it had power along its edge and road access from the start.
+Money keeps rising (+$112 since zoning it). Next is the same recipe again, north of the ring road:
+a small dense patch on the flat land beyond the road, with a power line from the built pond
+patch across the road into it.
+
+**Third patch, north of the ring (Jun 2049).** Zone plus power line cost $63 ($1,370 → $1,307).
+The land north of the ring starts to slope, so the zone landed as a few scattered flat tiles on
+either side of the new line rather than a neat square. The line crosses the ring road from the
+built pond patch, so those tiles should be powered. A smaller, cheaper test of whether the edge
+of the hills can take housing. Running two game years.
+
+**Warning: "Plant Nearing Death" (newspaper, Jan 2051).** The oil plant built in 2002 is near the
+end of its ~50-year life. Both earlier plant deaths (1951, 2002) blacked out the whole city and
+crashed population (4,642 → 1,054, and 4,586 → 344), so this now comes first. Constraint: an oil
+plant costs $6,600 and the treasury is about $1,370, and a bond's interest would wipe out the budget.
+Plan: (1) query the old plant to see what share of its output the city actually uses, (2) buy the
+cheapest capacity that covers that (wind turbines at $100 each, or a gas plant if it fits),
+(3) wire it into the grid *before* the old plant dies, so there's no blackout this time.
+
+**Sizing the replacement (Apr 2051, paused, $1,451).** From the 2002 plant chooser: coal 200 MW
+$4,000, oil 220 MW $6,600, gas 50 MW $2,000, solar 50 MW $1,300, hydro 20 MW $400, wind 4 MW $100.
+The only big plant I can afford is **solar (50 MW, $1,300)**, which would leave about $150. Before
+committing, I'm querying the old oil plant: if the city uses under about 45 MW (about 20% of its 220 MW),
+solar covers it with no pollution. If it uses more, I'll need solar plus wind turbines, or I'll have to
+let money build up until the plant dies, then buy coal. Zooming out to find the plant.

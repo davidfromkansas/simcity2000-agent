@@ -1364,3 +1364,12 @@ power line from the powered pump, across the road, into the nearest abandoned lo
 **Bridge attempt: 2 line tiles, $4.** The first drag laid one tile north of the pump. The second
 laid a tile across the road between the pump and the nearest unpowered lot ($1,290 → $1,286).
 Unpausing briefly so the game recomputes power, then checking whether the lightning bolts clear.
+
+**Power restored, and the district rebuilt within 4 months (Oct 2028).** After the 2-tile, $4
+bridge from the pump, every lightning bolt north of the burned centre disappeared. By October
+the abandoned lots had filled with new homes, apartments and a block of houses. Money is
+unchanged at $1,286. This is the cheapest and biggest fix of the whole game. The lesson for a
+mayor: after a disaster, check the Power map for red, because rubble breaks the
+zone-to-zone power chain, and whole neighbourhoods quietly empty out even though they still
+have roads and zoning. Next I'm looking for the other dark lots with bolts further south-west
+and bridging those the same way.

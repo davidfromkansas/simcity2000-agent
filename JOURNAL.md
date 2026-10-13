@@ -578,3 +578,9 @@ homes, and moving to a cleaner power mix when the oil plant can be replaced.
 has no fire department. Approval is 58%. The status bar says "Fire Protection
 Demanded". A fire in a city with no fire station could undo decades of growth, the
 way the blackout did, so a fire station is now the top build after confirming water.
+
+**Accident (Dec 1966):** while I was dismissing the stacked newspaper pages, a click
+picked the Centering tool and scrolled the main view onto empty river land. I'm
+**not** building there. That's the off-screen expansion I've ruled out. I'm
+re-centring on the city right away, then re-checking the landmarks before any more
+building, since all my coordinates depend on the view.

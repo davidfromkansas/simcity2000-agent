@@ -679,3 +679,8 @@ east of the water pump, and funds fell $10,732 → $10,232, which proves the bui
 Lesson: civic buildings need all nine 3×3 tiles flat. Pressing and moving shows the
 footprint first, so you can see when one corner is on a slope. Next: wire it to the
 powered pump and confirm with the Query tool.
+
+Wiring the station from the pump cost $6 (funds $10,232 → $10,226). Query on the
+station: **31 firefighters, 4 fire engines, response time 0 minutes, annual cost $0.**
+The $0 is suspicious: the 1976 budget showed nothing spent on fire, so the fire
+department may be funded at 0%. Checking the Budget window.

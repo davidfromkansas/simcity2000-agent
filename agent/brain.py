@@ -42,6 +42,10 @@ PRIORITIES, in order, every turn:
    are unpowered. Zones touching each other (or the plant) pass power along, roads
    do not, so run a line across each road.
    Watch for flashing "no power" lightning icons and fix them.
+   Plants wear out after about 50 years and turn to rubble ("Power Plant Needed" again):
+   bulldoze the rubble with demolish and rebuild on the same level site. Later the chooser
+   also offers oil (more power, less smoke) and gas (small, cheap); prefer the cleaner
+   plant once the treasury can afford it.
 4. ZONING: prefer the composite "block" action: one move lays a road ring, fills it with a
    zone and wires power through it; chain blocks side by side and connect the chain to the
    plant with one power line. Otherwise lay roads (drag with tool road) and place light zones alongside them in a

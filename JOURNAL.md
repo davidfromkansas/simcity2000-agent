@@ -668,3 +668,8 @@ Pause when it doesn't say *PAUSED*. Looking for a truly flat 3×3 spot next.
 pump (455,292), but funds stayed at $10,732. The terrain there looks flat, so the
 problem may be the input (a quick click not counting as a build), not the land.
 Trying a press-and-move on the same spot to tell the two apart.
+
+Attempt 3 (press-and-move) showed the fire station's 3×3 footprint outline on screen,
+so the input reaches the game. The station still wasn't built (funds unchanged): the
+footprint's west corner overlapped the slope edge, and the game needs all nine tiles
+flat. Moving the station two tiles east, onto the middle of the plateau.

@@ -1273,3 +1273,24 @@ Decisions:
 3. **Rebuild the burned centre before buying new land.** The rubble sits on land that already
    has roads, power and pipes. Clearing it costs $1/tile, and rezoning it as homes (where demand
    is at the maximum) brings taxpayers back far more cheaply than new blocks.
+
+**Police trimmed; rubble diagnosis (Dec 2021).** Police at 90% moved the 2022 estimate from
+−$59 to −$49. I clicked once more toward 80%. A query of the burned centre says "Rubble, Zoned:
+Commercial low-density, 150 ft, land value $1,000". Shop demand is negative, so these lots will
+sit as rubble forever. Homes are what people want, so I'm testing whether rezoning a small
+rubble patch next to a road as light residential works, and what it costs.
+
+**Found a cheap growth lever: empty shop lots.** The $10 test drag turned blue-dotted tiles
+(zoned commercial but never built) into green-dotted residential. Re-zoning over an old zone
+works directly, with no bulldozing first. The burned centre has many of these empty commercial
+lots beside existing roads. They've sat empty because shop demand is negative, while homes are
+at maximum demand. Re-zoning them as homes costs a few dollars per tile, with roads and power
+already there: the cheapest new housing in the city. I'm doing it in small strips, keeping
+money above $1,500.
+
+**Second strip: $10 = 2 tiles.** Light residential zoning is $5/tile. My drag ran mostly along
+one isometric axis, so it zoned a thin 2-tile strip. Lesson: a zone drag covers a rectangle in
+tile space, so to cover an area the drag must run corner to corner. At this zoom, a straight
+horizontal drag of about 96 px covers 3×3 tiles. With money at $1,588 ($88 above the floor),
+I'm pausing spending and letting the city run, to see whether the new homes fill and how
+fast the budget drains.

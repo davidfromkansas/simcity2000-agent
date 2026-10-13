@@ -151,3 +151,14 @@ meter has flipped again: **I strongly up, R and C down** - the new residents nee
 jobs. So the next block is industrial, on the flat forest west of the pond block
 (chained power again). This R -> I -> R see-saw is the core loop: zone whatever
 the meter asks for, one 8x8 block at a time, and let ~3 game years pass between moves.
+
+**Feb 1928 (screen: $14,387).** The industrial block west of the pond block never
+appeared: funds did not drop and the forest is untouched. A newspaper popped up during
+the run (approval 51%, a "Pollution Blows!" headline) and most likely swallowed the
+drags. Lesson: check funds right after every block, *before* un-pausing, and redo it
+if nothing was spent. Retrying the same block now. RCI still says I high, R slightly
+up, C slightly down.
+
+Retry worked: funds dropped $14,387 -> $13,891 (~$500 for ring + zone + line) and the
+yellow industrial ring is visible west of the pond block, chained to its power line.
+Running ~3 game years before the next move.

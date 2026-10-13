@@ -919,3 +919,7 @@ which is why every wire coming from the south-west and south-east stops short. T
 north-east edge is clean ground. The fix: a wire straight out of the north-east edge
 along the tile grid, then down onto the east feeder line. That gives an edge-to-edge
 connection with no rubble in the way.
+
+The north-east wires were built ($10, funds $2,579 in Sep 2002), but the plant query
+still reads 0% of capacity. That figure may refresh only slowly, so I'm checking the
+city map's power layer instead, which shows directly whether zones get power.

@@ -739,3 +739,10 @@ new homes and shops fill in.
 - Diagnosis: homes want to grow (R demand maxed), but without enough water they stay
   small, and new zones are slow to fill. Next: add pumps. They make the most water
   next to a lake or river, so I'm looking at the pond in the middle of the city.
+
+Another drift: the game was running (my last Pause press had toggled it back on), so
+it reached **Jan 1996** before a newspaper stopped it. Mayor approval 55%, and
+Fred's Opinion still says "Traffic Bites!". A closer look shows the blue "pond" in
+the middle of the city is the pool of a big park, not a lake, so a pump beside it
+would get no bonus. Plan: add more pumps on the flat plateau by the existing pump
+and fire station (both powered), then join them to the pipe network.

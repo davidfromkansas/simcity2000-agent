@@ -1457,3 +1457,11 @@ The lower-left strip is zoned but still empty. Money rose back to $1,416 after t
 tax collection, so the ~$77 spent on the centre has already been earned back. Pausing new
 spending and letting the game run for a couple of game years to see what the rebuilt centre
 does for population.
+
+**Mar 2036 save: money recovering, population flat.** Population 4,009 (4,215 in Mar 2033),
+money $1,495 (back near the $1,500 floor, about +$40/yr), crime down to 757. Demand: homes
++2,000, shops +512 (the new offices are filling the shop gap), factories −801. The centre
+rebuild added jobs but no residents. Demand for homes has been maxed for decades, so the
+limit is the homes themselves: earlier queries showed houses with "Watered: No", and
+unwatered homes in SC2000 stay low-density. Next: open the overview map's Water layer to
+see which neighbourhoods are dry before spending anything.

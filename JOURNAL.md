@@ -572,3 +572,9 @@ approval is down to 47%** (61% in 1951). Pollution in the save rose from 5,148 (
 to 6,743 (1965). Residents' biggest complaint is clearly pollution, so after water,
 the next priority is pollution relief: parks and trees between the factories and the
 homes, and moving to a cleaner power mix when the oil plant can be replaced.
+
+**Apr 1966 newspaper:** "Flood Squishes New City", plus a front-page story,
+**"Fire Station Wanted"**: hot, windy weather makes a big fire likely, and the city
+has no fire department. Approval is 58%. The status bar says "Fire Protection
+Demanded". A fire in a city with no fire station could undo decades of growth, the
+way the blackout did, so a fire station is now the top build after confirming water.

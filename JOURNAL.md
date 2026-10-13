@@ -126,3 +126,10 @@ now point up. Funds $14,796. This confirms the jobs-first diagnosis.
 and power line). Picked that spot because the other neighbours of the existing blocks
 are the power plant (north-east) or cliff bands (south-west), and `block` needs level
 ground. Commercial now because the blue C bar is up and shops also add jobs.
+
+**Jul 1922:** funds $14,418, money roughly flat - the city now pays its own way.
+Blocks 1 (homes) and 2 (factories) are nearly full. The commercial block only half
+built: its ring ran into a slope, so only the south-east end got zoned and some
+shops appeared there. RCI now says **R strongly up, C slightly down, I slightly
+down** - factories and shops are waiting for workers and customers, so the next
+blocks are residential.

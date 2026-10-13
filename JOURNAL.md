@@ -538,3 +538,8 @@ neighbour into the police station, then querying the pump again.
 The new 2-tile line cost $2, but the pump still said "Powered: No". The game was
 paused, though, and power is only recalculated while the simulation runs. Running
 it for a few seconds before querying again.
+
+**Jan 1962 save (AGENT021):** population 4,826, funds $8,564, R +2000, C -118, I -659,
+pollution 5,148, crime 1,018. By Feb 1963 the pump still says **Powered: No**, so the
+2-tile line doesn't connect either. Zooming in to the individual tiles before
+trying again.

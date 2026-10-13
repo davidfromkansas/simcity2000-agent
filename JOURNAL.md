@@ -1384,3 +1384,12 @@ Baseline for comparison: the Jun 2028 save, taken before either bridge, shows po
 powered building into the bottom-left row, cleared its lightning bolts too, and houses are
 filling in. All three districts cut off by the fire are back on the grid. Total cost for the
 three bridges: about $12. Money $1,276. Letting it run 2 minutes, then reading population.
+
+**Growth restarted: 4,156 in Apr 2031.** After the three power bridges (~$12), the Apr 2031
+save shows population 4,156, up from 3,243 in Jun 2028 (+28% in under 3 years). Money is
+$1,374 and rising again (from $1,276), because more taxpayers have come back. Side effects:
+crime rose from 198 to 1,041 and pollution from 1,789 to 2,363. The crime jump is partly
+because police funding is at 70%, so I'll raise it now that money is rising. Demand: homes
++2,000, shops +2,000 (they were negative before), factories +948. With shop demand maxed,
+the burned centre, which is still zoned commercial, should rebuild on its own once power
+reaches it. Next: check the Power map for any other dark areas.

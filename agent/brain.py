@@ -73,7 +73,7 @@ one feeder is joined: open the power map and check every neighbourhood is powere
    Freshly zoned land only shows as faint coloured dots - check the funds drop instead. Add water (water_pump +
    pipes) once the city has a few hundred people.
    Judge water only from the Water Supply map (red = dry), not the underground blue shading.
-   A cyan end-cap on a pipe marks an unjoined end; a single missing tile can cut off the whole network.
+   A cyan dot is an open pipe end: if it sits one tile from another pipe, that single gap can cut off a whole area.
    If population stalls while R demand stays maxed, act like a mayor before building:
    query empty dotted zones - empty land zoned for a type with negative demand never
    develops, so zone straight over it ($5/tile) with the type that has demand. Use

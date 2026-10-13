@@ -1097,3 +1097,11 @@ The Water Supply map shows the centre watered, but the western neighbourhoods ar
 red, so the western pipes must have more breaks like the first one. Next: scan the
 western pipe network at 2x zoom for cyan end-caps and bridge each with single $3 tiles.
 That's the cheapest growth available while money is near the floor.
+
+**Correction, Jun 2012.** Looking closer at the western pipes, cyan dots appear at the end
+of *every* pipe branch, including ones that are properly joined. So a cyan dot just
+means an open end. It's only a break when it stops one tile short of another pipe, as
+the first one did. The western zone grids all touch the main trunk, so the network
+looks joined. The remaining dry west is now most likely **too little water**: four
+pumps for ~4,900 people. Next: look at the pump plateau above ground and add pumps
+beside the powered ones as money allows, keeping funds above $1,500.

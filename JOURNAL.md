@@ -404,3 +404,15 @@ Mayor's read:
 Decision: increase housing supply and housing quality on land I already have:
 water everywhere, high-density homes on any free tile away from smoke, parks as
 pollution buffers, then a school.
+
+**Diagnosis 3: the city maps (Map window, May 1950).**
+- *Pollution:* a solid white cloud covers the whole developed area. The coal plant
+  sits in the middle of town with factories around it and homes right next to both.
+- *Water supply:* almost every developed tile shows red (no water). The new pump
+  was placed while paused, so I'm running the sim briefly and re-checking.
+- *Whole map:* the city fills only a small patch near the centre of a large map.
+  There's a river in the south and a lake to the north-east, both off-screen and
+  out of bounds under David's rule.
+
+This confirms the save-file read: homes are capped at small sizes by **no water** and
+held down by **pollution**. Water is the cheapest fix with the biggest effect.

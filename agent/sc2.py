@@ -1,4 +1,4 @@
-"""Read hard numbers (date, funds, population) from a native .SC2 save.
+"""Read hard numbers (date, funds, population, RCI demand, ...) from a native .SC2 save.
 
 Layout per https://github.com/OpenCity2k/SC2k-docs: an IFF ``FORM``/``SCDH``
 container whose ``MISC`` segment is RLE-compressed big-endian int32s.
@@ -12,6 +12,9 @@ from pathlib import Path
 
 MONTHS = ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 MISC_YEAR_FOUNDED, MISC_DAYS, MISC_FUNDS, MISC_POPULATION = 3, 4, 5, 12
+# Optional city-health fields (int32 index = spec byte offset / 4).
+MISC_EXTRA = {"crime": 11, "pollution": 13, "work_force_pct": 17, "education_eq": 19,
+              "demand_r": 454, "demand_c": 455, "demand_i": 456}
 
 
 def segments(data: bytes) -> dict[str, bytes]:
@@ -44,9 +47,12 @@ def read_stats(path: Path) -> dict[str, int | str]:
     v = struct.unpack(f">{len(misc) // 4}i", misc[:len(misc) // 4 * 4])
     days = v[MISC_DAYS]
     year = v[MISC_YEAR_FOUNDED] + days // 300
-    return {
+    stats: dict[str, int | str] = {
         "date": f"{MONTHS[(days % 300) // 25]} {year}",
         "year": year,
         "funds": v[MISC_FUNDS],
         "population": v[MISC_POPULATION],
     }
+    if len(v) > max(MISC_EXTRA.values()):
+        stats.update({k: v[i] for k, i in MISC_EXTRA.items()})
+    return stats

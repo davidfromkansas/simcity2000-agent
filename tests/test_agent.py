@@ -184,6 +184,16 @@ def test_sc2_read_stats(tmp_path):
     f.write_bytes(b"FORM" + struct.pack(">I", len(body)) + body)
     assert sc2.read_stats(f) == {"date": "May 1935", "year": 1935, "funds": 13740, "population": 749}
 
+    vals = [0] * 1200
+    vals[sc2.MISC_YEAR_FOUNDED], vals[sc2.MISC_DAYS] = 1900, 10607
+    vals[sc2.MISC_EXTRA["demand_r"]], vals[sc2.MISC_EXTRA["demand_c"]] = 2000, -321
+    raw = struct.pack(">1200i", *vals)
+    misc = b"".join(bytes([len(c)]) + c for c in (raw[i:i + 127] for i in range(0, len(raw), 127)))
+    body = b"SCDH" + b"MISC" + struct.pack(">I", len(misc)) + misc
+    f.write_bytes(b"FORM" + struct.pack(">I", len(body)) + body)
+    stats = sc2.read_stats(f)
+    assert stats["demand_r"] == 2000 and stats["demand_c"] == -321 and stats["pollution"] == 0
+
 
 def test_block_plan_and_execute():
     from types import SimpleNamespace

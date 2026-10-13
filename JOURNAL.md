@@ -816,3 +816,15 @@ but on borrowed time. Approval 72%, and Fred's Opinion has moved on to "Taxes Su
 so tax cuts are worth considering once the plant is replaced. At cheetah speed a year
 passes in seconds, and a newspaper appears every January. Closing a paper resumes
 the game, so I now close the paper and pause in the same quick batch.
+
+**Jan 2002: the oil plant has died.** Closing the paper and pausing in one batch worked
+(*PAUSED* at Jan 2002, $9,307), but the plant site is already rubble. The 1951 lesson
+says every month without power costs thousands of residents, so I'm rebuilding right
+away:
+- **Choice: another oil plant on the same site** (~$6,600). The site is flat and
+  proven, and it already touches the city's power lines. Oil gave enough power for
+  50 years with less smoke than coal.
+- Gas or solar would be cheaper but much smaller, and I don't know their footprints
+  or exact output on this terrain. Guessing wrong would mean more months of blackout.
+- Funds afterwards are about $2,700, still above the $1,500 safety floor. Income is
+  positive, so the treasury will rebuild.

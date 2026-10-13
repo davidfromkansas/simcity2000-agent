@@ -202,3 +202,16 @@ funds keep climbing (+$950 in 6 years). RCI: **R and I high, C now below the lin
 the shops have caught up. Next moves are another residential block and another
 industrial block. The level land next to the current blocks is used up, so I'm
 looking further out (or scrolling the view) for flat patches.
+
+**Running out of level land (Feb 1947).** The city sits on a terrace: cliffs to the
+north-east, slopes to the south-west, and the plant blocks the north. Placing more
+8x8 blocks would mean scrolling to new land and running long power lines. Before
+that, a cheaper idea: **densify what already works.** I'm rezoning the pond block's
+interior from light to dense residential with the same two zone-fill drags the block
+action uses. If the game accepts it (funds drop), each existing residential block can
+hold several times more people on the same roads and power.
+
+Result: **refused.** Funds stayed at $15,827 and the pond block looks unchanged; the
+game won't rezone tiles that already have buildings on them. So densifying means
+bulldozing first (losing people for a while), which is a bad trade right now. Back to
+finding new land: next I'm checking whether the arrow keys scroll the city view.

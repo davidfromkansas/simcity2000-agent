@@ -1521,3 +1521,41 @@ are *light* residential, which caps each lot at small houses. A mayor would allo
 housing where infrastructure already exists. Next experiment: re-zone one existing light
 home block as dense residential ($/tile, roads, power and water already in place), then
 compare its population after a couple of years before rolling it out.
+
+**Correction to the density plan.** Earlier in this run I found that the game refuses to
+re-zone *developed* light housing as dense; it only works on empty land. So instead of
+re-zoning existing blocks, I'm placing a new **dense residential** block on the flat empty
+land between the city and the pond. It's right next to the new pump, its pipe and its power
+line, so it needs little extra infrastructure. With demand for homes at +2,000, dense zoning
+lets each lot grow into apartments instead of houses. Money $1,406, budget slightly positive,
+so this is the one big spend I'll allow before letting taxes rebuild the treasury.
+
+**Dense block, part 1 (Jun 2038).** The block command laid a road ring on the flat land by the
+pond: $100 ($1,406 → $1,306). Its east side reached the water, so the game offered to build a
+bridge ($125 or $250). I picked None, so no bridge was built. Next I'm checking whether the
+dense zone landed inside the ring, and the ring isn't joined to the city's roads yet, so it
+needs a short connector road, or new residents would have no way to reach jobs.
+
+**The block was cut short.** Zoomed in, only the two north edges of the road ring were built
+(about 10 tiles, $100). The bridge dialog interrupted the rest of the command, so no zone and
+no power line were placed. Lesson: keep block commands well away from water. Finishing it by hand:
+a small dense-residential patch just under the new roads (next to the pump's power line and
+pipe), plus one short road joining it to the city's road network.
+
+**Dense patch zoned, and a spending freeze (Jun 2038).** The dense-residential patch (about 4x4
+tiles, green dense dots) plus the connector road down to the city cost $230 ($1,306 → $1,076).
+That's more than I expected: dense zoning and the diagonal road cost more per tile than light
+zoning. Money is now well below the $1,500 floor, so **no more spending** until the treasury
+recovers. Including the cut-short ring, this neighbourhood cost $330 in total. Checking that the
+new zone gets power from the pump line next to it, then letting the game run.
+
+**Query check (Nov 2038).** A tile in the new patch reads "Zoned: Residential high-density,
+Land value $174,000/acre". That's the highest land value I've seen in this city (the cleared
+centre was $59,000). Waterfront land by the pond is the most valuable housing land I have, so
+the dense zone went to the right place. Running the game to see whether apartments go up.
+
+**Still empty after 9 months (Aug 2039, $1,108).** Before spending anything, I checked the Power
+map: the area south-west of the pond, where the new patch is, shows yellow (powered) and joins
+the main grid. So power isn't the blocker. Dense zones in SC2000 often take a while to attract
+their first developer, so I'm giving it more time rather than spending money I don't have.
+Money is recovering slowly (+$32 since the patch).

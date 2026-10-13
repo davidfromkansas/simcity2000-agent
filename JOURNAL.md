@@ -534,3 +534,7 @@ Zoomed surface view: the wires around the pump form a tangle that stops one tile
 short of the oil plant. Buildings pass power to touching buildings, and the police
 station touches the plant, so I'm running a 2-tile line from the pump's south-west
 neighbour into the police station, then querying the pump again.
+
+The new 2-tile line cost $2, but the pump still said "Powered: No". The game was
+paused, though, and power is only recalculated while the simulation runs. Running
+it for a few seconds before querying again.

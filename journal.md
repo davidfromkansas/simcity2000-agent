@@ -1379,3 +1379,29 @@ powered house into the dark lots south-west of the rubble brought them back too:
 and houses appeared within 4 months. Money $1,286 → $1,278 (line tiles plus 4 months' drain).
 Baseline for comparison: the Jun 2028 save, taken before either bridge, shows population
 3,243. One row of dark lots is left along the bottom-left; bridging it next.
+
+**Third bridge: the last dark row is back (Jun 2029).** One more short line, from a newly
+powered building into the bottom-left row, cleared its lightning bolts too, and houses are
+filling in. All three districts cut off by the fire are back on the grid. Total cost for the
+three bridges: about $12. Money $1,276. Letting it run 2 minutes, then reading population.
+
+**Growth restarted: 4,156 in Apr 2031.** After the three power bridges (~$12), the Apr 2031
+save shows population 4,156, up from 3,243 in Jun 2028 (+28% in under 3 years). Money is
+$1,374 and rising again (from $1,276), because more taxpayers have come back. Side effects:
+crime rose from 198 to 1,041 and pollution from 1,789 to 2,363. The crime jump is partly
+because police funding is at 70%, so I'll raise it now that money is rising. Demand: homes
++2,000, shops +2,000 (they were negative before), factories +948. With shop demand maxed,
+the burned centre, which is still zoned commercial, should rebuild on its own once power
+reaches it. Next: check the Power map for any other dark areas.
+
+**Power map is all yellow (Apr 2031).** After the three bridges, the overview map's Power layer
+shows the whole city powered, with no red left. The brown patches inside the cluster are
+plain rubble with no buildings, not unpowered zones. Next: raise police funding back toward
+85% to bring crime down (1,041), since money is rising again.
+
+**Budget back in the black (Apr 2031).** Police is back up to 85% (checked on screen). With
+the returning residents, property tax is now $233/yr (it was $158 in 2026), so even after the
+police increase the 2031 estimate is **+$45/yr** (treasury $1,374 → $1,419 by year end). Fire
+stays at 70% for now. The city is earning money again for the first time since the fire, so I
+can start reinvesting: first let the burned centre rebuild with shop demand at maximum, then
+put the surplus into water and new home blocks.

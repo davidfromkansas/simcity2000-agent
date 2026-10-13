@@ -1205,3 +1205,11 @@ names to the toolmap for future runs.
 firetrucks here"). Clicking the road tile right beside the west fire worked: a crew icon
 appeared there. Lesson: fire crews must be sent to a road next to the fire, not onto the
 flames. After 8 seconds the date hadn't changed, so I'm running longer before judging.
+
+**Fire is an official disaster; the calendar is frozen.** While running, the status bar
+reads **Fire** in red, and the date has stayed at Oct 2018 through over a minute of play.
+SimCity 2000 stops the calendar during a disaster, so taxes, growth and power-plant
+ageing are all on hold until the fire is out. After about a minute the centre and
+south-centre fires burned out by themselves. The west fire (where the crew is) and a
+small south fire are still burning. I'm letting it run rather than spending on a
+second fire station.

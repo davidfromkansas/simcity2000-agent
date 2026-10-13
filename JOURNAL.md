@@ -689,3 +689,24 @@ Budget, Nov 1988: the fire department is funded at 100% (the $0 was just the fir
 partial year; the year-end estimate is −$8). Ordinances cost −$23/yr. The city still
 ends the year **+$61**, so services are affordable. Next question: why have the
 yellow-dotted zoned terraces at the top-left stayed empty for decades? Querying one.
+
+**Native save AGENT025 (Nov 1988): the ordinances worked.**
+
+| | May 1976 (AGENT024) | Nov 1988 (AGENT025) |
+|---|---:|---:|
+| Population | 4,794 | 4,578 |
+| Funds | $9,893 | $10,232 |
+| Pollution | 10,351 | **3,280** (−68%) |
+| Crime | 1,101 | 955 |
+| R / C / I demand | +2000 / −356 / −700 | +2000 / **+604** / −921 |
+
+Pollution Controls cut pollution by two-thirds for $12/yr, and commercial demand has
+turned positive. Population still hasn't moved, so pollution wasn't the only cap.
+
+**New diagnosis: zoned land doesn't match demand.** The yellow-dotted terraces at the
+top-left are *light industrial* zones on clear, flat land with $13,000/acre value and
+no pollution. They've sat empty for decades because industrial demand is negative
+(−921) and has been since the 1950s. Meanwhile residential demand is maxed. The fix a
+mayor would make: **re-zone that empty industrial land as residential** (plus some
+commercial, now that C demand is +604). It's on screen, already flat, and needs no
+demolition of buildings, only de-zoning empty tiles.

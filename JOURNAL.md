@@ -778,3 +778,8 @@ down-left through the southern blocks, and one through the middle. Each is a cha
 drags of 7 tiles or fewer, each starting where the last one ended. Zones pass water
 on to neighbouring zone tiles (as they do power), so trunks a few blocks apart should
 cover everything. Expected cost about $5 per tile.
+
+The pipe trunks went in for $200 (funds $9,602 → $9,402). New blue lines now run into
+the north-west, middle and south-west blocks. Watered tiles only show their blue
+shading after the simulation recalculates, so I'm running the city about 20 seconds
+before judging whether the trunks joined the main.

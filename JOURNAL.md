@@ -1629,3 +1629,12 @@ can't tell me whether empty zones get power. The one difference I can see from t
 patch touches the grid only at one corner tip. In SC2000, empty zone tiles may not carry power
 onward the way built ones do. So, for about $6, I'm running a short line from the tip up through
 the patch interior, away from the pond, then giving it two game years.
+
+**Breakthrough: the pond patch is building (Feb 2047, $1,249).** Two game years after the $8 power
+line along the patch's south-west edge, it has houses, a pool, a large church and bigger buildings
+under construction, in both the light corner and the dense part. Root cause of 6 empty years: the
+patch touched the grid only at one diagonal corner tip, and empty zone tiles don't pass power on
+from there. The query tool doesn't report power on empty zones, and the small Power map looked
+yellow, so both checks missed it. Rule from now on: **every new zone gets a power line through
+it or along a full edge** (as the block command does), never just a corner contact.
+Total cost of this neighbourhood: ring roads $100, zoning $230, links $20, A/B corner $30, lines $10.

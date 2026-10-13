@@ -977,3 +977,8 @@ Jan 2005: the plant runs at **2%**, lower than before, and funds are $2,254 (slo
 falling, because tax income from ~300 residents no longer covers police and fire). The
 south-west bridge didn't reconnect the western neighbourhoods. Either the wire didn't
 land, or that lower feeder is itself cut further along. Inspecting the close-up next.
+
+Second try at the south-west bridge worked. Dragging pole-to-pole, from a pole on the
+stub to a pole on the western feeder, cost $8 (funds $2,254 → $2,246), and the
+close-up shows new poles linking the two lines. (The first try likely missed both
+lines, so nothing was built.) Letting a few months pass before checking the plant's load.

@@ -1001,3 +1001,12 @@ workforce 62%, EQ 79. The blackout is behind us, but the city is back at its old
 ~4,600 plateau, and money is now the binding constraint: only ~$700 above my $1,500
 floor, after the $6,600 plant. Before any new growth push I'm reading the budget to
 see where the money goes and whether a small tax or spending change can fund it.
+
+**Budget, Oct 2007** (Budget window): property tax 7% brings in about $221/year.
+Spending: police $100, fire $100, transit $18, ordinances $24. That's **about −$20/year**.
+The deficit is small (30+ years of runway at $2,178), so I'm *not* raising taxes: R
+demand is maxed, and higher taxes would only push residents away. I'm also not taking
+a bond, because the interest would exceed the city's whole tax income. Decision: spend
+the ~$700 above the floor only on cheap, high-value fixes. Water is the first suspect:
+before the blackout the western half was dry, which keeps houses small. Checking the
+water map now.

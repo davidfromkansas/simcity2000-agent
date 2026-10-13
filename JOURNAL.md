@@ -1224,3 +1224,16 @@ empty land for a new neighbourhood, then scroll there with the normal scroll arr
 opinion column says "Taxes Suck!", and the mayor is rated 65%. So water is still short
 (not enough supply, separate from the fire mix-up), and residents feel the 8% tax.
 Any new neighbourhood needs its own pump, not a share of today's supply.
+
+**Overview map (Dec 2018; the calendar restarted after the fire).** The whole 128×128
+map shows our city as one small cluster in the middle. Most of the map is brown hills with
+scattered forest, a river along the south, and a pond just north-east of the city. The
+nearest open, tree-free land is right **east of the factory blocks**, so new roads, power
+and water there can link to the existing city cheaply.
+
+**Money is the hard limit.** $1,881 against my $1,500 floor leaves about $380. Bonds
+are a normal game option, but at roughly +$2/yr net, the interest on even a small bond would push
+the budget negative, so no borrowing. Residential demand is at the maximum (+2,000)
+while shop and factory demand are negative. Plan: one small **residential** block
+(road loop about $240, zoning about $80, a short power line), touching the existing
+roads and grid, then let it fill and use the new tax income for a pump.

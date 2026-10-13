@@ -875,3 +875,8 @@ and Watered: No. The new oil plant is built but not tied into the grid: clearing
 rubble likely also took out the wire tiles touching the old plant. Same fix as in 1951:
 redraw a short power line starting inside the new plant out to the nearest existing
 line, then re-query.
+
+Close-up: the new plant sits on the old site, but a one-tile ring of rubble separates
+it from the three existing wires (east, north-west, south-west). I'm bridging all three
+with short power-line drags that start inside the plant, so the first wire lands on
+its edge. Three routes in also keep one broken line from blacking out the city again.

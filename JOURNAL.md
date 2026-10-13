@@ -1254,3 +1254,8 @@ pollution low. Its road connects to the existing diagonal road and its power lin
 existing poles. Lesson: the view is zoomed in, so "size 6" made a loop only about 3 real
 tiles across. Next time use a bigger size or zoom out first. Money is now about $160 above
 my floor, so I'll let this block fill and watch the budget before building more.
+
+**Eastern block filled (Dec 2021).** Within about 2 game years, the new loop is full of houses.
+This is the first fresh growth in decades, which shows that new land, not demand, was the limit.
+Money is still drifting down, though: $1,662 → $1,608 (about −$27/yr). Before spending more,
+I'm opening the budget to see what's draining it.

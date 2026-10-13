@@ -1457,3 +1457,40 @@ The lower-left strip is zoned but still empty. Money rose back to $1,416 after t
 tax collection, so the ~$77 spent on the centre has already been earned back. Pausing new
 spending and letting the game run for a couple of game years to see what the rebuilt centre
 does for population.
+
+**Mar 2036 save: money recovering, population flat.** Population 4,009 (4,215 in Mar 2033),
+money $1,495 (back near the $1,500 floor, about +$40/yr), crime down to 757. Demand: homes
++2,000, shops +512 (the new offices are filling the shop gap), factories −801. The centre
+rebuild added jobs but no residents. Demand for homes has been maxed for decades, so the
+limit is the homes themselves: earlier queries showed houses with "Watered: No", and
+unwatered homes in SC2000 stay low-density. Next: open the overview map's Water layer to
+see which neighbourhoods are dry before spending anything.
+
+**Water map (Mar 2036).** The overview map's Water Supply layer shows most of the city yellow
+(watered). The main dry (red) area is the eastern home block I built after the fire, plus a
+thin strip on the far west edge. So the newest homes have no water. Since homes without water
+stay small, piping water into the east block is the next growth move. Pipes cost about $3 a tile,
+and the block sits right next to the watered centre, so it should only need a short run.
+
+**Underground view of the east (Mar 2036).** With the pipes tool selected, the game shows its
+underground view. The pipes under the centre-north are blue, meaning they carry water. The
+whole pipe grid under the eastern districts is grey, meaning the pipes are laid but empty. So
+the east doesn't need new pipes everywhere, only a link from the blue network into the
+grey grid, which look nearly touching just south-east of the blue pipes. Looking for the gap.
+
+**Pipe link to the east (Mar 2036).** Laid a 3-tile pipe from the end of the blue (watered)
+network down into the grey eastern grid: $9 ($1,495 → $1,486). Right away the new segment and
+the first row of the eastern grid below it turned blue. Running the game so the water can
+spread through the rest of the grid, then I'll recheck the underground view and the Water map.
+
+**Not enough water to go round (Aug 2036).** Five months after the link, water reached the
+grey grid under the centre-east, which is now blue. But the north-west pipes that were blue
+before have gone grey. The game shares a fixed supply across the network, so linking more
+pipes just spread the same water thinner. The real limit is pump output, not pipes. Fix: add
+a water pump by the pond ($100, money $1,486, budget +$40/yr). Pumps next to fresh water
+pump the most, and the pond is next to the city. Moving the view there with the overview map.
+
+**New water pump by the pond (Aug 2036).** Placed a pump on the flat shore at the pond's
+south-west tip, the side nearest the city: $100 ($1,486 → $1,386). A pump only works with
+power, and its water only reaches the city through pipes, so next I'll run a short power line
+and a pipe from the city edge to it. That should cost about $30–40 more.
